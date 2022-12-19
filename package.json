@@ -1,7 +1,7 @@
 {
     "name": "trueblocks-sdk",
-    "version": "0.45.17",
-    "description": "Can log \"hello world\" and \"goodbye world\" to the console!",
+    "version": "0.45.0",
+    "description": "Use the TrueBlocks chifra interface in your apps",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
@@ -9,7 +9,6 @@
     ],
     "scripts": {
         "build": "node_modules/.bin/tsc && yarn publish",
-        "unused": "node_modules/.bin/tsc -p src/sdk && node src/sdk/dist/index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
