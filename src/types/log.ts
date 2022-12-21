@@ -6,14 +6,17 @@
 import { address, blknum, bytes, Function, hash, timestamp, topic } from '.';
 
 export type Log = {
-  blockNumber: blknum
-  transactionIndex: blknum
-  logIndex: blknum
-  transactionHash: hash
-  timestamp: timestamp
   address: address
+  blockHash: hash
+  blockNumber: blknum
+  logIndex: blknum
   topics: topic[]
   data: bytes
   articulatedLog: Function
   compressedLog: string
+  transactionHash: hash
+  transactionIndex: blknum
+  transactionLogIndex: blknum
+  timestamp: timestamp
+  type: string
 }

@@ -3,6 +3,13 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
+import { blockRange, hash, uint64 } from '.';
+
 export type ChunkIndex = {
-  unused: string
+  range: blockRange
+  magic: string
+  hash: hash
+  addressCount: uint64
+  appearanceCount: uint64
+  size: uint64
 }

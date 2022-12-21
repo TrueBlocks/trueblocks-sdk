@@ -3,6 +3,9 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
+import { uint64 } from '.';
+
 export type ChunkAppearances = {
-  unused: string
+  blockNumber: uint64
+  transactionIndex: uint64
 }

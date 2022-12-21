@@ -8,14 +8,15 @@ import { blknum, Function, hash, timestamp, TraceAction, TraceResult, uint64 } f
 export type Trace = {
   blockHash: hash
   blockNumber: blknum
-  timestamp: timestamp
+  subtraces: uint64
+  traceAddress: string[]
   transactionHash: hash
   transactionIndex: blknum
-  traceAddress: string[]
-  subtraces: uint64
   type: string
+  error: string
   action: TraceAction
   result: TraceResult
   articulatedTrace: Function
   compressedTrace: string
+  timestamp: timestamp
 }

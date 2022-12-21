@@ -3,11 +3,22 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, gas, Log, uint32 } from '.';
+import { address, blknum, bytes32, gas, hash, Log, uint32, wei } from '.';
 
 export type Receipt = {
-  status: uint32
+  blockHash: hash
+  blockNumber: blknum
   contractAddress: address
+  cumulativeGasUsed: wei
+  from: address
   gasUsed: gas
+  effectiveGasPrice: gas
   logs: Log[]
+  root: bytes32
+  status: uint32
+  to: address
+  transactionHash: hash
+  transactionIndex: blknum
+  hash: string
+  isError: boolean
 }

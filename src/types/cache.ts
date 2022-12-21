@@ -11,5 +11,6 @@ export type Cache = {
   nFiles: uint64
   nFolders: uint64
   sizeInBytes: uint64
+  isValid: boolean
   items: CacheEntry[]
 }

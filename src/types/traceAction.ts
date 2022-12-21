@@ -3,13 +3,17 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, bytes, gas } from '.';
+import { address, bytes, gas, wei } from '.';
 
 export type TraceAction = {
-  from: address
-  to: address
-  gas: gas
-  input: bytes
+  selfDestructed?: address
+  balance?: wei
   callType: string
+  from: address
+  gas: gas
+  init: string
+  input: bytes
   refundAddress: address
+  to: address
+  value: wei
 }

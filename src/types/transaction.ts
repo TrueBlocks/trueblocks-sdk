@@ -3,7 +3,7 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, bytes, datetime, Function, gas, hash, Receipt, Reconciliation, timestamp, uint64, wei } from '.';
+import { address, blknum, bytes, datetime, Function, gas, hash, Name, Receipt, Reconciliation, timestamp, Trace, uint64, wei } from '.';
 
 export type Transaction = {
   hash: hash
@@ -15,16 +15,29 @@ export type Transaction = {
   from: address
   to: address
   value: wei
+  extraValue1: wei
+  extraValue2: wei
   gas: gas
   gasPrice: gas
+  maxFeePerGas: gas
+  maxPriorityFeePerGas: gas
   input: bytes
+  isError: boolean
+  hasToken: boolean
+  cachebits: boolean
+  reserved2: boolean
   receipt: Receipt
-  statements: Reconciliation[]
+  traces: Trace[]
   articulatedTx: Function
   compressedTx: string
-  hasToken: boolean
-  finalized: boolean
-  extraData: string
-  isError: boolean
+  statements: Reconciliation[]
+  finalized?: boolean
   date: datetime
+  fromName?: Name
+  toName?: Name
+  extraData: string
+  ether: string
+  etherGasPrice: string
+  gasUsed: string
+  encoding: string
 }

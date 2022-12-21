@@ -6,17 +6,22 @@
 import { address, blknum, uint64 } from '.';
 
 export type Monitor = {
+  nAppearances: blknum
+  lastExport: blknum
+  firstAppearance: blknum
+  latestAppearance: blknum
+  lastVisitedBlock: blknum
+  sizeInBytes?: uint64
   nApps: blknum
   firstApp: blknum
   latestApp: blknum
-  sizeInBytes: uint64
-  tags: string
   address: address
-  name: string
-  isCustom: boolean
-  deleted: boolean
-  symbol: string
-  source: string
   decimals: uint64
   isContract: boolean
+  isCustom: boolean
+  name: string
+  source: string
+  symbol: string
+  tags: string
+  deleted: boolean
 }
