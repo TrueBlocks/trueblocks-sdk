@@ -10,4 +10,7 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "develop"
+  ],
 }

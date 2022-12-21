@@ -1,3 +1,7 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import { ipfshash } from '.';
 
 export type IndexCacheItem = {

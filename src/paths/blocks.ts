@@ -1,7 +1,10 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import {
-  address, blknum, Block, topic,
-} from '../types';
+import { address, blknum, Block, topic } from '../types';
 
 export function getBlocks(
   parameters?: {
@@ -17,8 +20,8 @@ export function getBlocks(
     topic?: topic[],
     count?: boolean,
     cache?: boolean,
-    list?: number,
-    listCount?: number,
+    list?: blknum,
+    listCount?: blknum,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -33,8 +36,6 @@ export function getBlocks(
   options?: RequestInit,
 ) {
   return ApiCallers.fetch<Block[]>(
-    {
-      endpoint: '/blocks', method: 'get', parameters, options,
-    },
+    { endpoint: '/blocks', method: 'get', parameters, options },
   );
 }

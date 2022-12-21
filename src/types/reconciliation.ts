@@ -1,6 +1,9 @@
-import {
-  address, blknum, Datetime, double, hash, int256, timestamp, uint64,
-} from '.';
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
+import { address, blknum, datetime, double, hash, int256, timestamp, uint64 } from '.';
 
 export type Reconciliation = {
   blockNumber: blknum
@@ -8,7 +11,7 @@ export type Reconciliation = {
   logIndex: blknum
   transactionHash: hash
   timestamp: timestamp
-  date: Datetime
+  date: datetime
   assetAddr: address
   assetSymbol: string
   decimals: uint64

@@ -1,6 +1,9 @@
-import {
-  address, blknum, bytes, date, Function, gas, hash, Receipt, Reconciliation, timestamp, uint64, wei,
-} from '.';
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
+import { address, blknum, bytes, datetime, Function, gas, hash, Receipt, Reconciliation, timestamp, uint64, wei } from '.';
 
 export type Transaction = {
   hash: hash
@@ -23,5 +26,5 @@ export type Transaction = {
   finalized: boolean
   extraData: string
   isError: boolean
-  date: date
+  date: datetime
 }

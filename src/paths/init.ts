@@ -1,10 +1,15 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import { Manifest, PinnedChunk } from '../types';
+import { double, Manifest, PinnedChunk } from '../types';
 
 export function getInit(
   parameters?: {
     all?: boolean,
-    sleep?: number,
+    sleep?: double,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -18,9 +23,7 @@ export function getInit(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<PinnedChunk[] | Manifest[]>(
-    {
-      endpoint: '/init', method: 'get', parameters, options,
-    },
+  return ApiCallers.fetch<Manifest[] | PinnedChunk[]>(
+    { endpoint: '/init', method: 'get', parameters, options },
   );
 }

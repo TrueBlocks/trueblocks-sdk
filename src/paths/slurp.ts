@@ -1,3 +1,8 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
 import { address, blknum, Transaction } from '../types';
 
@@ -21,8 +26,6 @@ export function getSlurp(
   options?: RequestInit,
 ) {
   return ApiCallers.fetch<Transaction[]>(
-    {
-      endpoint: '/slurp', method: 'get', parameters, options,
-    },
+    { endpoint: '/slurp', method: 'get', parameters, options },
   );
 }

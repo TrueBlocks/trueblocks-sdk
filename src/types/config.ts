@@ -1,6 +1,9 @@
-import {
-  Cache, Chain, Key, timestamp,
-} from '.';
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
+import { Cache, Chain, Key, timestamp } from '.';
 
 export type Config = {
   clientVersion: string
@@ -21,5 +24,5 @@ export type Config = {
   ts: timestamp
   chains: Chain[]
   caches: Cache[]
-  keys?: Key[]
+  keys: Key[]
 }

@@ -3,13 +3,15 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, timestamp } from '.';
+import { address, blknum, bytes, uint64, wei } from '.';
 
-export type Appearance = {
+export type EthState = {
   blockNumber: blknum
-  transactionIndex: blknum
   address: address
-  name: string
-  timestamp: timestamp
-  date: string
+  proxy: address
+  balance: wei
+  nonce: uint64
+  code: bytes
+  deployed: blknum
+  accttype: string
 }

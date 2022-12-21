@@ -1,6 +1,9 @@
-import {
-  address, blknum, bytes, Function, hash, timestamp, topic,
-} from '.';
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
+import { address, blknum, bytes, Function, hash, timestamp, topic } from '.';
 
 export type Log = {
   blockNumber: blknum

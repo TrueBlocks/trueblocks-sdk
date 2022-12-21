@@ -1,12 +1,17 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import { Manifest, PinnedChunk } from '../types';
+import { double, Manifest, PinnedChunk, uint64 } from '../types';
 
 export function getScrape(
   parameters?: {
-    blockCnt?: number,
+    blockCnt?: uint64,
     pin?: boolean,
     remote?: boolean,
-    sleep?: number,
+    sleep?: double,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -20,9 +25,7 @@ export function getScrape(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<PinnedChunk[] | Manifest[]>(
-    {
-      endpoint: '/scrape', method: 'get', parameters, options,
-    },
+  return ApiCallers.fetch<Manifest[] | PinnedChunk[]>(
+    { endpoint: '/scrape', method: 'get', parameters, options },
   );
 }

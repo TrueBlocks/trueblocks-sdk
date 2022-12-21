@@ -1,16 +1,21 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Monitor } from '../types';
+import { address, double, Monitor } from '../types';
 
 export function getMonitors(
   parameters?: {
     addrs?: address[],
     clean?: boolean,
-    list?: boolean,
-    watch?: boolean,
-    sleep?: number,
     delete?: boolean,
     undelete?: boolean,
     remove?: boolean,
+    list?: boolean,
+    watch?: boolean,
+    sleep?: double,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -25,8 +30,6 @@ export function getMonitors(
   options?: RequestInit,
 ) {
   return ApiCallers.fetch<Monitor[]>(
-    {
-      endpoint: '/monitors', method: 'get', parameters, options,
-    },
+    { endpoint: '/monitors', method: 'get', parameters, options },
   );
 }

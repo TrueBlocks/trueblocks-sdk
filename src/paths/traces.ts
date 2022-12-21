@@ -1,3 +1,8 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
 import { Trace, txId } from '../types';
 
@@ -22,8 +27,6 @@ export function getTraces(
   options?: RequestInit,
 ) {
   return ApiCallers.fetch<Trace[]>(
-    {
-      endpoint: '/traces', method: 'get', parameters, options,
-    },
+    { endpoint: '/traces', method: 'get', parameters, options },
   );
 }

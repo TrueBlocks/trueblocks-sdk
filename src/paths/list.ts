@@ -1,5 +1,10 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, ListStats } from '../types';
+import { address, Appearance, AppearanceCount, blknum, uint64 } from '../types';
 
 export function getList(
   parameters?: {
@@ -8,10 +13,10 @@ export function getList(
     appearances?: boolean,
     silent?: boolean,
     noZero?: boolean,
-    firstRecord?: number,
-    maxRecords?: number,
-    firstBlock?: number,
-    lastBlock?: number,
+    firstRecord?: uint64,
+    maxRecords?: uint64,
+    firstBlock?: blknum,
+    lastBlock?: blknum,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -25,9 +30,7 @@ export function getList(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | ListStats[]>(
-    {
-      endpoint: '/list', method: 'get', parameters, options,
-    },
+  return ApiCallers.fetch<AppearanceCount[] | Appearance[]>(
+    { endpoint: '/list', method: 'get', parameters, options },
   );
 }

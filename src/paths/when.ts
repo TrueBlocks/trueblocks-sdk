@@ -1,3 +1,8 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
 import { DatedBlock } from '../types';
 
@@ -9,6 +14,7 @@ export function getWhen(
     count?: boolean,
     repair?: boolean,
     check?: boolean,
+    update?: boolean,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -23,8 +29,6 @@ export function getWhen(
   options?: RequestInit,
 ) {
   return ApiCallers.fetch<DatedBlock[]>(
-    {
-      endpoint: '/when', method: 'get', parameters, options,
-    },
+    { endpoint: '/when', method: 'get', parameters, options },
   );
 }

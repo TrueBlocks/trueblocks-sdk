@@ -1,5 +1,10 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import { Transaction, Transfer, txId } from '../types';
+import { address, Transaction, Transfer, txId } from '../types';
 
 export function getTransactions(
   parameters?: {
@@ -8,7 +13,7 @@ export function getTransactions(
     trace?: boolean,
     uniq?: boolean,
     flow?: 'from' | 'to',
-    accountFor?: string,
+    accountFor?: address,
     cache?: boolean,
     chain: string,
     noHeader?: boolean,
@@ -24,8 +29,6 @@ export function getTransactions(
   options?: RequestInit,
 ) {
   return ApiCallers.fetch<Transaction[] | Transfer[]>(
-    {
-      endpoint: '/transactions', method: 'get', parameters, options,
-    },
+    { endpoint: '/transactions', method: 'get', parameters, options },
   );
 }

@@ -1,7 +1,10 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import {
-  address, Appearance, fourbyte, ListStats, Log, Receipt, Reconciliation, topic, Trace, Transaction, Transfer,
-} from '../types';
+import { address, Appearance, AppearanceCount, blknum, fourbyte, Log, Receipt, Reconciliation, topic, Trace, Transaction, Transfer, uint64 } from '../types';
 
 export function getExport(
   parameters?: {
@@ -19,16 +22,16 @@ export function getExport(
     cache?: boolean,
     cacheTraces?: boolean,
     count?: boolean,
-    firstRecord?: number,
-    maxRecords?: number,
+    firstRecord?: uint64,
+    maxRecords?: uint64,
     relevant?: boolean,
     emitter?: address[],
     topic?: topic[],
     asset?: address[],
     flow?: 'in' | 'out' | 'zero',
     unripe?: boolean,
-    firstBlock?: number,
-    lastBlock?: number,
+    firstBlock?: blknum,
+    lastBlock?: blknum,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -42,9 +45,7 @@ export function getExport(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Reconciliation[] | ListStats[] | Transaction[] | Receipt[] | Log[] | Trace[] | Transfer[]>(
-    {
-      endpoint: '/export', method: 'get', parameters, options,
-    },
+  return ApiCallers.fetch<AppearanceCount[] | Appearance[] | Log[] | Receipt[] | Reconciliation[] | Trace[] | Transaction[] | Transfer[]>(
+    { endpoint: '/export', method: 'get', parameters, options },
   );
 }

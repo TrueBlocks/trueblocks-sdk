@@ -1,7 +1,10 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
-import {
-  address, blknum, Manifest, PinnedChunk,
-} from '../types';
+import { address, blknum, ChunkAddresses, ChunkAppearances, ChunkBlooms, ChunkIndex, ChunkStats, double, Manifest, PinnedChunk } from '../types';
 
 export function getChunks(
   parameters?: {
@@ -12,7 +15,7 @@ export function getChunks(
     publish?: boolean,
     remote?: boolean,
     belongs?: address[],
-    sleep?: number,
+    sleep?: double,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -26,9 +29,7 @@ export function getChunks(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<PinnedChunk[] | Manifest[]>(
-    {
-      endpoint: '/chunks', method: 'get', parameters, options,
-    },
+  return ApiCallers.fetch<ChunkAddresses[] | ChunkAppearances[] | ChunkBlooms[] | ChunkIndex[] | ChunkStats[] | Manifest[] | PinnedChunk[]>(
+    { endpoint: '/chunks', method: 'get', parameters, options },
   );
 }

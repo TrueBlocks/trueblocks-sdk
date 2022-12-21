@@ -1,3 +1,8 @@
+/* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
+/*
+ * This file was generated with makeClass --sdk. Do not edit it.
+ */
 import * as ApiCallers from '../lib/api_callers';
 import { Name } from '../types';
 
@@ -12,6 +17,8 @@ export function getNames(
     named?: boolean,
     addr?: boolean,
     tags?: boolean,
+    create?: boolean,
+    update?: boolean,
     delete?: boolean,
     undelete?: boolean,
     remove?: boolean,
@@ -29,8 +36,6 @@ export function getNames(
   options?: RequestInit,
 ) {
   return ApiCallers.fetch<Name[]>(
-    {
-      endpoint: '/names', method: 'get', parameters, options,
-    },
+    { endpoint: '/names', method: 'get', parameters, options },
   );
 }
