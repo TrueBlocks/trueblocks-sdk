@@ -1,6 +1,6 @@
 {
     "name": "trueblocks-sdk",
-    "version": "0.45.0",
+    "version": "0.50.0",
     "description": "Use the TrueBlocks chifra interface in your apps",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
