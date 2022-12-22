@@ -33,8 +33,8 @@ export type Transaction = {
   statements: Reconciliation[]
   finalized?: boolean
   date: datetime
-  fromName: Name
-  toName: Name
+  fromName?: Name
+  toName?: Name
   extraData: string
   ether: string
   etherGasPrice: string
