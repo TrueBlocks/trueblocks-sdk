@@ -1,10 +1,10 @@
 <!-- markdownlint-disable MD033 MD036 MD041 -->
 <h1>TrueBlocks / SDK</h1>
 
-![GitHub repo size](https://img.shields.io/github/repo-size/TrueBlocks/trueblocks-explorer)
-[![GitHub contributors](https://img.shields.io/github/contributors/TrueBlocks/trueblocks-explorer)](https://github.com/TrueBlocks/trueblocks-explorer/contributors)
-[![GitHub stars](https://img.shields.io/github/stars/TrueBlocks/trueblocks-explorer?style%3Dsocial)](https://github.com/TrueBlocks/trueblocks-explorer/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/TrueBlocks/trueblocks-explorer?style=social)](https://github.com/TrueBlocks/trueblocks-explorer/network/members)
+![GitHub repo size](https://img.shields.io/github/repo-size/TrueBlocks/trueblocks-sdk)
+[![GitHub contributors](https://img.shields.io/github/contributors/TrueBlocks/trueblocks-sdk)](https://github.com/TrueBlocks/trueblocks-sdk/contributors)
+[![GitHub stars](https://img.shields.io/github/stars/TrueBlocks/trueblocks-sdk?style%3Dsocial)](https://github.com/TrueBlocks/trueblocks-sdk/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/TrueBlocks/trueblocks-sdk?style=social)](https://github.com/TrueBlocks/trueblocks-sdk/network/members)
 [![Twitter Follow](https://img.shields.io/twitter/follow/trueblocks?style=social)](https://twitter.com/trueblocks)
 
 **Table of Contents**
@@ -62,14 +62,14 @@ The TrueBlocks [documentation repo](https://github.com/TrueBlocks/trueblocks-doc
 
 A chart showing the number of stars on our repo over time.
 
-<img width="600px" src="https://starchart.cc/TrueBlocks/trueblocks-explorer.svg">
+<img width="600px" src="https://starchart.cc/TrueBlocks/trueblocks-sdk.svg">
 
-We love contributors. Please see information about our [work flow](https://github.com/TrueBlocks/trueblocks-explorer/blob/develop/docs/BRANCHING.md) before proceeding.
+We love contributors. Please see information about our [work flow](https://github.com/TrueBlocks/trueblocks-core/blob/develop/docs/BRANCHING.md) before proceeding.
 
 1. Fork this repository into your own repo.
 2. Create a branch: `git checkout -b <branch_name>`.
 3. Make changes to your local branch and commit them to your forked repo: `git commit -m '<commit_message>'`
-4. Push back to the original branch: `git push origin TrueBlocks/trueblocks-explorer`
+4. Push back to the original branch: `git push origin TrueBlocks/trueblocks-sdk`
 5. Create the pull request.
 
 ## Contact
