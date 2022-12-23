@@ -1,3 +1,3 @@
 all:
-	@cd ~/Development/trueblocks-core/build && make sdk
+	@yarn install
 	@yarn build
