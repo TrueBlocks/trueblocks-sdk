@@ -5,7 +5,7 @@ def toUrl(self, cmd, posName, defFmt, options):
     ret = ''
     skip = False
     for i, arg in enumerate(sys.argv):
-        logging.info("arg: " + arg)
+        # logging.info("arg: " + arg)
         if i < 2:
             continue
         
@@ -57,7 +57,7 @@ def toUrl(self, cmd, posName, defFmt, options):
             ret += "&"
         ret += "fmt=" + fmt
 
-    logging.info("cmd: " + cmd)
-    logging.info("fmt: " + fmt)
-    logging.info("ret: " + ret)
+    # logging.info("cmd: " + cmd)
+    # logging.info("fmt: " + fmt)
+    # logging.info("ret: " + ret)
     return fmt, cmd + "?" + ret

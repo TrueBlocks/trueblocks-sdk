@@ -17,8 +17,8 @@ class chifra():
     from ._blocks import blocks
     from ._chunks import chunks
     from ._config import config
-    // from ._daemon import daemon
-    // from ._explore import explore
+    # from ._daemon import daemon
+    # from ._explore import explore
     from ._export import export
     from ._init import init
     from ._list import list
@@ -35,7 +35,7 @@ class chifra():
     from ._when import when
 
     def dispatch(self):
-        logging.getLogger().setLevel(logging.INFO)
+        # logging.getLogger().setLevel(logging.INFO)
         if self.isValidCommand() == False:
             self.usage("The first argument must be one of the valid commands.")
 
@@ -50,35 +50,35 @@ class chifra():
             case 'config':
                 return self.config()
             case 'daemon':
-                response = self.daemon()
+                return self.daemon()
             case 'explore':
-                response = self.explore()
+                return self.explore()
             case 'export':
-                response = self.export()
+                return self.export()
             case 'init':
-                response = self.init()
+                return self.init()
             case 'list':
                 return self.list()
             case 'logs':
-                response = self.logs()
+                return self.logs()
             case 'monitors':
-                response = self.monitors()
+                return self.monitors()
             case 'names':
                 return self.names()
             case 'receipts':
-                response = self.receipts()
+                return self.receipts()
             case 'scrape':
-                response = self.scrape()
+                return self.scrape()
             case 'slurp':
-                response = self.slurp()
+                return self.slurp()
             case 'state':
-                response = self.state()
+                return self.state()
             case 'tokens':
-                response = self.tokens()
+                return self.tokens()
             case 'traces':
-                response = self.traces()
+                return self.traces()
             case 'transactions':
-                response = self.transactions()
+                return self.transactions()
             case 'when':
                 return self.when()
 

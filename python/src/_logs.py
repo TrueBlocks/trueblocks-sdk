@@ -1,3 +1,6 @@
+#
+# This file was generated with makeClass --sdk. Do not edit it.
+#
 from . import session
 
 logsCmd = "logs"
