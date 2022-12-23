@@ -6,3 +6,4 @@
 //
 // The explore tool is not available in the SDK.
 //
+export default function () { } // no semicolon!

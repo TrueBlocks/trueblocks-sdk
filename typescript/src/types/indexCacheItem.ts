@@ -1,20 +1,22 @@
 /* eslint object-curly-newline: ["error", "never"] */
+/* eslint max-len: ["error", 160] */
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { ipfshash } from '.';
+import { blknum, datetime, ipfshash, timestamp, uint32 } from '.';
 
 export type IndexCacheItem = {
-  nAddrs: number,
-  nApps: number,
-  firstApp: number,
-  latestApp: number,
-  firstTs: number,
-  latestTs: number,
-  filename: string,
-  fileDate: string,
-  indexSizeBytes: number,
-  indexHash: ipfshash,
-  bloomSizeBytes: number,
-  bloomHash: ipfshash,
+  type: string
+  nAddrs: uint32
+  nApps: uint32
+  firstApp: blknum
+  latestApp: blknum
+  firstTs: timestamp
+  latestTs: timestamp
+  filename: string
+  fileDate: datetime
+  indexSizeBytes: uint32
+  indexHash: ipfshash
+  bloomSizeBytes: uint32
+  bloomHash: ipfshash
 }
