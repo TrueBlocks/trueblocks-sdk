@@ -11,7 +11,6 @@
 
 - [Introduction](#introduction)
 - [The SDKs](#the-sdks)
-- [Disclaimer](#disclaimer)
 - [Docker version](#docker-version)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
@@ -20,7 +19,9 @@
 
 ## Introduction
 
-This repo holds auto-generated SDKs based on the [TrueBlocks API](https://github.com/TrueBlocks/trueblocks-core).
+This repo holds auto-generated SDKs based on the [TrueBlocks API](https://github.com/TrueBlocks/trueblocks-core). This SDK is intended for use by the core developers of TrueBlocks as we develop our own applications, and is therefore purposefully not well documented. This is so we **do not** create an unwanted support burden for our team. You are welcome to use the SDK, but we will do not provide technical support.
+
+However, we do welcome issues and PR's (particularly documentation) from the community.
 
 ## The SDKs
 
@@ -28,12 +29,6 @@ There are two SDKs so far:
 
 - [Typescript](./typescript/README.md)
 - [Python](./python/README.md)
-
-## Disclaimer
-
-This SDK is intended for use by the core developers of TrueBlocks as we develop our own applications, and is therefore purposefully not well documented. This is so we **do not** create an unwanted support burden for our team. You are welcome to use the SDK, but we will do not provide technical support.
-
-However, we do welcome issues and PR's (particularly documentation) from the community.
 
 ## Docker version
 
