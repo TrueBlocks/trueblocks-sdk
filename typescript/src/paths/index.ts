@@ -2,6 +2,8 @@ export * from './abis';
 export * from './blocks';
 export * from './chunks';
 export * from './config';
+export * from './daemon';
+export * from './explore';
 export * from './export';
 export * from './init';
 export * from './list';
