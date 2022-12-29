@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import pprint
 import sys
+import pprint
 from src import chifra
 
 obj = chifra().dispatch()
