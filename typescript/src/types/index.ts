@@ -26,7 +26,7 @@ export * from './parameter';
 export * from './pinnedChunk';
 export * from './receipt';
 export * from './reconciliation';
-export * from './tokenBalanceRecord';
+export * from './tokenBalance';
 export * from './trace';
 export * from './traceAction';
 export * from './traceResult';

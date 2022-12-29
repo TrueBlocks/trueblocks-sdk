@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, blknum, TokenBalanceRecord } from '../types';
+import { address, blknum, TokenBalance } from '../types';
 
 export function getTokens(
   parameters?: {
@@ -26,7 +26,7 @@ export function getTokens(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<TokenBalanceRecord[]>(
+  return ApiCallers.fetch<TokenBalance[]>(
     { endpoint: '/tokens', method: 'get', parameters, options },
   );
 }
