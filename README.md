@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD033 MD036 MD041 -->
-<h1>TrueBlocks / Python SDK</h1>
+<h1>TrueBlocks SDKs</h1>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/TrueBlocks/trueblocks-py)
 [![GitHub contributors](https://img.shields.io/github/contributors/TrueBlocks/trueblocks-py)](https://github.com/TrueBlocks/trueblocks-py/contributors)
