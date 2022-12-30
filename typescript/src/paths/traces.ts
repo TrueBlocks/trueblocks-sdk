@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { Trace, txId } from '../types';
+import { Trace, TraceAction, TraceResult, txId } from '../types';
 
 export function getTraces(
   parameters?: {
@@ -26,7 +26,7 @@ export function getTraces(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Trace[]>(
+  return ApiCallers.fetch<Trace[] | TraceAction[] | TraceResult[]>(
     { endpoint: '/traces', method: 'get', parameters, options },
   );
 }

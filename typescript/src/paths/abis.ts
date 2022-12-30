@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Function } from '../types';
+import { Abi, address, Function, Parameter } from '../types';
 
 export function getAbis(
   parameters?: {
@@ -26,7 +26,7 @@ export function getAbis(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Function[]>(
+  return ApiCallers.fetch<Abi[] | Function[] | Parameter[]>(
     { endpoint: '/abis', method: 'get', parameters, options },
   );
 }

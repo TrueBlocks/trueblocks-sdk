@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, AppearanceCount, blknum, uint64 } from '../types';
+import { address, Appearance, AppearanceCount, blknum, Monitor, uint64 } from '../types';
 
 export function getList(
   parameters?: {
@@ -30,7 +30,7 @@ export function getList(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<AppearanceCount[] | Appearance[]>(
+  return ApiCallers.fetch<AppearanceCount[] | Appearance[] | Monitor[]>(
     { endpoint: '/list', method: 'get', parameters, options },
   );
 }

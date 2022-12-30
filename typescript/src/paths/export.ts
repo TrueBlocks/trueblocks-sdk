@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, AppearanceCount, blknum, fourbyte, Log, Receipt, Reconciliation, topic, Trace, Transaction, Transfer, uint64 } from '../types';
+import { address, Appearance, AppearanceCount, blknum, fourbyte, Function, Log, Monitor, Parameter, Receipt, Reconciliation, topic, Trace, TraceAction, TraceResult, Transaction, Transfer, uint64 } from '../types';
 
 export function getExport(
   parameters?: {
@@ -45,7 +45,7 @@ export function getExport(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<AppearanceCount[] | Appearance[] | Log[] | Receipt[] | Reconciliation[] | Trace[] | Transaction[] | Transfer[]>(
+  return ApiCallers.fetch<AppearanceCount[] | Appearance[] | Function[] | Log[] | Monitor[] | Parameter[] | Receipt[] | Reconciliation[] | Trace[] | TraceAction[] | TraceResult[] | Transaction[] | Transfer[]>(
     { endpoint: '/export', method: 'get', parameters, options },
   );
 }
