@@ -3,7 +3,7 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { Cache, Chain, Key, timestamp } from '.';
+import { Cache, Chain, timestamp } from '.';
 
 export type Config = {
   clientVersion: string
@@ -24,5 +24,4 @@ export type Config = {
   ts: timestamp
   chains: Chain[]
   caches: Cache[]
-  keys: Key[]
 }
