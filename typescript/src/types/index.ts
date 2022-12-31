@@ -17,7 +17,6 @@ export * from './ethCall';
 export * from './ethState';
 export * from './function';
 export * from './indexCacheItem';
-export * from './key';
 export * from './log';
 export * from './manifest';
 export * from './monitor';

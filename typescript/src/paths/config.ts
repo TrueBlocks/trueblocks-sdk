@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { Cache, CacheEntry, Chain, Config, IndexCacheItem, Key, Monitor } from '../types';
+import { Cache, CacheEntry, Chain, Config, IndexCacheItem, Monitor } from '../types';
 
 export function getConfig(
   parameters?: {
@@ -25,7 +25,7 @@ export function getConfig(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Cache[] | CacheEntry[] | Chain[] | IndexCacheItem[] | Key[] | Monitor[] | Config[]>(
+  return ApiCallers.fetch<Cache[] | CacheEntry[] | Chain[] | IndexCacheItem[] | Monitor[] | Config[]>(
     { endpoint: '/config', method: 'get', parameters, options },
   );
 }
