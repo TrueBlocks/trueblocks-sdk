@@ -31,7 +31,6 @@ export function getNames(
     ether?: boolean,
     dollars?: boolean,
     raw?: boolean,
-    toFile?: boolean,
   },
   options?: RequestInit,
 ) {

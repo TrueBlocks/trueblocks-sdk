@@ -19,7 +19,6 @@ export function getReceipts(
     ether?: boolean,
     dollars?: boolean,
     raw?: boolean,
-    toFile?: boolean,
   },
   options?: RequestInit,
 ) {

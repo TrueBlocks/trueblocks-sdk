@@ -19,7 +19,6 @@ export function getInit(
     ether?: boolean,
     dollars?: boolean,
     raw?: boolean,
-    toFile?: boolean,
   },
   options?: RequestInit,
 ) {

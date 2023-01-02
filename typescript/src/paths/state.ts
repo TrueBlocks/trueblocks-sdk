@@ -24,7 +24,6 @@ export function getState(
     ether?: boolean,
     dollars?: boolean,
     raw?: boolean,
-    toFile?: boolean,
   },
   options?: RequestInit,
 ) {

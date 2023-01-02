@@ -22,7 +22,6 @@ export function getTokens(
     ether?: boolean,
     dollars?: boolean,
     raw?: boolean,
-    toFile?: boolean,
   },
   options?: RequestInit,
 ) {
