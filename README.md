@@ -62,8 +62,3 @@ Thanks to the following people who have contributed to this project:
 
 - [@tjayrush](https://github.com/tjayrush)
 - [@dszlachta](https://github.com/dszlachta)
-- [@wildmolasses](https://github.com/wildmolasses)
-- [@MysticRyuujin](https://github.com/MysticRyuujin)
-- [@MattDodsonEnglish](https://github.com/MattDodsonEnglish)
-- [@crodnun](https://github.com/crodnun)
-
