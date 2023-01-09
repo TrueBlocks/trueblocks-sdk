@@ -3,15 +3,11 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, timestamp } from '.';
+import { blknum, datetime, timestamp } from '.';
 
-export type Appearance = {
-  address: address
+export type NamedBlock = {
   blockNumber: blknum
-  transactionIndex: blknum
-  traceIndex: blknum
-  reason: string
-  name: string
   timestamp: timestamp
-  date: string
+  date: datetime
+  name?: string
 }

@@ -29,7 +29,7 @@ export function getList(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<AppearanceCount[] | Appearance[] | Monitor[]>(
+  return ApiCallers.fetch<Appearance[] | AppearanceCount[] | Monitor[]>(
     { endpoint: '/list', method: 'get', parameters, options },
   );
 }

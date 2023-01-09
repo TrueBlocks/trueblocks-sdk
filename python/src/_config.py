@@ -12,6 +12,7 @@ configOpts = {
     "types": {"hotkey": "-t", "type": "flag"},
     "depth": {"hotkey": "-p", "type": "flag"},
     "terse": {"hotkey": "-e", "type": "switch"},
+    "paths": {"hotkey": "-a", "type": "switch"},
     "firstBlock": {"hotkey": "-F", "type": "flag"},
     "lastBlock": {"hotkey": "-L", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},

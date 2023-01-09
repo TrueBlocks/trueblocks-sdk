@@ -44,7 +44,7 @@ export function getExport(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<AppearanceCount[] | Appearance[] | Function[] | Log[] | Monitor[] | Parameter[] | Receipt[] | Reconciliation[] | Trace[] | TraceAction[] | TraceResult[] | Transaction[] | Transfer[]>(
+  return ApiCallers.fetch<Appearance[] | AppearanceCount[] | Function[] | Log[] | Monitor[] | Parameter[] | Receipt[] | Reconciliation[] | Trace[] | TraceAction[] | TraceResult[] | Transaction[] | Transfer[]>(
     { endpoint: '/export', method: 'get', parameters, options },
   );
 }

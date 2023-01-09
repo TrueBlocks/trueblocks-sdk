@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { DatedBlock } from '../types';
+import { NamedBlock } from '../types';
 
 export function getWhen(
   parameters?: {
@@ -27,7 +27,7 @@ export function getWhen(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<DatedBlock[]>(
+  return ApiCallers.fetch<NamedBlock[]>(
     { endpoint: '/when', method: 'get', parameters, options },
   );
 }
