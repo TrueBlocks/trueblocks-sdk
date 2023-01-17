@@ -8,7 +8,7 @@ transactionsPos = "transactions"
 transactionsFmt = "json"
 transactionsOpts = {
     "articulate": {"hotkey": "-a", "type": "switch"},
-    "trace": {"hotkey": "-t", "type": "switch"},
+    "traces": {"hotkey": "-t", "type": "switch"},
     "uniq": {"hotkey": "-u", "type": "switch"},
     "flow": {"hotkey": "-f", "type": "flag"},
     "accountFor": {"hotkey": "-A", "type": "flag"},

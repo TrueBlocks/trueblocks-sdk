@@ -4,14 +4,14 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, blknum, Block, topic } from '../types';
+import { address, Appearance, blknum, Block, BlockCount, Log, topic, Trace, TraceAction, TraceResult } from '../types';
 
 export function getBlocks(
   parameters?: {
     blocks: blknum[],
     hashes?: boolean,
     uncles?: boolean,
-    trace?: boolean,
+    traces?: boolean,
     apps?: boolean,
     uniq?: boolean,
     flow?: 'from' | 'to' | 'reward',
@@ -34,7 +34,7 @@ export function getBlocks(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Block[]>(
+  return ApiCallers.fetch<Appearance[] | Block[] | BlockCount[] | Log[] | Trace[] | TraceAction[] | TraceResult[]>(
     { endpoint: '/blocks', method: 'get', parameters, options },
   );
 }

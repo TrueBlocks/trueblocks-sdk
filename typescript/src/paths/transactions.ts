@@ -10,7 +10,7 @@ export function getTransactions(
   parameters?: {
     transactions: txId[],
     articulate?: boolean,
-    trace?: boolean,
+    traces?: boolean,
     uniq?: boolean,
     flow?: 'from' | 'to',
     accountFor?: address,

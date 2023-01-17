@@ -3,6 +3,7 @@ export * from './appearance';
 export * from './appearanceCount';
 export * from './basetypes';
 export * from './block';
+export * from './blockCount';
 export * from './cache';
 export * from './cacheEntry';
 export * from './chain';

@@ -9,7 +9,7 @@ blocksFmt = "json"
 blocksOpts = {
     "hashes": {"hotkey": "-e", "type": "switch"},
     "uncles": {"hotkey": "-c", "type": "switch"},
-    "trace": {"hotkey": "-t", "type": "switch"},
+    "traces": {"hotkey": "-t", "type": "switch"},
     "apps": {"hotkey": "-s", "type": "switch"},
     "uniq": {"hotkey": "-u", "type": "switch"},
     "flow": {"hotkey": "-f", "type": "flag"},
