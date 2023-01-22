@@ -11,9 +11,9 @@ export type TraceAction = {
   callType: string
   from: address
   gas: gas
-  init: string
-  input: bytes
-  refundAddress: address
+  init?: string
+  input?: bytes
+  refundAddress?: address
   to: address
   value: wei
 }

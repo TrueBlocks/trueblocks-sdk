@@ -12,11 +12,11 @@ export type Trace = {
   traceAddress: string[]
   transactionHash: hash
   transactionIndex: blknum
-  type: string
-  error: string
+  type?: string
+  error?: string
   action: TraceAction
   result: TraceResult
   articulatedTrace: Function
-  compressedTrace: string
+  compressedTrace?: string
   timestamp: timestamp
 }

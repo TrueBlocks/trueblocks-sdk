@@ -9,7 +9,6 @@ tracesFmt = "json"
 tracesOpts = {
     "articulate": {"hotkey": "-a", "type": "switch"},
     "filter": {"hotkey": "-f", "type": "flag"},
-    "statediff": {"hotkey": "-d", "type": "switch"},
     "count": {"hotkey": "-U", "type": "switch"},
     "skipDdos": {"hotkey": "-s", "type": "toggle"},
     "max": {"hotkey": "-m", "type": "flag"},

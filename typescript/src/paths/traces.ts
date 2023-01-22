@@ -4,14 +4,13 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { Trace, TraceAction, TraceResult, txId } from '../types';
+import { Trace, TraceAction, TraceCount, TraceResult, txId } from '../types';
 
 export function getTraces(
   parameters?: {
     transactions: txId[],
     articulate?: boolean,
     filter?: string,
-    statediff?: boolean,
     count?: boolean,
     chain: string,
     noHeader?: boolean,
@@ -25,7 +24,7 @@ export function getTraces(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Trace[] | TraceAction[] | TraceResult[]>(
+  return ApiCallers.fetch<Trace[] | TraceAction[] | TraceCount[] | TraceResult[]>(
     { endpoint: '/traces', method: 'get', parameters, options },
   );
 }

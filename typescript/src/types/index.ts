@@ -29,6 +29,7 @@ export * from './reconciliation';
 export * from './tokenBalance';
 export * from './trace';
 export * from './traceAction';
+export * from './traceCount';
 export * from './traceResult';
 export * from './transaction';
 export * from './transfer';
