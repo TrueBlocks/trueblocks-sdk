@@ -1,5 +1,5 @@
 {
-  "name": "trueblocks-sdk",
+  "name": "@trueblocks/sdk",
   "homepage": "https://github.com/TrueBlocks/trueblocks-sdk",
   "repository": "TrueBlocks:trueblocks-sdk",
   "version": "0.15.12",
