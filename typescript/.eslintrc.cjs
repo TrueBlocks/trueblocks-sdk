@@ -13,7 +13,6 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     quotes: ['warn', 'single'],
-    '@typescript-eslint/no-var-requires': ['off'],
     'array-element-newline': ['error', 'consistent'],
     'object-curly-newline': 0,
     'object-curly-spacing': ['warn', 'always'],
