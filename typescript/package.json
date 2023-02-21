@@ -13,6 +13,8 @@
   "scripts": {
     "build": "rm -fR dist && node_modules/.bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prerelease": "yarn install && echo 'making sure lockfile is up to date'",
+    "release": "bumpp package.json --commit --push --tag",
     "preinstall": "node --eval \"if(process.env.npm_execpath.indexOf('yarn')===-1) throw new Error('You must use Yarn to install, not NPM')\""
   },
   "dependencies": {
@@ -25,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
     "eslint": "^8.30.0",
+    "bumpp": "^8.2.1",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
@@ -33,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0"
   },
+  "packageManager": "yarn@1.22.19",
   "publishConfig": {
     "access": "public",
     "github-package-registry": "https://npm.pkg.github.com"

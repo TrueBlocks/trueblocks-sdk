@@ -1,5 +1,8 @@
 name: TypeScript SDK CI
 
+permissions:
+  contents: 'write'
+
 on:
   push:
     tags:
@@ -50,7 +53,7 @@ jobs:
 
       - name: Install Dependencies & Build
         run: |
-          yarn install --frozen-lockfile
+          yarn install
           yarn build
 
   # Publish to npm Registry
@@ -118,8 +121,7 @@ jobs:
       - name: Add Token to .npmrc
         working-directory: typescript
         run: |
-          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
-          .npmrc
+          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
 
           # Also need to update package.json
           sed -i 's/github-package-registry/registry/g' package.json
@@ -128,3 +130,23 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn publish --access public
+
+  # Generate GitHub Release Changelog
+  Changelog:
+    # make sure we're on 'main' branch
+    if: github.ref == 'refs/heads/main'
+    needs: [Build, Publish-NPM, Publish-GPR]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+      - name: Generate Changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx changelogithub
