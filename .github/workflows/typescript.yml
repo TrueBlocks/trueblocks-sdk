@@ -1,0 +1,130 @@
+name: TypeScript SDK CI
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: typescript
+
+env:
+  CI: true
+  # Enable debug logging for actions
+  ACTIONS_RUNNER_DEBUG: true
+
+jobs:
+  Build:
+    # run only on 'main' branch
+    if: github.ref == 'refs/heads/main'
+    strategy:
+      matrix:
+        node_version: ['lts/*']
+        os: ['ubuntu-latest']
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: 'yarn'
+          cache-dependency-path: 'typescript/yarn.lock'
+
+      - name: Cache Build
+        uses: actions/cache@v3
+        id: 'cache-build'
+        with:
+          path: 'typescript/dist'
+          key: 'typescript-${{ github.run_number }}'
+          restore-keys: 'typescript-'
+
+      - name: Install Dependencies & Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+  # Publish to npm Registry
+  Publish-NPM:
+    # run only on 'main' branch
+    if: github.ref == 'refs/heads/main'
+    needs: [Build]
+    strategy:
+      matrix:
+        node_version: ['lts/*']
+        os: ['ubuntu-latest']
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Restore Build Cache
+        uses: actions/cache@v3
+        id: 'cache-build'
+        with:
+          path: 'typescript/dist'
+          key: 'typescript-${{ github.run_number }}'
+
+      - name: Publish to npm Registry
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn publish --access public
+
+  # Publish to GitHub Package Registry
+  Publish-GPR:
+    # make sure we're on 'main' branch
+    if: github.ref == 'refs/heads/main'
+    needs: [Build, Publish-NPM]
+    strategy:
+      matrix:
+        node_version: ['lts/*']
+        os: ['ubuntu-latest']
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          always-auth: true
+          node-version: ${{ matrix.node_version }}
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Restore Build Cache
+        uses: actions/cache@v3
+        id: cache-build
+        with:
+          path: 'typescript/dist'
+          key: 'typescript-${{ github.run_number }}'
+
+      - name: Add Token to .npmrc
+        working-directory: typescript
+        run: |
+          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
+          .npmrc
+
+          # Also need to update package.json
+          sed -i 's/github-package-registry/registry/g' package.json
+
+      - name: Publish to GitHub Package Registry
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn publish --access public
