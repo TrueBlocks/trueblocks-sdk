@@ -2,7 +2,7 @@
   "name": "trueblocks-sdk",
   "homepage": "https://github.com/TrueBlocks/trueblocks-sdk",
   "repository": "TrueBlocks:trueblocks-sdk",
-  "version": "0.5.12",
+  "version": "0.15.12",
   "license": "GPL-3.0-or-later",
   "description": "Use the TrueBlocks chifra interface in your apps",
   "main": "dist/index.js",
@@ -13,9 +13,10 @@
   "scripts": {
     "build": "rm -fR dist && node_modules/.bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prerelease": "yarn install && echo 'making sure lockfile is up to date'",
+    "prerelease": "yarn install && yarn build",
     "release": "bumpp package.json --commit --push --tag",
-    "preinstall": "node --eval \"if(process.env.npm_execpath.indexOf('yarn')===-1) throw new Error('You must use Yarn to install, not NPM')\""
+    "preinstall": "node --eval \"if(process.env.npm_execpath.indexOf('yarn')===-1) throw new Error('You must use Yarn to install, not NPM')\"",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "typescript": "^4.9.4"
@@ -26,8 +27,8 @@
     "@types/react": "^18.0.26",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
-    "eslint": "^8.30.0",
     "bumpp": "^8.2.1",
+    "eslint": "^8.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
