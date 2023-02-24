@@ -29,6 +29,7 @@
     "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
     "prerelease": "yarn install && yarn build",
     "release": "bumpp package.json --commit --push --tag",
+    "clean": "rm -rf dist",
     "preinstall": "node --eval \"if(process.env.npm_execpath.indexOf('yarn')===-1) throw new Error('You must use Yarn to install, not NPM')\"",
     "prepublishOnly": "yarn build"
   },
