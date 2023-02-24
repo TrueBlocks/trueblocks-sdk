@@ -1,8 +1,8 @@
 {
-  "name": "trueblocks-sdk",
+  "name": "@trueblocks/sdk",
   "homepage": "https://github.com/TrueBlocks/trueblocks-sdk",
   "repository": "TrueBlocks:trueblocks-sdk",
-  "version": "0.50.12",
+  "version": "0.15.12",
   "license": "GPL-3.0-or-later",
   "description": "TypeScript SDK for TrueBlocks Chifra",
   "type": "module",
@@ -27,6 +27,10 @@
     "test": "vitest",
     "lint": "eslint --fix . --ext js,cjs,mjs,ts --cache",
     "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
+    "prerelease": "yarn install && yarn build",
+    "release": "bumpp package.json --commit --push --tag",
+    "clean": "rm -rf dist",
+    "preinstall": "node --eval \"if(process.env.npm_execpath.indexOf('yarn')===-1) throw new Error('You must use Yarn to install, not NPM')\"",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {},
@@ -47,5 +51,10 @@
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
     "vitest": "^0.28.5"
+  },
+  "packageManager": "yarn@1.22.19",
+  "publishConfig": {
+    "access": "public",
+    "github-package-registry": "https://npm.pkg.github.com"
   }
 }
