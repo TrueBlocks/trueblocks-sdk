@@ -17,8 +17,12 @@ export type Monitor = {
   latestApp: blknum
   address: address
   decimals: uint64
+  petname?: string
   isContract: boolean
   isCustom: boolean
+  isErc20?: boolean
+  isErc721?: boolean
+  isPrefund?: boolean
   name: string
   source: string
   symbol: string
