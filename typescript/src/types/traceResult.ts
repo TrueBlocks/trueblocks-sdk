@@ -6,8 +6,8 @@
 import { address, bytes, gas } from '.';
 
 export type TraceResult = {
-  newContract?: address
+  address?: address
   code?: bytes
   gasUsed: gas
-  output?: bytes
+  output: bytes
 }

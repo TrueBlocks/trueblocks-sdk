@@ -8,13 +8,13 @@ import { Parameter } from '.';
 export type Function = {
   name: string
   type: string
-  abi_source: string
-  anonymous: boolean
-  constant: boolean
+  abiSource?: string
+  anonymous?: boolean
+  constant?: boolean
   stateMutability: string
   signature: string
   encoding: string
-  message: string
+  message?: string
   inputs: Parameter[]
   outputs: Parameter[]
 }

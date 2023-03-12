@@ -12,6 +12,4 @@ export type Abi = {
   type: string
   name: string
   signature: string
-  input_names: string
-  output_names: string
 }

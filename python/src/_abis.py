@@ -8,9 +8,10 @@ abisPos = "addrs"
 abisFmt = "json"
 abisOpts = {
     "known": {"hotkey": "-k", "type": "switch"},
-    "sol": {"hotkey": "-s", "type": "switch"},
     "find": {"hotkey": "-f", "type": "flag"},
     "hint": {"hotkey": "-n", "type": "flag"},
+    "encode": {"hotkey": "-e", "type": "flag"},
+    "clean": {"hotkey": "-c", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
     "help": {"hotkey": "-h", "type": "switch"},

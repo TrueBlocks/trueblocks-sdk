@@ -17,8 +17,4 @@ export type Block = {
   timestamp: timestamp
   baseFeePerGas: wei
   transactions: Transaction[]
-  tx_hashes: string[]
-  name: string
-  unclesCnt: uint64
-  transactionsCnt: uint64
 }
