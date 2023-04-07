@@ -10,13 +10,14 @@ export type Receipt = {
   blockNumber: blknum
   contractAddress?: address
   cumulativeGasUsed?: wei
+  from?: address
   gasUsed: gas
   effectiveGasPrice?: gas
-  from?: address
+  isError?: boolean
   logs: Log[]
+  logsBloom?: string
   status: uint32
   to?: address
   transactionHash: hash
   transactionIndex: blknum
-  isError?: boolean
 }

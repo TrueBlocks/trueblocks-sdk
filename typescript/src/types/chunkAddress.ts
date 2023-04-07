@@ -3,10 +3,11 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { blknum, datetime, timestamp } from '.';
+import { address, blockRange, uint64 } from '.';
 
-export type DatedBlock = {
-  blockNumber: blknum
-  timestamp: timestamp
-  date: datetime
+export type ChunkAddress = {
+  address: address
+  range: blockRange
+  offset: uint64
+  count: uint64
 }

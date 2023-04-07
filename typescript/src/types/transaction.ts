@@ -6,6 +6,8 @@
 import { address, blknum, bytes, datetime, Function, gas, hash, Name, Receipt, Reconciliation, timestamp, Trace, uint64, wei } from '.';
 
 export type Transaction = {
+  chainId: string
+  type: string
   hash: hash
   blockHash: hash
   blockNumber: blknum
@@ -37,7 +39,7 @@ export type Transaction = {
   toName?: Name
   extraData: string
   ether: string
-  etherGasPrice: string
-  gasUsed: string
+  etherGasPrice: gas
+  gasUsed: gas
   encoding: string
 }

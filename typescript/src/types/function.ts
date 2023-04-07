@@ -11,8 +11,8 @@ export type Function = {
   abiSource?: string
   anonymous?: boolean
   constant?: boolean
-  stateMutability: string
-  signature: string
+  stateMutability?: string
+  signature?: string
   encoding: string
   message?: string
   inputs: Parameter[]

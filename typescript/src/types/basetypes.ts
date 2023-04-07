@@ -20,4 +20,3 @@ export type uint64 = number;
 export type uint8 = number;
 export type wei = string;
 export type txId = string;
-export type TopicArray = string[];

@@ -13,7 +13,6 @@ chunksOpts = {
     "truncate": {"hotkey": "-n", "type": "flag"},
     "remote": {"hotkey": "-m", "type": "switch"},
     "belongs": {"hotkey": "-b", "type": "flag"},
-    "saveAddrs": {"hotkey": "-a", "type": "switch"},
     "sleep": {"hotkey": "-s", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},

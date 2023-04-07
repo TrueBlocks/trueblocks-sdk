@@ -4,18 +4,13 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, double, Monitor, MonitorClean } from '../types';
+import { Cache, CacheEntry, Chain, Config, IndexCacheItem, Monitor, uint64 } from '../types';
 
-export function getMonitors(
+export function getStatus(
   parameters?: {
-    addrs?: address[],
-    clean?: boolean,
-    delete?: boolean,
-    undelete?: boolean,
-    remove?: boolean,
-    list?: boolean,
-    watch?: boolean,
-    sleep?: double,
+    modes?: string[],
+    firstRecord?: uint64,
+    maxRecords?: uint64,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -28,7 +23,7 @@ export function getMonitors(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Monitor[] | MonitorClean[]>(
-    { endpoint: '/monitors', method: 'get', parameters, options },
+  return ApiCallers.fetch<Cache[] | CacheEntry[] | Chain[] | IndexCacheItem[] | Monitor[] | Config[]>(
+    { endpoint: '/status', method: 'get', parameters, options },
   );
 }

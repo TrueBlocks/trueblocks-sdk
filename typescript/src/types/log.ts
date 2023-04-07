@@ -3,20 +3,19 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, bytes, Function, hash, timestamp, topic } from '.';
+import { address, blknum, bytes, Function, hash, timestamp, topic, uint64 } from '.';
 
 export type Log = {
   address: address
   blockHash: hash
   blockNumber: blknum
-  logIndex: blknum
-  topics: topic[]
-  data: bytes
-  articulatedLog: Function
-  compressedLog: string
+  logIndex: uint64
+  topics?: topic[]
+  data?: bytes
+  articulatedLog?: Function
+  compressedLog?: string
   transactionHash: hash
-  transactionIndex: blknum
-  transactionLogIndex: blknum
-  timestamp: timestamp
+  transactionIndex: uint64
+  timestamp?: timestamp
   type: string
 }

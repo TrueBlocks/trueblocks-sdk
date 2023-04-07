@@ -3,20 +3,19 @@
 #
 from . import session
 
-tracesCmd = "traces"
-tracesPos = "transactions"
-tracesFmt = "json"
-tracesOpts = {
-    "articulate": {"hotkey": "-a", "type": "switch"},
-    "filter": {"hotkey": "-f", "type": "flag"},
-    "count": {"hotkey": "-U", "type": "switch"},
+statusCmd = "status"
+statusPos = "modes"
+statusFmt = "json"
+statusOpts = {
+    "firstRecord": {"hotkey": "-c", "type": "flag"},
+    "maxRecords": {"hotkey": "-e", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
     "help": {"hotkey": "-h", "type": "switch"},
 }
 
-def traces(self):
-    ret = self.toUrl(tracesCmd, tracesPos, tracesFmt, tracesOpts)
+def status(self):
+    ret = self.toUrl(statusCmd, statusPos, statusFmt, statusOpts)
     url = 'http://localhost:8080/' + ret[1]
     if ret[0] == 'json':
         return session.get(url).json()

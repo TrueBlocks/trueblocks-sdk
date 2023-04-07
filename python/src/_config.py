@@ -4,17 +4,10 @@
 from . import session
 
 configCmd = "config"
-configPos = "modes"
+configPos = "mode"
 configFmt = "json"
 configOpts = {
-    "module": {"hotkey": "", "type": "flag"},
-    "details": {"hotkey": "-d", "type": "switch"},
-    "types": {"hotkey": "-t", "type": "flag"},
-    "depth": {"hotkey": "-p", "type": "flag"},
-    "terse": {"hotkey": "-e", "type": "switch"},
     "paths": {"hotkey": "-a", "type": "switch"},
-    "firstBlock": {"hotkey": "-F", "type": "flag"},
-    "lastBlock": {"hotkey": "-L", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
     "help": {"hotkey": "-h", "type": "switch"},

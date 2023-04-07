@@ -12,6 +12,7 @@ export * from './receipts';
 export * from './scrape';
 export * from './slurp';
 export * from './state';
+export * from './status';
 export * from './tokens';
 export * from './traces';
 export * from './transactions';

@@ -3,9 +3,11 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { uint64 } from '.';
+import { address, int64 } from '.';
 
-export type ChunkAppearances = {
-  blockNumber: uint64
-  transactionIndex: uint64
+export type MonitorClean = {
+  address: address
+  sizeThen: int64
+  sizeNow: int64
+  dups: int64
 }

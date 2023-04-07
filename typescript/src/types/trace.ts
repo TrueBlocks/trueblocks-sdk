@@ -16,7 +16,7 @@ export type Trace = {
   error?: string
   action: TraceAction
   result: TraceResult
-  articulatedTrace: Function
+  articulatedTrace?: Function
   compressedTrace?: string
   timestamp: timestamp
 }
