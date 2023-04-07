@@ -3,6 +3,8 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
+  "npm.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
@@ -10,6 +12,7 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
+  "editor.formatOnSave": true,
   "githubPullRequests.ignoredPullRequestBranches": [
     "develop"
   ],

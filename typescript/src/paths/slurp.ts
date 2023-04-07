@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, blknum, Transaction } from '../types';
+import { address, blknum, double, Transaction, uint64 } from '../types';
 
 export function getSlurp(
   parameters?: {
@@ -12,6 +12,8 @@ export function getSlurp(
     blocks?: blknum[],
     types?: string[],
     appearances?: boolean,
+    perPage?: uint64,
+    sleep?: double,
     chain: string,
     noHeader?: boolean,
     fmt?: string,

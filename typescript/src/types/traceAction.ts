@@ -16,4 +16,5 @@ export type TraceAction = {
   refundAddress?: address
   to: address
   value: wei
+  address?: address
 }

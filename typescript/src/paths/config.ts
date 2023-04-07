@@ -4,14 +4,11 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { Cache, CacheEntry, Chain, Config, IndexCacheItem, Monitor } from '../types';
+import { Chain } from '../types';
 
 export function getConfig(
   parameters?: {
-    modes?: string[],
-    module?: string[],
-    details?: boolean,
-    terse?: boolean,
+    mode?: 'show*' | 'edit',
     chain: string,
     noHeader?: boolean,
     fmt?: string,
@@ -24,7 +21,7 @@ export function getConfig(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Cache[] | CacheEntry[] | Chain[] | IndexCacheItem[] | Monitor[] | Config[]>(
+  return ApiCallers.fetch<Chain[]>(
     { endpoint: '/config', method: 'get', parameters, options },
   );
 }

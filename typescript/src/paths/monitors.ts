@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, double, Monitor } from '../types';
+import { address, double, Monitor, MonitorClean } from '../types';
 
 export function getMonitors(
   parameters?: {
@@ -28,7 +28,7 @@ export function getMonitors(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Monitor[]>(
+  return ApiCallers.fetch<Monitor[] | MonitorClean[]>(
     { endpoint: '/monitors', method: 'get', parameters, options },
   );
 }

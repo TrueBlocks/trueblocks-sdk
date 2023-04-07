@@ -10,9 +10,10 @@ export function getAbis(
   parameters?: {
     addrs: address[],
     known?: boolean,
-    sol?: boolean,
     find?: string[],
     hint?: string[],
+    encode?: string,
+    clean?: boolean,
     chain: string,
     noHeader?: boolean,
     fmt?: string,

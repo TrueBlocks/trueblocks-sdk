@@ -9,6 +9,8 @@ slurpFmt = "json"
 slurpOpts = {
     "types": {"hotkey": "-t", "type": "flag"},
     "appearances": {"hotkey": "-p", "type": "switch"},
+    "perPage": {"hotkey": "-P", "type": "flag"},
+    "sleep": {"hotkey": "-s", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
     "help": {"hotkey": "-h", "type": "switch"},
