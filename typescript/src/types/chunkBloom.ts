@@ -5,11 +5,12 @@
  */
 import { blockRange, hash, uint64 } from '.';
 
-export type ChunkIndex = {
+export type ChunkBloom = {
   range: blockRange
   magic: string
   hash: hash
-  nAddresses: uint64
-  nAppearances: uint64
+  nBlooms: uint64
+  nInserted: uint64
   size: uint64
+  byteWidth: uint64
 }

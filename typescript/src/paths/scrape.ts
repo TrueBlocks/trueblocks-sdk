@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { double, Manifest, PinnedChunk, uint64 } from '../types';
+import { ChunkRecord, double, Manifest, uint64 } from '../types';
 
 export function getScrape(
   parameters?: {
@@ -24,7 +24,7 @@ export function getScrape(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Manifest[] | PinnedChunk[]>(
+  return ApiCallers.fetch<ChunkRecord[] | Manifest[]>(
     { endpoint: '/scrape', method: 'get', parameters, options },
   );
 }
