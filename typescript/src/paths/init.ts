@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { double, Manifest, PinnedChunk } from '../types';
+import { ChunkRecord, double, Manifest } from '../types';
 
 export function getInit(
   parameters?: {
@@ -22,7 +22,7 @@ export function getInit(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Manifest[] | PinnedChunk[]>(
+  return ApiCallers.fetch<ChunkRecord[] | Manifest[]>(
     { endpoint: '/init', method: 'get', parameters, options },
   );
 }

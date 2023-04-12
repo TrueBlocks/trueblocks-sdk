@@ -3,13 +3,14 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { CacheEntry, uint64 } from '.';
+import { int64, uint64 } from '.';
 
-export type Cache = {
+export type CacheItem = {
   type: string
-  path: string
+  items: any[]
+  lastCached?: string
   nFiles: uint64
   nFolders: uint64
-  sizeInBytes: uint64
-  items: CacheEntry[]
+  path: string
+  sizeInBytes: int64
 }

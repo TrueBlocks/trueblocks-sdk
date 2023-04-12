@@ -4,5 +4,5 @@ all:
 #	@cd python && make
 
 publish:
-	@cd typescript && yarn release
+	@cd typescript && yarn publish
 #	@cd python && make

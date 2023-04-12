@@ -4,11 +4,11 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, blknum, ChunkAddress, ChunkBlooms, ChunkIndex, ChunkStats, double, Manifest, PinnedChunk, ReportCheck } from '../types';
+import { address, Appearance, blknum, ChunkAddress, ChunkBloom, ChunkIndex, ChunkRecord, ChunkStats, double, Manifest, ReportCheck } from '../types';
 
 export function getChunks(
   parameters?: {
-    mode: 'status' | 'manifest' | 'index' | 'blooms' | 'addresses' | 'appearances' | 'stats',
+    mode: 'manifest' | 'index' | 'blooms' | 'addresses' | 'appearances' | 'stats',
     blocks?: blknum[],
     check?: boolean,
     pin?: boolean,
@@ -28,7 +28,7 @@ export function getChunks(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | ChunkAddress[] | ChunkBlooms[] | ChunkIndex[] | ChunkStats[] | Manifest[] | PinnedChunk[] | ReportCheck[]>(
+  return ApiCallers.fetch<Appearance[] | ChunkAddress[] | ChunkBloom[] | ChunkIndex[] | ChunkRecord[] | ChunkStats[] | Manifest[] | ReportCheck[]>(
     { endpoint: '/chunks', method: 'get', parameters, options },
   );
 }

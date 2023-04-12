@@ -20,3 +20,8 @@ export type uint64 = number;
 export type uint8 = number;
 export type wei = string;
 export type txId = string;
+export type RawAppearance = {
+    address: address
+    blockNumber: blknum
+    transactionIndex: uint64
+}
