@@ -36,3 +36,4 @@ export * from './traceFilter';
 export * from './traceResult';
 export * from './transaction';
 export * from './transfer';
+export * from './upgrades';

@@ -1,15 +1,14 @@
-/* eslint object-curly-newline: ["error", "never"] */
-/* eslint max-len: ["error", 160] */
-/*
- * This file was generated with makeClass --sdk. Do not edit it.
- */
-import { ipfshash, int64 } from '.';
+import { ipfshash, uint64 } from '.';
 
-export type ChunkRecordUp = {
+export type CacheRecordUp = {
   range: string
-  bloomHash: ipfshash
-  indexHash: ipfshash
-  bloomSize: int64
-  indexSize: int64
-  firstApp:  int64
+  bloomHash:   ipfshash
+  indexHash:   ipfshash
+  bloomSize:   uint64
+  indexSize:   uint64
+  firstApp:    uint64
+  latestApp:   uint64
+  filename:    string
+  nApps:       uint64
+  nAppearance: uint64
 }
