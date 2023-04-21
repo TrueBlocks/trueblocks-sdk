@@ -20,6 +20,7 @@ blocksOpts = {
     "bigRange": {"hotkey": "-r", "type": "flag"},
     "count": {"hotkey": "-U", "type": "switch"},
     "cache": {"hotkey": "-o", "type": "switch"},
+    "decache": {"hotkey": "-D", "type": "switch"},
     "list": {"hotkey": "-l", "type": "flag"},
     "listCount": {"hotkey": "-C", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},

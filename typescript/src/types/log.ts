@@ -3,7 +3,7 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, bytes, Function, hash, timestamp, topic, uint64 } from '.';
+import { address, blknum, bytes, datetime, Function, hash, timestamp, topic, uint64 } from '.';
 
 export type Log = {
   address: address
@@ -18,4 +18,5 @@ export type Log = {
   transactionIndex: uint64
   timestamp?: timestamp
   type: string
+  date?: datetime
 }
