@@ -13,6 +13,7 @@ transactionsOpts = {
     "flow": {"hotkey": "-f", "type": "flag"},
     "accountFor": {"hotkey": "-A", "type": "flag"},
     "cache": {"hotkey": "-o", "type": "switch"},
+    "decache": {"hotkey": "-D", "type": "switch"},
     "source": {"hotkey": "-s", "type": "switch"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
