@@ -1,6 +1,6 @@
 export type address = string;
 export type blknum = number;
-export type blockRange = string;
+export type blkrange = string;
 export type bytes = string;
 export type bytes32 = string;
 export type datetime = string;

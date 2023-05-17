@@ -3,10 +3,10 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { blockRange, hash, uint64 } from '.';
+import { blkrange, hash, uint64 } from '.';
 
 export type ChunkBloom = {
-  range: blockRange
+  range: blkrange
   magic: string
   hash: hash
   nBlooms: uint64

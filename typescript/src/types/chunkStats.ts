@@ -3,11 +3,11 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { double, uint64 } from '.';
+import { blkrange, double, uint64 } from '.';
 
 export type ChunkStats = {
-  start: uint64
-  end: uint64
+  range: blkrange
+  date: string
   nAddrs: uint64
   nApps: uint64
   nBlocks: uint64
