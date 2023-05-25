@@ -16,6 +16,8 @@ export function getNames(
     prefund?: boolean,
     addr?: boolean,
     tags?: boolean,
+    regular?: boolean,
+    dryRun?: boolean,
     create?: boolean,
     update?: boolean,
     delete?: boolean,
