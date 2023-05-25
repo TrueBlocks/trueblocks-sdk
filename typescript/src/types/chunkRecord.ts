@@ -3,10 +3,10 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { int64, ipfshash } from '.';
+import { blkrange, int64, ipfshash } from '.';
 
 export type ChunkRecord = {
-  range: string
+  range: blkrange
   bloomHash: ipfshash
   indexHash: ipfshash
   bloomSize: int64

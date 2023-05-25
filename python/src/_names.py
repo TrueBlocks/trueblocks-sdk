@@ -15,6 +15,8 @@ namesOpts = {
     "addr": {"hotkey": "-a", "type": "switch"},
     "tags": {"hotkey": "-g", "type": "switch"},
     "clean": {"hotkey": "-C", "type": "switch"},
+    "regular": {"hotkey": "", "type": "switch"},
+    "dryRun": {"hotkey": "", "type": "switch"},
     "autoname": {"hotkey": "-A", "type": "flag"},
     "create": {"hotkey": "", "type": "switch"},
     "update": {"hotkey": "", "type": "switch"},

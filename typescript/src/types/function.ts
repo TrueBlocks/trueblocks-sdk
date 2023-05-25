@@ -8,7 +8,6 @@ import { Parameter } from '.';
 export type Function = {
   name: string
   type: string
-  abiSource?: string
   anonymous?: boolean
   constant?: boolean
   stateMutability?: string

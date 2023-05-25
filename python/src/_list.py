@@ -11,6 +11,7 @@ listOpts = {
     "appearances": {"hotkey": "-p", "type": "switch"},
     "silent": {"hotkey": "", "type": "switch"},
     "noZero": {"hotkey": "-n", "type": "switch"},
+    "unripe": {"hotkey": "-u", "type": "switch"},
     "firstRecord": {"hotkey": "-c", "type": "flag"},
     "maxRecords": {"hotkey": "-e", "type": "flag"},
     "firstBlock": {"hotkey": "-F", "type": "flag"},

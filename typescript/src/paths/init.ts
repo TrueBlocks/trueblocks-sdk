@@ -9,6 +9,7 @@ import { ChunkRecord, double, Manifest } from '../types';
 export function getInit(
   parameters?: {
     all?: boolean,
+    dryRun?: boolean,
     sleep?: double,
     chain: string,
     noHeader?: boolean,

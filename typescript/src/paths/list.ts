@@ -13,6 +13,7 @@ export function getList(
     appearances?: boolean,
     silent?: boolean,
     noZero?: boolean,
+    unripe?: boolean,
     firstRecord?: uint64,
     maxRecords?: uint64,
     firstBlock?: blknum,

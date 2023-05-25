@@ -3,11 +3,11 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blockRange, uint64 } from '.';
+import { address, blkrange, uint64 } from '.';
 
 export type ChunkAddress = {
   address: address
-  range: blockRange
+  range: blkrange
   offset: uint64
   count: uint64
 }
