@@ -3,11 +3,12 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, bytes, gas } from '.';
+import { ipfshash } from '.';
 
-export type TraceResult = {
-  address?: address
-  code?: bytes
-  gasUsed?: gas
-  output?: bytes
+export type ChunkPinReport = {
+  version: string
+  chain: string
+  schemas: ipfshash
+  tsHash: ipfshash
+  manifestHash: ipfshash
 }

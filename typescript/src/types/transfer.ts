@@ -3,7 +3,7 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, datetime, double, hash, timestamp, uint64, wei } from '.';
+import { address, blknum, datetime, double, hash, int256, timestamp, uint64 } from '.';
 
 export type Transfer = {
   blockNumber: blknum
@@ -17,7 +17,7 @@ export type Transfer = {
   assetAddr: address
   assetSymbol: string
   decimals: uint64
-  amount: wei
+  amount: int256
   spotPrice: double
   priceSource: string
   encoding: string

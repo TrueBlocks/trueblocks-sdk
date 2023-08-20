@@ -9,7 +9,7 @@ stateFmt = "json"
 stateOpts = {
     "parts": {"hotkey": "-p", "type": "flag"},
     "changes": {"hotkey": "-c", "type": "switch"},
-    "noZero": {"hotkey": "-n", "type": "switch"},
+    "noZero": {"hotkey": "-z", "type": "switch"},
     "call": {"hotkey": "-a", "type": "flag"},
     "proxyFor": {"hotkey": "-r", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},

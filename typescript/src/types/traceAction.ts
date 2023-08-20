@@ -14,7 +14,9 @@ export type TraceAction = {
   init?: string
   input?: bytes
   refundAddress?: address
+  rewardType?: string
   to: address
   value: wei
   address?: address
+  author?: address
 }

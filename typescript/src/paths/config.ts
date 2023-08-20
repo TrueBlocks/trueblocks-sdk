@@ -9,11 +9,11 @@ import { Chain } from '../types';
 export function getConfig(
   parameters?: {
     mode?: 'show*' | 'edit',
+    paths?: boolean,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,

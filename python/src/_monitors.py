@@ -7,16 +7,13 @@ monitorsCmd = "monitors"
 monitorsPos = "addrs"
 monitorsFmt = "json"
 monitorsOpts = {
-    "clean": {"hotkey": "", "type": "switch"},
     "delete": {"hotkey": "", "type": "switch"},
     "undelete": {"hotkey": "", "type": "switch"},
     "remove": {"hotkey": "", "type": "switch"},
-    "decache": {"hotkey": "", "type": "switch"},
-    "list": {"hotkey": "", "type": "switch"},
-    "watch": {"hotkey": "", "type": "switch"},
+    "clean": {"hotkey": "-C", "type": "switch"},
+    "list": {"hotkey": "-l", "type": "switch"},
+    "watch": {"hotkey": "-w", "type": "switch"},
     "sleep": {"hotkey": "-s", "type": "flag"},
-    "firstBlock": {"hotkey": "-F", "type": "flag"},
-    "lastBlock": {"hotkey": "-L", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
     "help": {"hotkey": "-h", "type": "switch"},

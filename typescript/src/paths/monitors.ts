@@ -9,10 +9,10 @@ import { address, double, Monitor, MonitorClean } from '../types';
 export function getMonitors(
   parameters?: {
     addrs?: address[],
-    clean?: boolean,
     delete?: boolean,
     undelete?: boolean,
     remove?: boolean,
+    clean?: boolean,
     list?: boolean,
     watch?: boolean,
     sleep?: double,
@@ -20,7 +20,6 @@ export function getMonitors(
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,

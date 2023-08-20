@@ -9,7 +9,8 @@ tokensFmt = "json"
 tokensOpts = {
     "parts": {"hotkey": "-p", "type": "flag"},
     "byAcct": {"hotkey": "-b", "type": "switch"},
-    "noZero": {"hotkey": "-n", "type": "switch"},
+    "changes": {"hotkey": "-c", "type": "switch"},
+    "noZero": {"hotkey": "-z", "type": "switch"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
     "help": {"hotkey": "-h", "type": "switch"},
