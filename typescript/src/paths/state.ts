@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, blknum, EthCall, EthState } from '../types';
+import { address, blknum, EthCall, Result } from '../types';
 
 export function getState(
   parameters?: {
@@ -14,12 +14,12 @@ export function getState(
     changes?: boolean,
     noZero?: boolean,
     call?: string,
+    articulate?: boolean,
     proxyFor?: address,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,
@@ -27,7 +27,7 @@ export function getState(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<EthCall[] | EthState[]>(
+  return ApiCallers.fetch<EthCall[] | Result[]>(
     { endpoint: '/state', method: 'get', parameters, options },
   );
 }

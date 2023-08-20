@@ -25,3 +25,4 @@ export type RawAppearance = {
     blockNumber: blknum
     transactionIndex: uint64
 }
+export type TokenType = number;

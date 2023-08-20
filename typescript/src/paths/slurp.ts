@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, blknum, double, Transaction, uint64 } from '../types';
+import { address, blknum, double, Slurp, uint64 } from '../types';
 
 export function getSlurp(
   parameters?: {
@@ -18,7 +18,6 @@ export function getSlurp(
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,
@@ -26,7 +25,7 @@ export function getSlurp(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Transaction[]>(
+  return ApiCallers.fetch<Slurp[]>(
     { endpoint: '/slurp', method: 'get', parameters, options },
   );
 }

@@ -9,6 +9,7 @@ statusFmt = "json"
 statusOpts = {
     "firstRecord": {"hotkey": "-c", "type": "flag"},
     "maxRecords": {"hotkey": "-e", "type": "flag"},
+    "chains": {"hotkey": "-a", "type": "switch"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},
     "help": {"hotkey": "-h", "type": "switch"},

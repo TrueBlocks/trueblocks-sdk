@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { Log, txId } from '../types';
+import { Log, LogFilter, txId } from '../types';
 
 export function getLogs(
   parameters?: {
@@ -14,7 +14,6 @@ export function getLogs(
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,
@@ -22,7 +21,7 @@ export function getLogs(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Log[]>(
+  return ApiCallers.fetch<Log[] | LogFilter[]>(
     { endpoint: '/logs', method: 'get', parameters, options },
   );
 }

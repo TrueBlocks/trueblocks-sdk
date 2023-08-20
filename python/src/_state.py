@@ -9,8 +9,9 @@ stateFmt = "json"
 stateOpts = {
     "parts": {"hotkey": "-p", "type": "flag"},
     "changes": {"hotkey": "-c", "type": "switch"},
-    "noZero": {"hotkey": "-n", "type": "switch"},
-    "call": {"hotkey": "-a", "type": "flag"},
+    "noZero": {"hotkey": "-z", "type": "switch"},
+    "call": {"hotkey": "-l", "type": "flag"},
+    "articulate": {"hotkey": "-a", "type": "switch"},
     "proxyFor": {"hotkey": "-r", "type": "flag"},
     "fmt": {"hotkey": "-x", "type": "flag"},
     "verbose:": {"hotkey": "-v", "type": "switch"},

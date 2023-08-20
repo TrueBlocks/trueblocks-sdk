@@ -3,32 +3,31 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, bytes, datetime, Function, gas, hash, Receipt, Statement, timestamp, Trace, uint64, wei } from '.';
+import { address, blknum, bytes, datetime, Function, gas, hash, timestamp, uint64, wei } from '.';
 
-export type Transaction = {
-  chainId: string
-  blockNumber: blknum
-  transactionIndex: blknum
-  timestamp: timestamp
-  date: datetime
+export type Slurp = {
   hash: hash
   blockHash: hash
+  blockNumber: blknum
+  transactionIndex: blknum
+  nonce: uint64
+  timestamp: timestamp
+  date: datetime
   from: address
   to: address
-  nonce: uint64
   value: wei
   gas: gas
   gasPrice: gas
-  maxFeePerGas: gas
-  maxPriorityFeePerGas: gas
   input: bytes
-  isError: boolean
   hasToken: boolean
-  receipt: Receipt
-  traces: Trace[]
   articulatedTx: Function
   compressedTx: string
-  statements: Statement[]
+  isError: boolean
+  functionName: string
+  methodId: string
   gasUsed: gas
-  type: string
+  contractAddress: address
+  cumulativeGasUsed: string
+  txReceiptStatus: string
+  ether: string
 }

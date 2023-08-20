@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, AppearanceCount, blknum, fourbyte, Function, Log, Monitor, Parameter, Receipt, Reconciliation, topic, Trace, TraceAction, TraceResult, Transaction, Transfer, uint64 } from '../types';
+import { address, Appearance, AppearanceCount, blknum, fourbyte, Function, Log, Monitor, Parameter, Receipt, Statement, Token, topic, Trace, TraceAction, TraceResult, Transaction, Transfer, uint64 } from '../types';
 
 export function getExport(
   parameters?: {
@@ -18,8 +18,8 @@ export function getExport(
     neighbors?: boolean,
     accounting?: boolean,
     statements?: boolean,
+    balances?: boolean,
     articulate?: boolean,
-    cache?: boolean,
     cacheTraces?: boolean,
     count?: boolean,
     firstRecord?: uint64,
@@ -29,14 +29,16 @@ export function getExport(
     topic?: topic[],
     asset?: address[],
     flow?: 'in' | 'out' | 'zero',
+    factory?: boolean,
     unripe?: boolean,
+    reversed?: boolean,
+    noZero?: boolean,
     firstBlock?: blknum,
     lastBlock?: blknum,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,
@@ -44,7 +46,7 @@ export function getExport(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | AppearanceCount[] | Function[] | Log[] | Monitor[] | Parameter[] | Receipt[] | Reconciliation[] | Trace[] | TraceAction[] | TraceResult[] | Transaction[] | Transfer[]>(
+  return ApiCallers.fetch<Appearance[] | AppearanceCount[] | Function[] | Log[] | Monitor[] | Parameter[] | Receipt[] | Statement[] | Token[] | Trace[] | TraceAction[] | TraceResult[] | Transaction[] | Transfer[]>(
     { endpoint: '/export', method: 'get', parameters, options },
   );
 }

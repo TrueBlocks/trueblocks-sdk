@@ -3,7 +3,7 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { address, blknum, gas, hash, timestamp, Transaction, uint64, wei } from '.';
+import { address, blknum, datetime, gas, hash, timestamp, Transaction, uint64, wei } from '.';
 
 export type Block = {
   author: address
@@ -19,12 +19,12 @@ export type Block = {
   totalDifficulty: wei
   miner: address
   difficulty: uint64
-  finalized: boolean
   extraData: string
   logsBloom: string
   mixHash: string
   nonce: string
   timestamp: timestamp
+  date: datetime
   baseFeePerGas: wei
   transactions: Transaction[]
   transactionsRoot: hash

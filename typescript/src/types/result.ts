@@ -3,11 +3,16 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { blknum, datetime, int64, timestamp } from '.';
+import { address, blknum, datetime, Function, timestamp } from '.';
 
-export type Timestamp = {
+export type Result = {
   blockNumber: blknum
   timestamp: timestamp
   date: datetime
-  diff: int64
+  address: address
+  name: string
+  encoding: string
+  signature: string
+  encodedArguments: string
+  articulatedOut: Function
 }

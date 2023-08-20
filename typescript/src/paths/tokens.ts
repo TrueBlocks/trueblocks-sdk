@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, blknum, TokenBalance } from '../types';
+import { address, blknum, Token } from '../types';
 
 export function getTokens(
   parameters?: {
@@ -12,12 +12,12 @@ export function getTokens(
     blocks?: blknum[],
     parts?: string[],
     byAcct?: boolean,
+    changes?: boolean,
     noZero?: boolean,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,
@@ -25,7 +25,7 @@ export function getTokens(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<TokenBalance[]>(
+  return ApiCallers.fetch<Token[]>(
     { endpoint: '/tokens', method: 'get', parameters, options },
   );
 }

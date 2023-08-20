@@ -3,7 +3,7 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { blknum, Function, hash, timestamp, TraceAction, TraceResult, uint64 } from '.';
+import { blknum, datetime, Function, hash, timestamp, TraceAction, TraceResult, uint64 } from '.';
 
 export type Trace = {
   blockHash: hash
@@ -19,4 +19,5 @@ export type Trace = {
   articulatedTrace?: Function
   compressedTrace?: string
   timestamp: timestamp
+  date: datetime
 }

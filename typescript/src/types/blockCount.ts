@@ -3,15 +3,15 @@
 /*
  * This file was generated with makeClass --sdk. Do not edit it.
  */
-import { blknum, timestamp, uint64 } from '.';
+import { blknum, datetime, timestamp, uint64 } from '.';
 
 export type BlockCount = {
   blockNumber: blknum
   timestamp: timestamp
+  date: datetime
   transactionsCnt: uint64
   unclesCnt?: uint64
   logsCnt?: uint64
   tracesCnt?: uint64
-  appsCnt?: uint64
-  uniqsCnt?: uint64
+  addressCnt?: uint64
 }

@@ -4,7 +4,7 @@
  * This file was generated with makeClass --sdk. Do not edit it.
  */
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, blknum, Block, BlockCount, Log, topic, Trace, TraceAction, TraceResult } from '../types';
+import { address, Appearance, blknum, Block, BlockCount, Log, LogFilter, topic, Trace, TraceAction, TraceResult, uint64 } from '../types';
 
 export function getBlocks(
   parameters?: {
@@ -12,21 +12,18 @@ export function getBlocks(
     hashes?: boolean,
     uncles?: boolean,
     traces?: boolean,
-    apps?: boolean,
     uniq?: boolean,
     flow?: 'from' | 'to' | 'reward',
     logs?: boolean,
     emitter?: address[],
     topic?: topic[],
+    articulate?: boolean,
+    bigRange?: uint64,
     count?: boolean,
-    cache?: boolean,
-    list?: blknum,
-    listCount?: blknum,
     chain: string,
     noHeader?: boolean,
     fmt?: string,
     verbose?: boolean,
-    logLevel?: number,
     wei?: boolean,
     ether?: boolean,
     dollars?: boolean,
@@ -34,7 +31,7 @@ export function getBlocks(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Block[] | BlockCount[] | Log[] | Trace[] | TraceAction[] | TraceResult[]>(
+  return ApiCallers.fetch<Appearance[] | Block[] | BlockCount[] | Log[] | LogFilter[] | Trace[] | TraceAction[] | TraceResult[]>(
     { endpoint: '/blocks', method: 'get', parameters, options },
   );
 }
