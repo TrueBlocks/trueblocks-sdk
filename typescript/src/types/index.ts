@@ -6,7 +6,6 @@ export * from './block';
 export * from './blockCount';
 export * from './bounds';
 export * from './cacheItem';
-export * from './callResult';
 export * from './chain';
 export * from './chunkAddress';
 export * from './chunkBloom';
