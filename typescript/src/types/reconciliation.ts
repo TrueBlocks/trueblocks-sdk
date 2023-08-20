@@ -28,23 +28,23 @@ export type Reconciliation = {
   reconciliationType: string
   reconciled: boolean
   totalIn: int256
-  amountIn?: int256
-  internalIn?: int256
-  selfDestructIn?: int256
-  minerBaseRewardIn?: int256
-  minerNephewRewardIn?: int256
-  minerTxFeeIn?: int256
-  minerUncleRewardIn?: int256
-  prefundIn?: int256
+  amountIn: int256
+  internalIn: int256
+  selfDestructIn: int256
+  minerBaseRewardIn: int256
+  minerNephewRewardIn: int256
+  minerTxFeeIn: int256
+  minerUncleRewardIn: int256
+  prefundIn: int256
   totalOut: int256
-  amountOut?: int256
-  internalOut?: int256
-  selfDestructOut?: int256
-  gasOut?: int256
+  amountOut: int256
+  internalOut: int256
+  selfDestructOut: int256
+  gasOut: int256
   totalOutLessGas: int256
-  prevAppBlk?: blknum
-  prevBal?: int256
-  begBalDiff?: int256
-  endBalDiff?: int256
-  endBalCalc?: int256
+  prevAppBlk: blknum
+  prevBal: int256
+  begBalDiff: int256
+  endBalDiff: int256
+  endBalCalc: int256
 }
