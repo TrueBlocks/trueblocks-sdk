@@ -3,4 +3,4 @@
 
 THE CONTENTS OF THIS REPO HAVE BEEN MOVED TO THE TRUEBLOCKS CORE REPO.
 
-https://github.com/TrueBlocks/trueblocks-core/sdk/README.md
+https://github.com/TrueBlocks/trueblocks-core/blob/master/sdk/README.md
