@@ -2,6 +2,8 @@
 
 **IMPORTANT NOTE**
 
+We are working on better support for the SDK.
+
 While we fully intend to support this portion of our repo in the future, we are currently focused on the core TrueBlocks code. We are not currently accepting PR's or issues on this repo. We will be back to this repo soon. Use at your own risk.
 
 **Table of Contents**
