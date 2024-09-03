@@ -17,6 +17,6 @@ export type ChunkBloom = {
   nBlooms: uint64
   nInserted: uint64
   range: blkrange
-  rangeDates: RangeDates
+  rangeDates?: RangeDates
   size: uint64
 }
