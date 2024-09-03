@@ -16,6 +16,6 @@ export type ChunkIndex = {
   nAddresses: uint64
   nAppearances: uint64
   range: blkrange
-  rangeDates: RangeDates
+  rangeDates?: RangeDates
   size: uint64
 }

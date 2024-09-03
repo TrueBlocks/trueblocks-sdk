@@ -21,7 +21,7 @@ export type ChunkStats = {
   nBlocks: uint64
   nBlooms: uint64
   range: blkrange
-  rangeDates: RangeDates
+  rangeDates?: RangeDates
   ratio: float64
   recWid: uint64
 }

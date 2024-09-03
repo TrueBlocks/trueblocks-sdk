@@ -16,5 +16,5 @@ export type ChunkRecord = {
   indexHash: ipfshash
   indexSize: int64
   range: blkrange
-  rangeDates: RangeDates
+  rangeDates?: RangeDates
 }
