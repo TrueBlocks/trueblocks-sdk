@@ -15,5 +15,5 @@ export type ChunkAddress = {
   count: uint64
   offset: uint64
   range: blkrange
-  rangeDates: RangeDates
+  rangeDates?: RangeDates
 }
