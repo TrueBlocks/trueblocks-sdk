@@ -1,41 +1,25 @@
 # TrueBlocks SDKs
 
-**IMPORTANT NOTE**
+## Table of Contents
 
-We are working on better support for the SDK.
-
-While we fully intend to support this portion of our repo in the future, we are currently focused on the core TrueBlocks code. We are not currently accepting PR's or issues on this repo. We will be back to this repo soon. Use at your own risk.
-
-**Table of Contents**
-
-- [Introduction](#introduction)
-- [The SDKs](#the-sdks)
-- [Docker version](#docker-version)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [Contact](#contact)
-- [List of Contributors](#list-of-contributors)
+- [TrueBlocks SDKs](#trueblocks-sdks)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Documentation](#documentation)
+  - [Contributing](#contributing)
+  - [Contact](#contact)
+  - [List of Contributors](#list-of-contributors)
+  - [Deprecated SDKs](#deprecated-sdks)
 
 ## Introduction
 
-This repo holds auto-generated SDKs based on the [TrueBlocks API](https://github.com/TrueBlocks/trueblocks-core). This SDK is intended for use by the core developers of TrueBlocks as we develop our own applications, and is therefore purposefully not well documented. This is so we **do not** create an unwanted support burden for our team. You are welcome to use the SDK, but we will do not provide technical support.
+This repo holds auto-generated SDKs based on [TrueBlocks Core](https://github.com/TrueBlocks/trueblocks-core). Use it to build amazing local-first applications such as [TrueBlocks Browse](https://github.com/TrueBlocks/trueblocks-browse) (currently private).
 
-However, we do welcome issues and PR's (particularly documentation) from the community.
-
-## The SDKs
-
-There are two SDKs so far:
-
-- [Typescript](./typescript/README.md)
-- [Python](./python/README.md)
-
-## Docker version
-
-These SDKs are easiest to use with our [docker version](https://github.com/TrueBlocks/trueblocks-docker) which is in a separate repo. Please see that repo for information on running with Docker.
+You are welcome to use the SDK, but it is currently pre-alpha.
 
 ## Documentation
 
-The TrueBlocks [documentation repo](https://github.com/TrueBlocks/trueblocks-docs) builds the TrueBlocks website. See our website for the [best available documentation](https://trueblocks.io/).
+The SDK's [documentation is here](https://pkg.go.dev/github.com/TrueBlocks/trueblocks-sdk/v3). Also, see our website for the [more information](https://trueblocks.io/).
 
 ## Contributing
 
@@ -57,3 +41,10 @@ Thanks to the following people who have contributed to this project:
 
 - [@tjayrush](https://github.com/tjayrush)
 - [@dszlachta](https://github.com/dszlachta)
+
+## Deprecated SDKs
+
+In the past, we've supported two other SDKs, however, for the time being, they are deprecated. We intend to update them in the future.
+
+- [Typescript](./typescript/README.md)
+- [Python](./python/README.md)
