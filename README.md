@@ -1,5 +1,7 @@
 # TrueBlocks SDKs
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/TrueBlocks/trueblocks-sdk/v3.svg)](https://pkg.go.dev/github.com/TrueBlocks/trueblocks-sdk/v3)
+
 ## Table of Contents
 
 - [TrueBlocks SDKs](#trueblocks-sdks)

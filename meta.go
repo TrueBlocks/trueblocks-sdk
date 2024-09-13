@@ -14,6 +14,11 @@ func GetMetaData(chain string) (*types.MetaData, error) {
 	return meta, err
 }
 
+func MustGetMetaData(chain string) *types.MetaData {
+	meta, _ := GetMetaData(chain)
+	return meta
+}
+
 func GetLatestBlock(chain string) base.Blknum {
 	meta, _ := GetMetaData(chain)
 	return meta.Latest
