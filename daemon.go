@@ -13,10 +13,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"os"
 	"strings"
 	"time"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/logger"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
 	// EXISTING_CODE
 )
@@ -145,7 +145,7 @@ func (opts *DaemonOptions) Start(ready chan<- bool) {
 		in := opts.toInternal()
 		buffer := bytes.Buffer{}
 		if err := in.DaemonBytes(&buffer); err != nil {
-			logger.Fatal(err)
+			fmt.Fprintf(os.Stderr, "Error starting daemon: %s\n", err)
 		}
 	}()
 
