@@ -129,7 +129,7 @@ func SortNames(names []types.Name, sortSpec SortSpec) error {
 }
 
 // EXISTING_CODE
-func (opts *NamesOptions) ModifyName(op crud.NameOperation, cd *crud.NameCrud) ([]types.Name, *types.MetaData, error) {
+func (opts *NamesOptions) ModifyName(op crud.Operation, cd *crud.NameCrud) ([]types.Name, *types.MetaData, error) {
 	defer func() {
 		cd.Unsetenv()
 	}()
