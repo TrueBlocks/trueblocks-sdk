@@ -23,6 +23,7 @@ import (
 
 type exploreOptionsInternal struct {
 	Terms     []string          `json:"terms,omitempty"`
+	NoOpen    bool              `json:"noOpen,omitempty"`
 	Local     bool              `json:"local,omitempty"`
 	Google    bool              `json:"google,omitempty"`
 	Dalle     bool              `json:"dalle,omitempty"`
@@ -104,6 +105,7 @@ func queryExplore[T exploreGeneric](opts *exploreOptionsInternal) ([]T, *types.M
 func (opts *ExploreOptions) toInternal() *exploreOptionsInternal {
 	return &exploreOptionsInternal{
 		Terms:     opts.Terms,
+		NoOpen:    opts.NoOpen,
 		Local:     opts.Local,
 		Google:    opts.Google,
 		Dalle:     opts.Dalle,

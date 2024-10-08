@@ -19,6 +19,7 @@ import (
 
 type ExploreOptions struct {
 	Terms     []string          `json:"terms,omitempty"`
+	NoOpen    bool              `json:"noOpen,omitempty"`
 	Local     bool              `json:"local,omitempty"`
 	Google    bool              `json:"google,omitempty"`
 	Dalle     bool              `json:"dalle,omitempty"`
