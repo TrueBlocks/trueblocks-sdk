@@ -113,7 +113,7 @@ func (opts *NamesOptions) NamesRemove() ([]types.Name, *types.MetaData, error) {
 // No enums
 func SortNames(names []types.Name, sortSpec SortSpec) error {
 	if len(sortSpec.Fields) != len(sortSpec.Order) {
-		return fmt.Errorf("Fields and Order must have the same length")
+		return fmt.Errorf("fields and order must have the same length")
 	}
 
 	sorts := make([]func(p1, p2 types.Name) bool, len(sortSpec.Fields))

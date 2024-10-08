@@ -73,7 +73,7 @@ func (opts *AbisOptions) AbisEncode(val string) ([]types.Function, *types.MetaDa
 // No enums
 func SortAbis(abis []types.Abi, sortSpec SortSpec) error {
 	if len(sortSpec.Fields) != len(sortSpec.Order) {
-		return fmt.Errorf("Fields and Order must have the same length")
+		return fmt.Errorf("fields and order must have the same length")
 	}
 
 	sorts := make([]func(p1, p2 types.Abi) bool, len(sortSpec.Fields))
@@ -90,7 +90,7 @@ func SortAbis(abis []types.Abi, sortSpec SortSpec) error {
 
 func SortFunctions(functions []types.Function, sortSpec SortSpec) error {
 	if len(sortSpec.Fields) != len(sortSpec.Order) {
-		return fmt.Errorf("Fields and Order must have the same length")
+		return fmt.Errorf("fields and order must have the same length")
 	}
 
 	sorts := make([]func(p1, p2 types.Function) bool, len(sortSpec.Fields))
