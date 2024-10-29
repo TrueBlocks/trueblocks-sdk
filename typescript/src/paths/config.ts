@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { CacheItem } from '../types';
+import { CacheItem, Session } from '../types';
 
 export function getConfig(
   parameters?: {
@@ -21,7 +21,7 @@ export function getConfig(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<CacheItem[]>(
+  return ApiCallers.fetch<CacheItem[] | Session[]>(
     { endpoint: '/config', method: 'get', parameters, options },
   );
 }
