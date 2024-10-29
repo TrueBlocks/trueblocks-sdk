@@ -39,6 +39,13 @@ func (opts *ConfigOptions) ConfigPaths() ([]types.CacheItem, *types.MetaData, er
 	return queryConfig[types.CacheItem](in)
 }
 
+// ConfigSession implements the chifra config --session command.
+func (opts *ConfigOptions) ConfigSession() ([]types.Session, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Session = true
+	return queryConfig[types.Session](in)
+}
+
 type ConfigMode int
 
 const (
