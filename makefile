@@ -6,3 +6,6 @@ all:
 publish:
 	@cd typescript && yarn publish
 	@cd python && make
+
+update:
+	@go get github.com/TrueBlocks/trueblocks-core/src/apps/chifra@latest
