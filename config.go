@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"strings"
 
-	configTypes "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/configtypes"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
 	// EXISTING_CODE
@@ -39,11 +38,11 @@ func (opts *ConfigOptions) ConfigPaths() ([]types.CacheItem, *types.MetaData, er
 	return queryConfig[types.CacheItem](in)
 }
 
-// ConfigSession implements the chifra config --session command.
-func (opts *ConfigOptions) ConfigSession() ([]types.Session, *types.MetaData, error) {
+// ConfigDump implements the chifra config --dump command.
+func (opts *ConfigOptions) ConfigDump() ([]types.Config, *types.MetaData, error) {
 	in := opts.toInternal()
-	in.Session = true
-	return queryConfig[types.Session](in)
+	in.Dump = true
+	return queryConfig[types.Config](in)
 }
 
 type ConfigMode int
@@ -97,20 +96,9 @@ func enumFromConfigMode(values []string) (ConfigMode, error) {
 
 // EXISTING_CODE
 type ConfigsOptions = ConfigOptions
-type SessionsOptions = ConfigOptions
 
-func (opts *ConfigsOptions) ConfigsList() ([]configTypes.Config, *types.MetaData, error) {
-	meta, err := GetMetaData(opts.Chain)
-	// the caller is responsible to fill this with the data
-	return []configTypes.Config{}, meta, err
-}
-
-func (opts *SessionsOptions) SessionsList() ([]types.Session, *types.MetaData, error) {
-	meta, err := GetMetaData(opts.Chain)
-	// the caller is responsible to fill this with the data
-	return []types.Session{
-		{LastChain: ""},
-	}, meta, err
+func (opts *ConfigsOptions) ConfigList() ([]types.Config, *types.MetaData, error) {
+	return opts.ConfigDump()
 }
 
 // EXISTING_CODE
