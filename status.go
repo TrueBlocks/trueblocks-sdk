@@ -320,6 +320,10 @@ func SortCacheItems(cacheitems []types.CacheItem, sortSpec SortSpec) error {
 }
 
 // EXISTING_CODE
+func SortStatus(cacheitems []types.CacheItem, sortSpec SortSpec) error {
+	return SortCacheItems(cacheitems, sortSpec)
+}
+
 // Status implements the chifra status command.
 func (opts *StatusOptions) Status() ([]types.Status, *types.MetaData, error) {
 	return opts.StatusDiagnose()
