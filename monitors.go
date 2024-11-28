@@ -11,8 +11,6 @@ package sdk
 import (
 	// EXISTING_CODE
 	"encoding/json"
-	"fmt"
-	"sort"
 
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
@@ -69,22 +67,5 @@ func (opts *MonitorsOptions) MonitorsCount() ([]types.Count, *types.MetaData, er
 }
 
 // No enums
-func SortMonitors(monitors []types.Monitor, sortSpec SortSpec) error {
-	if len(sortSpec.Fields) != len(sortSpec.Order) {
-		return fmt.Errorf("fields and order must have the same length")
-	}
-
-	sorts := make([]func(p1, p2 types.Monitor) bool, len(sortSpec.Fields))
-	for i, field := range sortSpec.Fields {
-		if !types.IsValidMonitorField(field) {
-			return fmt.Errorf("%s is not an Monitor sort field", field)
-		}
-		sorts[i] = types.MonitorBy(types.MonitorField(field), types.SortOrder(sortSpec.Order[i]))
-	}
-
-	sort.Slice(monitors, types.MonitorCmp(monitors, sorts...))
-	return nil
-}
-
 // EXISTING_CODE
 // EXISTING_CODE

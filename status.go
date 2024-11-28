@@ -12,7 +12,6 @@ import (
 	// EXISTING_CODE
 	"encoding/json"
 	"fmt"
-	"sort"
 	"strings"
 
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
@@ -302,28 +301,7 @@ func enumFromStatusModes(values []string) (StatusModes, error) {
 	return result, nil
 }
 
-func SortCacheItems(cacheitems []types.CacheItem, sortSpec SortSpec) error {
-	if len(sortSpec.Fields) != len(sortSpec.Order) {
-		return fmt.Errorf("fields and order must have the same length")
-	}
-
-	sorts := make([]func(p1, p2 types.CacheItem) bool, len(sortSpec.Fields))
-	for i, field := range sortSpec.Fields {
-		if !types.IsValidCacheItemField(field) {
-			return fmt.Errorf("%s is not an CacheItem sort field", field)
-		}
-		sorts[i] = types.CacheItemBy(types.CacheItemField(field), types.SortOrder(sortSpec.Order[i]))
-	}
-
-	sort.Slice(cacheitems, types.CacheItemCmp(cacheitems, sorts...))
-	return nil
-}
-
 // EXISTING_CODE
-func SortStatus(cacheitems []types.CacheItem, sortSpec SortSpec) error {
-	return SortCacheItems(cacheitems, sortSpec)
-}
-
 // Status implements the chifra status command.
 func (opts *StatusOptions) Status() ([]types.Status, *types.MetaData, error) {
 	return opts.StatusDiagnose()
