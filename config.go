@@ -95,10 +95,4 @@ func enumFromConfigMode(values []string) (ConfigMode, error) {
 }
 
 // EXISTING_CODE
-type ConfigsOptions = ConfigOptions
-
-func (opts *ConfigsOptions) ConfigList() ([]types.Config, *types.MetaData, error) {
-	return opts.ConfigDump()
-}
-
 // EXISTING_CODE
