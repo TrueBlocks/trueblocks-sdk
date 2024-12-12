@@ -131,7 +131,7 @@ func (u *Updater) NeedsUpdate() (Updater, bool, error) {
 			// Skip FolderSize type items in this loop
 			continue
 		default:
-			logger.Fatal("unknown path type" + fmt.Sprintf(" %d", item.Type))
+			logger.Fatal("unknown path type" + fmt.Sprintf(" %s", item.Type))
 			return Updater{}, false, errors.New("unknown path type")
 		}
 	}

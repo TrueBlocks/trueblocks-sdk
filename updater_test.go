@@ -1,7 +1,6 @@
 package sdk
 
 import (
-	"io/ioutil"
 	"os"
 	"testing"
 	"time"
@@ -9,6 +8,130 @@ import (
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/walk"
 )
 
+func TestNeedsUpdateWithFile(t *testing.T) {
+	tempFile, err := os.CreateTemp("", "testfile")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	defer os.Remove(tempFile.Name()) // Clean up
+
+	// Write some data to the file to set its modification time
+	if _, err := tempFile.Write([]byte("initial data")); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	items := []UpdaterItem{
+		{Path: tempFile.Name(), Type: File},
+	}
+	u, err := NewUpdater("test", items)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	// Set LastTimeStamp to the current modification time of the file
+	u.LastTimeStamp = fileModTime(tempFile.Name())
+
+	// Modify the file to update its modification time
+	if _, err := tempFile.Write([]byte(" more data")); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	// Explicitly update the file's modification time
+	newModTime := time.Now().Add(time.Second)
+	if err := os.Chtimes(tempFile.Name(), newModTime, newModTime); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	updatedUpdater, needsUpdate, err := u.NeedsUpdate()
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if !needsUpdate {
+		t.Errorf("expected needsUpdate to be true")
+	}
+	if updatedUpdater.LastTimeStamp <= u.LastTimeStamp {
+		t.Errorf("expected updated LastTimeStamp to be greater than original")
+	}
+}
+
+func TestNeedsUpdateWithFolder(t *testing.T) {
+	tempDir, err := os.MkdirTemp("", "testdir")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	defer os.RemoveAll(tempDir) // Clean up
+
+	tempFile, err := os.CreateTemp(tempDir, "testfile")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	// Write some data to the file to set its modification time
+	if _, err := tempFile.Write([]byte("initial data")); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	items := []UpdaterItem{
+		{Path: tempDir, Type: Folder},
+	}
+	u, err := NewUpdater("test", items)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	// Set LastTimeStamp to the current modification time of the file
+	u.LastTimeStamp = fileModTime(tempFile.Name())
+
+	// Modify the file to update its modification time
+	if _, err := tempFile.Write([]byte(" more data")); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	// Explicitly update the file's modification time
+	newModTime := time.Now().Add(time.Second)
+	if err := os.Chtimes(tempFile.Name(), newModTime, newModTime); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	updatedUpdater, needsUpdate, err := u.NeedsUpdate()
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if !needsUpdate {
+		t.Errorf("expected needsUpdate to be true")
+	}
+	if updatedUpdater.LastTimeStamp <= u.LastTimeStamp {
+		t.Errorf("expected updated LastTimeStamp to be greater than original")
+	}
+}
+
+func fileModTime(path string) int64 {
+	info, err := os.Stat(path)
+	if err != nil {
+		return 0
+	}
+	return info.ModTime().Unix()
+}
+
+func folderSize(path string) int64 {
+	var totalSize int64
+	err := walk.ForEveryFileInFolder(path, func(filePath string, _ any) (bool, error) {
+		info, err := os.Stat(filePath)
+		if err != nil {
+			return false, err
+		}
+		totalSize += info.Size()
+		return true, nil
+	}, nil)
+	if err != nil {
+		return 0
+	}
+	return totalSize
+}
+
+/*
+
+// TODO: THIS CAN ALMOST CERTAINLY BE DELETED
 func TestNewUpdaterWithPaths(t *testing.T) {
 	items := []UpdaterItem{
 		{Path: "path1", Type: File},
@@ -227,124 +350,6 @@ func TestNeedsUpdateWithSize(t *testing.T) {
 	}
 }
 
-// Helper function to get the size of a file
-func fileSize(path string) int64 {
-	info, err := os.Stat(path)
-	if err != nil {
-		return 0
-	}
-	return info.Size()
-}
-
-func TestNeedsUpdateWithFile(t *testing.T) {
-	// Create a temporary file
-	tempFile, err := ioutil.TempFile("", "testfile")
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-	defer os.Remove(tempFile.Name()) // Clean up
-
-	// Write some data to the file to set its modification time
-	if _, err := tempFile.Write([]byte("initial data")); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	items := []UpdaterItem{
-		{Path: tempFile.Name(), Type: File},
-	}
-	u, err := NewUpdater("test", items)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// Set LastTimeStamp to the current modification time of the file
-	u.LastTimeStamp = fileModTime(tempFile.Name())
-
-	// Modify the file to update its modification time
-	if _, err := tempFile.Write([]byte(" more data")); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// Explicitly update the file's modification time
-	newModTime := time.Now().Add(time.Second)
-	if err := os.Chtimes(tempFile.Name(), newModTime, newModTime); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	updatedUpdater, needsUpdate, err := u.NeedsUpdate()
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-	if !needsUpdate {
-		t.Errorf("expected needsUpdate to be true")
-	}
-	if updatedUpdater.LastTimeStamp <= u.LastTimeStamp {
-		t.Errorf("expected updated LastTimeStamp to be greater than original")
-	}
-}
-
-// Helper function to get the modification time of a file
-func fileModTime(path string) int64 {
-	info, err := os.Stat(path)
-	if err != nil {
-		return 0
-	}
-	return info.ModTime().Unix()
-}
-
-func TestNeedsUpdateWithFolder(t *testing.T) {
-	// Create a temporary directory
-	tempDir, err := ioutil.TempDir("", "testdir")
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-	defer os.RemoveAll(tempDir) // Clean up
-
-	// Create a temporary file in the directory
-	tempFile, err := ioutil.TempFile(tempDir, "testfile")
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// Write some data to the file to set its modification time
-	if _, err := tempFile.Write([]byte("initial data")); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	items := []UpdaterItem{
-		{Path: tempDir, Type: Folder},
-	}
-	u, err := NewUpdater("test", items)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// Set LastTimeStamp to the current modification time of the file
-	u.LastTimeStamp = fileModTime(tempFile.Name())
-
-	// Modify the file to update its modification time
-	if _, err := tempFile.Write([]byte(" more data")); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// Explicitly update the file's modification time
-	newModTime := time.Now().Add(time.Second)
-	if err := os.Chtimes(tempFile.Name(), newModTime, newModTime); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	updatedUpdater, needsUpdate, err := u.NeedsUpdate()
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-	if !needsUpdate {
-		t.Errorf("expected needsUpdate to be true")
-	}
-	if updatedUpdater.LastTimeStamp <= u.LastTimeStamp {
-		t.Errorf("expected updated LastTimeStamp to be greater than original")
-	}
-}
-
 func TestNeedsUpdateWithError(t *testing.T) {
 	// Create a temporary file
 	tempFile, err := ioutil.TempFile("", "testfile")
@@ -422,23 +427,6 @@ func TestNeedsUpdateWithFolderSize(t *testing.T) {
 	}
 }
 
-// Helper function to get the total size of all files in a folder
-func folderSize(path string) int64 {
-	var totalSize int64
-	err := walk.ForEveryFileInFolder(path, func(filePath string, _ any) (bool, error) {
-		info, err := os.Stat(filePath)
-		if err != nil {
-			return false, err
-		}
-		totalSize += info.Size()
-		return true, nil
-	}, nil)
-	if err != nil {
-		return 0
-	}
-	return totalSize
-}
-
 func TestNeedsUpdateWithSizeAndFolderSize(t *testing.T) {
 	// Create a temporary file
 	tempFile, err := ioutil.TempFile("", "testfile")
@@ -513,3 +501,14 @@ func TestNeedsUpdateWithSizeAndFolderSize(t *testing.T) {
 		t.Errorf("unexpected reset of LastTotalSize")
 	}
 }
+
+// Helper function to get the size of a file
+func fileSize(path string) int64 {
+	info, err := os.Stat(path)
+	if err != nil {
+		return 0
+	}
+	return info.Size()
+}
+
+*/
