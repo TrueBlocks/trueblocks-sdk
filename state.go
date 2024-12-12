@@ -51,6 +51,13 @@ func (opts *StateOptions) StateCall(val string) ([]types.Result, *types.MetaData
 	return queryState[types.Result](in)
 }
 
+// StateSend implements the chifra state --send command.
+func (opts *StateOptions) StateSend(val string) ([]types.Result, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Send = val
+	return queryState[types.Result](in)
+}
+
 type StateParts int
 
 const (

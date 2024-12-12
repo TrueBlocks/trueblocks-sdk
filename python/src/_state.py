@@ -16,6 +16,7 @@ stateOpts = {
     "changes": {"hotkey": "-c", "type": "switch"},
     "noZero": {"hotkey": "-z", "type": "switch"},
     "call": {"hotkey": "-l", "type": "flag"},
+    "send": {"hotkey": "-s", "type": "flag"},
     "articulate": {"hotkey": "-a", "type": "switch"},
     "proxyFor": {"hotkey": "-r", "type": "flag"},
     "chain": {"hotkey": "", "type": "flag"},
