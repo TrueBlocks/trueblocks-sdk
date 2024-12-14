@@ -26,6 +26,7 @@ type StateOptions struct {
 	Parts      StateParts        `json:"parts,omitempty"`
 	Changes    bool              `json:"changes,omitempty"`
 	NoZero     bool              `json:"noZero,omitempty"`
+	Calldata   string            `json:"calldata,omitempty"`
 	Articulate bool              `json:"articulate,omitempty"`
 	ProxyFor   base.Address      `json:"proxyFor,omitempty"`
 	RenderCtx  *output.RenderCtx `json:"-"`
@@ -44,17 +45,17 @@ func (opts *StateOptions) State() ([]types.State, *types.MetaData, error) {
 	return queryState[types.State](in)
 }
 
+// StateCall implements the chifra state --call command.
+func (opts *StateOptions) StateCall() ([]types.Result, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Call = true
+	return queryState[types.Result](in)
+}
+
 // StateSend implements the chifra state --send command.
 func (opts *StateOptions) StateSend() ([]types.Result, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Send = true
-	return queryState[types.Result](in)
-}
-
-// StateCalldata implements the chifra state --calldata command.
-func (opts *StateOptions) StateCalldata(val string) ([]types.Result, *types.MetaData, error) {
-	in := opts.toInternal()
-	in.Calldata = val
 	return queryState[types.Result](in)
 }
 

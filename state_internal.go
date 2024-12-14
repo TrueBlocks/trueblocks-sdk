@@ -29,6 +29,7 @@ type stateOptionsInternal struct {
 	Parts      StateParts        `json:"parts,omitempty"`
 	Changes    bool              `json:"changes,omitempty"`
 	NoZero     bool              `json:"noZero,omitempty"`
+	Call       bool              `json:"call,omitempty"`
 	Send       bool              `json:"send,omitempty"`
 	Calldata   string            `json:"calldata,omitempty"`
 	Articulate bool              `json:"articulate,omitempty"`
@@ -131,6 +132,7 @@ func (opts *StateOptions) toInternal() *stateOptionsInternal {
 		Parts:      opts.Parts,
 		Changes:    opts.Changes,
 		NoZero:     opts.NoZero,
+		Calldata:   opts.Calldata,
 		Articulate: opts.Articulate,
 		ProxyFor:   opts.ProxyFor,
 		RenderCtx:  opts.RenderCtx,
