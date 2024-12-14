@@ -29,8 +29,8 @@ type stateOptionsInternal struct {
 	Parts      StateParts        `json:"parts,omitempty"`
 	Changes    bool              `json:"changes,omitempty"`
 	NoZero     bool              `json:"noZero,omitempty"`
+	Send       bool              `json:"send,omitempty"`
 	Calldata   string            `json:"calldata,omitempty"`
-	Send       string            `json:"send,omitempty"`
 	Articulate bool              `json:"articulate,omitempty"`
 	ProxyFor   base.Address      `json:"proxyFor,omitempty"`
 	RenderCtx  *output.RenderCtx `json:"-"`

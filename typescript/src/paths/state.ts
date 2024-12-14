@@ -19,7 +19,6 @@ export function getState(
     changes?: boolean,
     noZero?: boolean,
     calldata?: string,
-    send?: string,
     articulate?: boolean,
     proxyFor?: address,
     fmt?: string,

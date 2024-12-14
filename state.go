@@ -44,17 +44,17 @@ func (opts *StateOptions) State() ([]types.State, *types.MetaData, error) {
 	return queryState[types.State](in)
 }
 
+// StateSend implements the chifra state --send command.
+func (opts *StateOptions) StateSend() ([]types.Result, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Send = true
+	return queryState[types.Result](in)
+}
+
 // StateCalldata implements the chifra state --calldata command.
 func (opts *StateOptions) StateCalldata(val string) ([]types.Result, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Calldata = val
-	return queryState[types.Result](in)
-}
-
-// StateSend implements the chifra state --send command.
-func (opts *StateOptions) StateSend(val string) ([]types.Result, *types.MetaData, error) {
-	in := opts.toInternal()
-	in.Send = val
 	return queryState[types.Result](in)
 }
 
