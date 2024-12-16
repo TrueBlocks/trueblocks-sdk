@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"strings"
 
-	configTypes "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/configtypes"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
 	// EXISTING_CODE
@@ -96,21 +95,4 @@ func enumFromConfigMode(values []string) (ConfigMode, error) {
 }
 
 // EXISTING_CODE
-type ConfigsOptions = ConfigOptions
-type SessionsOptions = ConfigOptions
-
-func (opts *ConfigsOptions) ConfigsList() ([]configTypes.Config, *types.MetaData, error) {
-	meta, err := GetMetaData(opts.Chain)
-	// the caller is responsible to fill this with the data
-	return []configTypes.Config{}, meta, err
-}
-
-func (opts *SessionsOptions) SessionsList() ([]types.Session, *types.MetaData, error) {
-	meta, err := GetMetaData(opts.Chain)
-	// the caller is responsible to fill this with the data
-	return []types.Session{
-		{LastChain: ""},
-	}, meta, err
-}
-
 // EXISTING_CODE

@@ -193,24 +193,4 @@ func enumFromChunksMode(values []string) (ChunksMode, error) {
 }
 
 // EXISTING_CODE
-// Syntactic sugar
-type IndexesOptions = ChunksOptions
-type ManifestsOptions = ChunksOptions
-
-// Syntactic sugar
-func (opts *IndexesOptions) IndexesList() ([]types.ChunkStats, *types.MetaData, error) {
-	return opts.ChunksStats()
-}
-func (opts *ManifestsOptions) ManifestsList() ([]types.ChunkManifest, *types.MetaData, error) {
-	return opts.ChunksManifest()
-}
-
-// Syntactic sugar
-func SortIndexes(chunkstats []types.ChunkStats, sortSpec SortSpec) error {
-	return SortChunkStats(chunkstats, sortSpec)
-}
-func SortManifests(chunkrecords []types.ChunkRecord, sortSpec SortSpec) error {
-	return SortChunkRecords(chunkrecords, sortSpec)
-}
-
 // EXISTING_CODE

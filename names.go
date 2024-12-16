@@ -133,9 +133,4 @@ func (opts *NamesOptions) ModifyName(op crud.Operation, cd *crud.NameCrud) ([]ty
 	return nil, nil, errors.New("invalid operation " + string(op))
 }
 
-// Syntactic sugar
-func (opts *NamesOptions) NamesList() ([]types.Name, *types.MetaData, error) {
-	return opts.Names()
-}
-
 // EXISTING_CODE
