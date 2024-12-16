@@ -33,10 +33,7 @@ export function getSlurp(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Monitor[] | Slurp[]>({
-    endpoint: '/slurp',
-    method: 'get',
-    parameters,
-    options,
-  });
+  return ApiCallers.fetch<Appearance[] | Monitor[] | Slurp[]>(
+    { endpoint: '/slurp', method: 'get', parameters, options },
+  );
 }

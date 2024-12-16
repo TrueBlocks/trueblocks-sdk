@@ -30,5 +30,7 @@ export function getState(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Result[] | State[]>({ endpoint: '/state', method: 'get', parameters, options });
+  return ApiCallers.fetch<Result[] | State[]>(
+    { endpoint: '/state', method: 'get', parameters, options },
+  );
 }

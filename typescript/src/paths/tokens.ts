@@ -27,5 +27,7 @@ export function getTokens(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Token[]>({ endpoint: '/tokens', method: 'get', parameters, options });
+  return ApiCallers.fetch<Token[]>(
+    { endpoint: '/tokens', method: 'get', parameters, options },
+  );
 }

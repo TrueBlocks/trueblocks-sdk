@@ -29,10 +29,7 @@ export function getWhen(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Count[] | NamedBlock[] | Timestamp[]>({
-    endpoint: '/when',
-    method: 'get',
-    parameters,
-    options,
-  });
+  return ApiCallers.fetch<Count[] | NamedBlock[] | Timestamp[]>(
+    { endpoint: '/when', method: 'get', parameters, options },
+  );
 }

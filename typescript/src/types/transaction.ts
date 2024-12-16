@@ -8,24 +8,7 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import {
-  address,
-  blknum,
-  bytes,
-  datetime,
-  float64,
-  Function,
-  gas,
-  hash,
-  Receipt,
-  Statement,
-  StorageSlot,
-  timestamp,
-  Trace,
-  txnum,
-  uint64,
-  wei,
-} from '.';
+import { address, blknum, bytes, datetime, float64, Function, gas, hash, Receipt, Statement, StorageSlot, timestamp, Trace, txnum, uint64, wei } from '.';
 
 export type Transaction = {
   accessList: StorageSlot[];

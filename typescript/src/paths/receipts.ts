@@ -23,5 +23,7 @@ export function getReceipts(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Receipt[]>({ endpoint: '/receipts', method: 'get', parameters, options });
+  return ApiCallers.fetch<Receipt[]>(
+    { endpoint: '/receipts', method: 'get', parameters, options },
+  );
 }

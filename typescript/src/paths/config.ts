@@ -21,5 +21,7 @@ export function getConfig(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<CacheItem[] | Session[]>({ endpoint: '/config', method: 'get', parameters, options });
+  return ApiCallers.fetch<CacheItem[] | Session[]>(
+    { endpoint: '/config', method: 'get', parameters, options },
+  );
 }

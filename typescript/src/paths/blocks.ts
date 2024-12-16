@@ -36,10 +36,7 @@ export function getBlocks(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | BlockCount[] | Block[] | LightBlock[] | Log[] | Trace[] | Withdrawal[]>({
-    endpoint: '/blocks',
-    method: 'get',
-    parameters,
-    options,
-  });
+  return ApiCallers.fetch<Appearance[] | BlockCount[] | Block[] | LightBlock[] | Log[] | Trace[] | Withdrawal[]>(
+    { endpoint: '/blocks', method: 'get', parameters, options },
+  );
 }

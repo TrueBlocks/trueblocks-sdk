@@ -26,5 +26,7 @@ export function getTraces(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<TraceCount[] | Trace[]>({ endpoint: '/traces', method: 'get', parameters, options });
+  return ApiCallers.fetch<TraceCount[] | Trace[]>(
+    { endpoint: '/traces', method: 'get', parameters, options },
+  );
 }

@@ -138,16 +138,4 @@ func (opts *StateOptions) toInternal() *stateOptionsInternal {
 }
 
 // EXISTING_CODE
-type SortOrder = types.SortOrder
-
-const (
-	Asc SortOrder = types.Ascending
-	Dec SortOrder = types.Descending
-)
-
-type SortSpec struct {
-	Fields []string    `json:"fields"`
-	Order  []SortOrder `json:"orders"`
-}
-
 // EXISTING_CODE

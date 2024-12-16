@@ -35,10 +35,7 @@ export function getMonitors(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Count[] | Message[] | MonitorClean[] | Monitor[]>({
-    endpoint: '/monitors',
-    method: 'get',
-    parameters,
-    options,
-  });
+  return ApiCallers.fetch<Count[] | Message[] | MonitorClean[] | Monitor[]>(
+    { endpoint: '/monitors', method: 'get', parameters, options },
+  );
 }

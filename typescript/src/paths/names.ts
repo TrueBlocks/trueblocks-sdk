@@ -36,5 +36,7 @@ export function getNames(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Message[] | Name[]>({ endpoint: '/names', method: 'get', parameters, options });
+  return ApiCallers.fetch<Message[] | Name[]>(
+    { endpoint: '/names', method: 'get', parameters, options },
+  );
 }

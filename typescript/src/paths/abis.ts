@@ -29,5 +29,7 @@ export function getAbis(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Abi[] | Count[] | Function[]>({ endpoint: '/abis', method: 'get', parameters, options });
+  return ApiCallers.fetch<Abi[] | Count[] | Function[]>(
+    { endpoint: '/abis', method: 'get', parameters, options },
+  );
 }

@@ -25,5 +25,7 @@ export function getLogs(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Log[]>({ endpoint: '/logs', method: 'get', parameters, options });
+  return ApiCallers.fetch<Log[]>(
+    { endpoint: '/logs', method: 'get', parameters, options },
+  );
 }

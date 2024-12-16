@@ -22,5 +22,7 @@ export function getInit(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Message[]>({ endpoint: '/init', method: 'get', parameters, options });
+  return ApiCallers.fetch<Message[]>(
+    { endpoint: '/init', method: 'get', parameters, options },
+  );
 }

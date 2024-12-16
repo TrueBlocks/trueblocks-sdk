@@ -25,5 +25,7 @@ export function getStatus(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Status[]>({ endpoint: '/status', method: 'get', parameters, options });
+  return ApiCallers.fetch<Status[]>(
+    { endpoint: '/status', method: 'get', parameters, options },
+  );
 }
