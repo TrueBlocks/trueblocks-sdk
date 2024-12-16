@@ -11,28 +11,28 @@
 import { address, blknum, datetime, gas, hash, timestamp, uint64, wei, Withdrawal } from '.';
 
 export type LightBlock = {
-  author: address
-  baseFeePerGas: gas
-  blockNumber: blknum
-  date?: datetime
-  difficulty: uint64
-  extraData: string
-  gasLimit: gas
-  gasUsed: gas
-  hash: hash
-  logsBloom: string
-  miner: address
-  mixHash: string
-  nonce: uint64
-  parentHash: hash
-  receiptsRoot: hash
-  sha3Uncles: hash
-  size: uint64
-  stateRoot: hash
-  timestamp: timestamp
-  totalDifficulty: wei
-  transactions: string[]
-  transactionsRoot: hash
-  uncles?: hash[]
-  withdrawals?: Withdrawal[]
-}
+  author: address;
+  baseFeePerGas: gas;
+  blockNumber: blknum;
+  date?: datetime;
+  difficulty: uint64;
+  extraData: string;
+  gasLimit: gas;
+  gasUsed: gas;
+  hash: hash;
+  logsBloom: string;
+  miner: address;
+  mixHash: string;
+  nonce: uint64;
+  parentHash: hash;
+  receiptsRoot: hash;
+  sha3Uncles: hash;
+  size: uint64;
+  stateRoot: hash;
+  timestamp: timestamp;
+  totalDifficulty: wei;
+  transactions: string[];
+  transactionsRoot: hash;
+  uncles?: hash[];
+  withdrawals?: Withdrawal[];
+};

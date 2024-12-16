@@ -13,7 +13,6 @@ configPos = "mode"
 configFmt = "json"
 configOpts = {
     "paths": {"hotkey": "-a", "type": "switch"},
-    "dump": {"hotkey": "-d", "type": "switch"},
     "chain": {"hotkey": "", "type": "flag"},
     "noHeader": {"hotkey": "", "type": "switch"},
     "fmt": {"hotkey": "-x", "type": "flag"},

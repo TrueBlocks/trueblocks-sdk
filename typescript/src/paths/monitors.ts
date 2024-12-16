@@ -13,29 +13,32 @@ import { address, Count, float64, Message, Monitor, MonitorClean, uint64 } from 
 
 export function getMonitors(
   parameters?: {
-    addrs?: address[],
-    delete?: boolean,
-    undelete?: boolean,
-    remove?: boolean,
-    clean?: boolean,
-    list?: boolean,
-    count?: boolean,
-    staged?: boolean,
-    watch?: boolean,
-    watchlist?: string,
-    commands?: string,
-    batchSize?: uint64,
-    runCount?: uint64,
-    sleep?: float64,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
+    addrs?: address[];
+    delete?: boolean;
+    undelete?: boolean;
+    remove?: boolean;
+    clean?: boolean;
+    list?: boolean;
+    count?: boolean;
+    staged?: boolean;
+    watch?: boolean;
+    watchlist?: string;
+    commands?: string;
+    batchSize?: uint64;
+    runCount?: uint64;
+    sleep?: float64;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Count[] | Message[] | MonitorClean[] | Monitor[]>(
-    { endpoint: '/monitors', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Count[] | Message[] | MonitorClean[] | Monitor[]>({
+    endpoint: '/monitors',
+    method: 'get',
+    parameters,
+    options,
+  });
 }

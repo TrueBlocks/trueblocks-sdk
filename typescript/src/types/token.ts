@@ -11,19 +11,19 @@
 import { address, blknum, datetime, float64, int256, timestamp, TokenType, txnum, uint64 } from '.';
 
 export type Token = {
-  address: address
-  balance: int256
-  balanceDec?: float64
-  blockNumber: blknum
-  date?: datetime
-  decimals: uint64
-  diff?: int256
-  holder: address
-  name: string
-  priorBalance?: int256
-  symbol: string
-  timestamp: timestamp
-  totalSupply: int256
-  transactionIndex?: txnum
-  type: TokenType
-}
+  address: address;
+  balance: int256;
+  balanceDec?: float64;
+  blockNumber: blknum;
+  date?: datetime;
+  decimals: uint64;
+  diff?: int256;
+  holder: address;
+  name: string;
+  priorBalance?: int256;
+  symbol: string;
+  timestamp: timestamp;
+  totalSupply: int256;
+  transactionIndex?: txnum;
+  type: TokenType;
+};

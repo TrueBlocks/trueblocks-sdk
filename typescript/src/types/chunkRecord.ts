@@ -11,10 +11,10 @@
 import { blkrange, int64, ipfshash, RangeDates } from '.';
 
 export type ChunkRecord = {
-  bloomHash: ipfshash
-  bloomSize: int64
-  indexHash: ipfshash
-  indexSize: int64
-  range: blkrange
-  rangeDates?: RangeDates
-}
+  bloomHash: ipfshash;
+  bloomSize: int64;
+  indexHash: ipfshash;
+  indexSize: int64;
+  range: blkrange;
+  rangeDates?: RangeDates;
+};

@@ -11,11 +11,11 @@
 import { uint64 } from '.';
 
 export type Chain = {
-  chain: string
-  chainId: uint64
-  ipfsGateway: string
-  localExplorer: string
-  remoteExplorer: string
-  rpcProvider: string
-  symbol: string
-}
+  chain: string;
+  chainId: uint64;
+  ipfsGateway: string;
+  localExplorer: string;
+  remoteExplorer: string;
+  rpcProvider: string;
+  symbol: string;
+};

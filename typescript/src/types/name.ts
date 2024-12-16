@@ -11,16 +11,16 @@
 import { address, uint64 } from '.';
 
 export type Name = {
-  address: address
-  decimals: uint64
-  deleted?: boolean
-  isContract?: boolean
-  isCustom?: boolean
-  isErc20?: boolean
-  isErc721?: boolean
-  isPrefund?: boolean
-  name: string
-  source: string
-  symbol: string
-  tags: string
-}
+  address: address;
+  decimals: uint64;
+  deleted?: boolean;
+  isContract?: boolean;
+  isCustom?: boolean;
+  isErc20?: boolean;
+  isErc721?: boolean;
+  isPrefund?: boolean;
+  name: string;
+  source: string;
+  symbol: string;
+  tags: string;
+};

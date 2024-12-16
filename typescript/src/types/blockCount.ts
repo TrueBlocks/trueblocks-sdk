@@ -11,13 +11,13 @@
 import { blknum, datetime, timestamp, uint64 } from '.';
 
 export type BlockCount = {
-  addressCnt?: uint64
-  blockNumber: blknum
-  date?: datetime
-  logsCnt?: uint64
-  timestamp: timestamp
-  tracesCnt?: uint64
-  transactionsCnt: uint64
-  unclesCnt?: uint64
-  withdrawalsCnt?: uint64
-}
+  addressCnt?: uint64;
+  blockNumber: blknum;
+  date?: datetime;
+  logsCnt?: uint64;
+  timestamp: timestamp;
+  tracesCnt?: uint64;
+  transactionsCnt: uint64;
+  unclesCnt?: uint64;
+  withdrawalsCnt?: uint64;
+};

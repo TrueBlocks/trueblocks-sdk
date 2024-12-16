@@ -13,17 +13,15 @@ import { Receipt, txId } from '../types';
 
 export function getReceipts(
   parameters?: {
-    transactions: txId[],
-    articulate?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
+    transactions: txId[];
+    articulate?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Receipt[]>(
-    { endpoint: '/receipts', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Receipt[]>({ endpoint: '/receipts', method: 'get', parameters, options });
 }

@@ -13,19 +13,17 @@ import { Status, uint64 } from '../types';
 
 export function getStatus(
   parameters?: {
-    modes?: string[],
-    diagnose?: boolean,
-    firstRecord?: uint64,
-    maxRecords?: uint64,
-    chains?: boolean,
-    healthcheck?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
+    modes?: string[];
+    diagnose?: boolean;
+    firstRecord?: uint64;
+    maxRecords?: uint64;
+    chains?: boolean;
+    healthcheck?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Status[]>(
-    { endpoint: '/status', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Status[]>({ endpoint: '/status', method: 'get', parameters, options });
 }

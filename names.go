@@ -12,6 +12,8 @@ import (
 	// EXISTING_CODE
 	"encoding/json"
 	"errors"
+	"fmt"
+	"sort"
 
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/base"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/crud"
@@ -109,6 +111,23 @@ func (opts *NamesOptions) NamesRemove() ([]types.Name, *types.MetaData, error) {
 }
 
 // No enums
+func SortNames(names []types.Name, sortSpec SortSpec) error {
+	if len(sortSpec.Fields) != len(sortSpec.Order) {
+		return fmt.Errorf("fields and order must have the same length")
+	}
+
+	sorts := make([]func(p1, p2 types.Name) bool, len(sortSpec.Fields))
+	for i, field := range sortSpec.Fields {
+		if !types.IsValidNameField(field) {
+			return fmt.Errorf("%s is not an Name sort field", field)
+		}
+		sorts[i] = types.NameBy(types.NameField(field), types.SortOrder(sortSpec.Order[i]))
+	}
+
+	sort.Slice(names, types.NameCmp(names, sorts...))
+	return nil
+}
+
 // EXISTING_CODE
 func (opts *NamesOptions) ModifyName(op crud.Operation, cd *crud.NameCrud) ([]types.Name, *types.MetaData, error) {
 	defer func() {
@@ -131,6 +150,11 @@ func (opts *NamesOptions) ModifyName(op crud.Operation, cd *crud.NameCrud) ([]ty
 	}
 
 	return nil, nil, errors.New("invalid operation " + string(op))
+}
+
+// Syntactic sugar
+func (opts *NamesOptions) NamesList() ([]types.Name, *types.MetaData, error) {
+	return opts.Names()
 }
 
 // EXISTING_CODE

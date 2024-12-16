@@ -13,30 +13,28 @@ import { address, Message, Name } from '../types';
 
 export function getNames(
   parameters?: {
-    terms: string[],
-    expand?: boolean,
-    matchCase?: boolean,
-    all?: boolean,
-    custom?: boolean,
-    prefund?: boolean,
-    addr?: boolean,
-    tags?: boolean,
-    clean?: boolean,
-    regular?: boolean,
-    dryRun?: boolean,
-    autoname?: address,
-    create?: boolean,
-    update?: boolean,
-    delete?: boolean,
-    undelete?: boolean,
-    remove?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
+    terms: string[];
+    expand?: boolean;
+    matchCase?: boolean;
+    all?: boolean;
+    custom?: boolean;
+    prefund?: boolean;
+    addr?: boolean;
+    tags?: boolean;
+    clean?: boolean;
+    regular?: boolean;
+    dryRun?: boolean;
+    autoname?: address;
+    create?: boolean;
+    update?: boolean;
+    delete?: boolean;
+    undelete?: boolean;
+    remove?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Message[] | Name[]>(
-    { endpoint: '/names', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Message[] | Name[]>({ endpoint: '/names', method: 'get', parameters, options });
 }

@@ -11,9 +11,9 @@
 import { ipfshash } from '.';
 
 export type ChunkPin = {
-  chain: string
-  manifestHash: ipfshash
-  specHash: ipfshash
-  timestampHash: ipfshash
-  version: string
-}
+  chain: string;
+  manifestHash: ipfshash;
+  specHash: ipfshash;
+  timestampHash: ipfshash;
+  version: string;
+};

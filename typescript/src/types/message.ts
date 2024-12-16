@@ -11,6 +11,6 @@
 import { int64 } from '.';
 
 export type Message = {
-  msg?: string
-  num?: int64
-}
+  msg?: string;
+  num?: int64;
+};

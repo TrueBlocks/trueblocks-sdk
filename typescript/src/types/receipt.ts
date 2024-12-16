@@ -11,18 +11,18 @@
 import { address, blknum, gas, hash, Log, txnum, uint64 } from '.';
 
 export type Receipt = {
-  blockHash?: hash
-  blockNumber: blknum
-  contractAddress?: address
-  cumulativeGasUsed?: gas
-  effectiveGasPrice?: gas
-  from?: address
-  gasUsed: gas
-  isError?: boolean
-  logs: Log[]
-  logsBloom?: string
-  status: uint64
-  to?: address
-  transactionHash: hash
-  transactionIndex: txnum
-}
+  blockHash?: hash;
+  blockNumber: blknum;
+  contractAddress?: address;
+  cumulativeGasUsed?: gas;
+  effectiveGasPrice?: gas;
+  from?: address;
+  gasUsed: gas;
+  isError?: boolean;
+  logs: Log[];
+  logsBloom?: string;
+  status: uint64;
+  to?: address;
+  transactionHash: hash;
+  transactionIndex: txnum;
+};

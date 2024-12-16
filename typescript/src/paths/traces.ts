@@ -13,20 +13,18 @@ import { Trace, TraceCount, txId } from '../types';
 
 export function getTraces(
   parameters?: {
-    transactions: txId[],
-    articulate?: boolean,
-    filter?: string,
-    count?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
-    ether?: boolean,
+    transactions: txId[];
+    articulate?: boolean;
+    filter?: string;
+    count?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
+    ether?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<TraceCount[] | Trace[]>(
-    { endpoint: '/traces', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<TraceCount[] | Trace[]>({ endpoint: '/traces', method: 'get', parameters, options });
 }

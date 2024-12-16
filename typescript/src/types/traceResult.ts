@@ -11,8 +11,8 @@
 import { address, bytes, gas } from '.';
 
 export type TraceResult = {
-  address?: address
-  code?: bytes
-  gasUsed?: gas
-  output?: bytes
-}
+  address?: address;
+  code?: bytes;
+  gasUsed?: gas;
+  output?: bytes;
+};

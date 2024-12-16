@@ -11,14 +11,14 @@
 import { Parameter } from '.';
 
 export type Function = {
-  anonymous?: boolean
-  constant?: boolean
-  encoding: string
-  inputs: Parameter[]
-  message?: string
-  name: string
-  outputs: Parameter[]
-  signature?: string
-  stateMutability?: string
-  type: string
-}
+  anonymous?: boolean;
+  constant?: boolean;
+  encoding: string;
+  inputs: Parameter[];
+  message?: string;
+  name: string;
+  outputs: Parameter[];
+  signature?: string;
+  stateMutability?: string;
+  type: string;
+};

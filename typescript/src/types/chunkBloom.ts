@@ -11,12 +11,12 @@
 import { blkrange, hash, RangeDates, uint64 } from '.';
 
 export type ChunkBloom = {
-  byteWidth: uint64
-  hash: hash
-  magic: string
-  nBlooms: uint64
-  nInserted: uint64
-  range: blkrange
-  rangeDates?: RangeDates
-  size: uint64
-}
+  byteWidth: uint64;
+  hash: hash;
+  magic: string;
+  nBlooms: uint64;
+  nInserted: uint64;
+  range: blkrange;
+  rangeDates?: RangeDates;
+  size: uint64;
+};

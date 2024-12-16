@@ -11,9 +11,9 @@
 import { address, blkrange, RangeDates, uint64 } from '.';
 
 export type ChunkAddress = {
-  address: address
-  count: uint64
-  offset: uint64
-  range: blkrange
-  rangeDates?: RangeDates
-}
+  address: address;
+  count: uint64;
+  offset: uint64;
+  range: blkrange;
+  rangeDates?: RangeDates;
+};

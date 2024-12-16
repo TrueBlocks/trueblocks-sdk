@@ -11,11 +11,11 @@
 import { int64, uint64 } from '.';
 
 export type CacheItem = {
-  items: any[]
-  lastCached?: string
-  nFiles: uint64
-  nFolders: uint64
-  path: string
-  sizeInBytes: int64
-  type: string
-}
+  items: any[];
+  lastCached?: string;
+  nFiles: uint64;
+  nFolders: uint64;
+  path: string;
+  sizeInBytes: int64;
+  type: string;
+};

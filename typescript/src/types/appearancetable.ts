@@ -11,6 +11,6 @@
 import { AddrRecord, AppRecord } from '.';
 
 export type AppearanceTable = {
-  AddressRecord: AddrRecord
-  Appearances: AppRecord[]
-}
+  AddressRecord: AddrRecord;
+  Appearances: AppRecord[];
+};

@@ -11,12 +11,12 @@
 import { uint64 } from '.';
 
 export type ReportCheck = {
-  checkedCnt: uint64
-  failedCnt: uint64
-  msgStrings: string[]
-  passedCnt: uint64
-  reason: string
-  result: string
-  skippedCnt: uint64
-  visitedCnt: uint64
-}
+  checkedCnt: uint64;
+  failedCnt: uint64;
+  msgStrings: string[];
+  passedCnt: uint64;
+  reason: string;
+  result: string;
+  skippedCnt: uint64;
+  visitedCnt: uint64;
+};

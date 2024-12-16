@@ -11,10 +11,10 @@
 import { address, blknum, uint64 } from '.';
 
 export type TraceFilter = {
-  after?: uint64
-  count?: uint64
-  fromAddress?: address
-  fromBlock?: blknum
-  toAddress?: address
-  toBlock?: blknum
-}
+  after?: uint64;
+  count?: uint64;
+  fromAddress?: address;
+  fromBlock?: blknum;
+  toAddress?: address;
+  toBlock?: blknum;
+};

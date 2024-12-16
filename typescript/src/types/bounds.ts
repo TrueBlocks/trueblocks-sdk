@@ -11,11 +11,11 @@
 import { Appearance, datetime, timestamp, uint64 } from '.';
 
 export type Bounds = {
-  count: uint64
-  firstApp: Appearance
-  firstDate?: datetime
-  firstTs: timestamp
-  latestApp: Appearance
-  latestDate?: datetime
-  latestTs: timestamp
-}
+  count: uint64;
+  firstApp: Appearance;
+  firstDate?: datetime;
+  firstTs: timestamp;
+  latestApp: Appearance;
+  latestDate?: datetime;
+  latestTs: timestamp;
+};

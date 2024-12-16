@@ -12,6 +12,8 @@ import (
 	// EXISTING_CODE
 
 	"encoding/json"
+	"fmt"
+	"sort"
 
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/base"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
@@ -69,5 +71,39 @@ func (opts *AbisOptions) AbisEncode(val string) ([]types.Function, *types.MetaDa
 }
 
 // No enums
+func SortAbis(abis []types.Abi, sortSpec SortSpec) error {
+	if len(sortSpec.Fields) != len(sortSpec.Order) {
+		return fmt.Errorf("fields and order must have the same length")
+	}
+
+	sorts := make([]func(p1, p2 types.Abi) bool, len(sortSpec.Fields))
+	for i, field := range sortSpec.Fields {
+		if !types.IsValidAbiField(field) {
+			return fmt.Errorf("%s is not an Abi sort field", field)
+		}
+		sorts[i] = types.AbiBy(types.AbiField(field), types.SortOrder(sortSpec.Order[i]))
+	}
+
+	sort.Slice(abis, types.AbiCmp(abis, sorts...))
+	return nil
+}
+
+func SortFunctions(functions []types.Function, sortSpec SortSpec) error {
+	if len(sortSpec.Fields) != len(sortSpec.Order) {
+		return fmt.Errorf("fields and order must have the same length")
+	}
+
+	sorts := make([]func(p1, p2 types.Function) bool, len(sortSpec.Fields))
+	for i, field := range sortSpec.Fields {
+		if !types.IsValidFunctionField(field) {
+			return fmt.Errorf("%s is not an Function sort field", field)
+		}
+		sorts[i] = types.FunctionBy(types.FunctionField(field), types.SortOrder(sortSpec.Order[i]))
+	}
+
+	sort.Slice(functions, types.FunctionCmp(functions, sorts...))
+	return nil
+}
+
 // EXISTING_CODE
 // EXISTING_CODE

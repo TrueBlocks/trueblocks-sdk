@@ -11,13 +11,13 @@
 import { address, blknum, datetime, Function, timestamp } from '.';
 
 export type Result = {
-  address: address
-  articulatedOut: Function
-  blockNumber: blknum
-  date?: datetime
-  encodedArguments: string
-  encoding: string
-  name: string
-  signature: string
-  timestamp: timestamp
-}
+  address: address;
+  articulatedOut: Function;
+  blockNumber: blknum;
+  date?: datetime;
+  encodedArguments: string;
+  encoding: string;
+  name: string;
+  signature: string;
+  timestamp: timestamp;
+};

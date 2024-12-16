@@ -11,19 +11,19 @@
 import { address, bytes, float64, gas, wei } from '.';
 
 export type TraceAction = {
-  address?: address
-  author?: address
-  balance?: wei
-  balanceEth?: float64
-  callType: string
-  ether?: float64
-  from: address
-  gas: gas
-  init?: string
-  input?: bytes
-  refundAddress?: address
-  rewardType?: string
-  selfDestructed?: address
-  to: address
-  value: wei
-}
+  address?: address;
+  author?: address;
+  balance?: wei;
+  balanceEth?: float64;
+  callType: string;
+  ether?: float64;
+  from: address;
+  gas: gas;
+  init?: string;
+  input?: bytes;
+  refundAddress?: address;
+  rewardType?: string;
+  selfDestructed?: address;
+  to: address;
+  value: wei;
+};

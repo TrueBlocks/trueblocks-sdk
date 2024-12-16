@@ -13,23 +13,26 @@ import { Count, NamedBlock, Timestamp } from '../types';
 
 export function getWhen(
   parameters?: {
-    blocks?: string[],
-    list?: boolean,
-    timestamps?: boolean,
-    count?: boolean,
-    repair?: boolean,
-    check?: boolean,
-    update?: boolean,
-    deep?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
+    blocks?: string[];
+    list?: boolean;
+    timestamps?: boolean;
+    count?: boolean;
+    repair?: boolean;
+    check?: boolean;
+    update?: boolean;
+    deep?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Count[] | NamedBlock[] | Timestamp[]>(
-    { endpoint: '/when', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Count[] | NamedBlock[] | Timestamp[]>({
+    endpoint: '/when',
+    method: 'get',
+    parameters,
+    options,
+  });
 }

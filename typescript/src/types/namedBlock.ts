@@ -11,10 +11,10 @@
 import { blknum, datetime, timestamp } from '.';
 
 export type NamedBlock = {
-  blockNumber: blknum
-  component?: string
-  date?: datetime
-  description?: string
-  name?: string
-  timestamp: timestamp
-}
+  blockNumber: blknum;
+  component?: string;
+  date?: datetime;
+  description?: string;
+  name?: string;
+  timestamp: timestamp;
+};

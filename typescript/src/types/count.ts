@@ -11,5 +11,5 @@
 import { uint64 } from '.';
 
 export type Count = {
-  count: uint64
-}
+  count: uint64;
+};

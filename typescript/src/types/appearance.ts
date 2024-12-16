@@ -11,11 +11,11 @@
 import { address, datetime, timestamp, uint64 } from '.';
 
 export type Appearance = {
-  address: address
-  blockNumber: uint64
-  date?: datetime
-  reason?: string
-  timestamp: timestamp
-  traceIndex?: uint64
-  transactionIndex: uint64
-}
+  address: address;
+  blockNumber: uint64;
+  date?: datetime;
+  reason?: string;
+  timestamp: timestamp;
+  traceIndex?: uint64;
+  transactionIndex: uint64;
+};

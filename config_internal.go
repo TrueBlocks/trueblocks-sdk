@@ -25,7 +25,7 @@ import (
 type configOptionsInternal struct {
 	Mode      ConfigMode        `json:"mode,omitempty"`
 	Paths     bool              `json:"paths,omitempty"`
-	Dump      bool              `json:"dump,omitempty"`
+	Session   bool              `json:"session,omitempty"`
 	RenderCtx *output.RenderCtx `json:"-"`
 	Globals
 }
@@ -85,7 +85,7 @@ func GetConfigOptions(args []string) (*configOptionsInternal, error) {
 
 type configGeneric interface {
 	types.CacheItem |
-		types.Config
+		types.Session
 }
 
 func queryConfig[T configGeneric](opts *configOptionsInternal) ([]T, *types.MetaData, error) {

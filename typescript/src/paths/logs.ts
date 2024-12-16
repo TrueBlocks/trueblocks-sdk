@@ -13,19 +13,17 @@ import { address, Log, topic, txId } from '../types';
 
 export function getLogs(
   parameters?: {
-    transactions: txId[],
-    emitter?: address[],
-    topic?: topic[],
-    articulate?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
+    transactions: txId[];
+    emitter?: address[];
+    topic?: topic[];
+    articulate?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Log[]>(
-    { endpoint: '/logs', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Log[]>({ endpoint: '/logs', method: 'get', parameters, options });
 }

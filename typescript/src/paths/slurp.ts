@@ -13,27 +13,30 @@ import { address, Appearance, blknum, float64, Monitor, Slurp, uint64 } from '..
 
 export function getSlurp(
   parameters?: {
-    addrs: address[],
-    blocks?: blknum[],
-    parts?: string[],
-    appearances?: boolean,
-    articulate?: boolean,
-    source?: 'etherscan' | 'key' | 'covalent' | 'alchemy',
-    count?: boolean,
-    page?: uint64,
-    pageId?: string,
-    perPage?: uint64,
-    sleep?: float64,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
-    ether?: boolean,
+    addrs: address[];
+    blocks?: blknum[];
+    parts?: string[];
+    appearances?: boolean;
+    articulate?: boolean;
+    source?: 'etherscan' | 'key' | 'covalent' | 'alchemy';
+    count?: boolean;
+    page?: uint64;
+    pageId?: string;
+    perPage?: uint64;
+    sleep?: float64;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
+    ether?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Monitor[] | Slurp[]>(
-    { endpoint: '/slurp', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Appearance[] | Monitor[] | Slurp[]>({
+    endpoint: '/slurp',
+    method: 'get',
+    parameters,
+    options,
+  });
 }

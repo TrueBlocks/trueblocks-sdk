@@ -11,8 +11,8 @@
 import { ChunkRecord, ipfshash } from '.';
 
 export type Manifest = {
-  chain: string
-  chunks: ChunkRecord[]
-  specification: ipfshash
-  version: string
-}
+  chain: string;
+  chunks: ChunkRecord[];
+  specification: ipfshash;
+  version: string;
+};

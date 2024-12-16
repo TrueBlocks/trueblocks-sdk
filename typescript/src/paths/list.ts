@@ -13,24 +13,27 @@ import { address, Appearance, blknum, Bounds, Monitor, uint64 } from '../types';
 
 export function getList(
   parameters?: {
-    addrs: address[],
-    count?: boolean,
-    noZero?: boolean,
-    bounds?: boolean,
-    unripe?: boolean,
-    silent?: boolean,
-    firstRecord?: uint64,
-    maxRecords?: uint64,
-    reversed?: boolean,
-    firstBlock?: blknum,
-    lastBlock?: blknum,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
+    addrs: address[];
+    count?: boolean;
+    noZero?: boolean;
+    bounds?: boolean;
+    unripe?: boolean;
+    silent?: boolean;
+    firstRecord?: uint64;
+    maxRecords?: uint64;
+    reversed?: boolean;
+    firstBlock?: blknum;
+    lastBlock?: blknum;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Bounds[] | Monitor[]>(
-    { endpoint: '/list', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Appearance[] | Bounds[] | Monitor[]>({
+    endpoint: '/list',
+    method: 'get',
+    parameters,
+    options,
+  });
 }

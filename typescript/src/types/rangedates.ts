@@ -11,8 +11,8 @@
 import { datetime, timestamp } from '.';
 
 export type RangeDates = {
-  firstDate?: datetime
-  firstTs?: timestamp
-  lastDate?: datetime
-  lastTs?: timestamp
-}
+  firstDate?: datetime;
+  firstTs?: timestamp;
+  lastDate?: datetime;
+  lastTs?: timestamp;
+};

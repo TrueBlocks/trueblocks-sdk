@@ -13,23 +13,21 @@ import { Abi, address, Count, Function } from '../types';
 
 export function getAbis(
   parameters?: {
-    addrs: address[],
-    known?: boolean,
-    proxyFor?: address,
-    list?: boolean,
-    count?: boolean,
-    find?: string[],
-    hint?: string[],
-    encode?: string,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
+    addrs: address[];
+    known?: boolean;
+    proxyFor?: address;
+    list?: boolean;
+    count?: boolean;
+    find?: string[];
+    hint?: string[];
+    encode?: string;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Abi[] | Count[] | Function[]>(
-    { endpoint: '/abis', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Abi[] | Count[] | Function[]>({ endpoint: '/abis', method: 'get', parameters, options });
 }

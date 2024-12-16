@@ -9,11 +9,11 @@
  */
 
 export type Parameter = {
-  components?: Parameter[]
-  indexed?: boolean
-  internalType?: string
-  name: string
-  strDefault?: string
-  type: string
-  value?: string
-}
+  components?: Parameter[];
+  indexed?: boolean;
+  internalType?: string;
+  name: string;
+  strDefault?: string;
+  type: string;
+  value?: string;
+};

@@ -11,16 +11,16 @@
 import { address, blknum, bytes, datetime, Function, hash, lognum, timestamp, topic, txnum } from '.';
 
 export type Log = {
-  address: address
-  articulatedLog?: Function
-  blockHash: hash
-  blockNumber: blknum
-  compressedLog?: string
-  data?: bytes
-  date?: datetime
-  logIndex: lognum
-  timestamp?: timestamp
-  topics?: topic[]
-  transactionHash: hash
-  transactionIndex: txnum
-}
+  address: address;
+  articulatedLog?: Function;
+  blockHash: hash;
+  blockNumber: blknum;
+  compressedLog?: string;
+  data?: bytes;
+  date?: datetime;
+  logIndex: lognum;
+  timestamp?: timestamp;
+  topics?: topic[];
+  transactionHash: hash;
+  transactionIndex: txnum;
+};

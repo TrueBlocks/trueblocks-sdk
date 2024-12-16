@@ -11,8 +11,8 @@
 import { blknum, datetime, int64, timestamp } from '.';
 
 export type Timestamp = {
-  blockNumber: blknum
-  date?: datetime
-  diff: int64
-  timestamp: timestamp
-}
+  blockNumber: blknum;
+  date?: datetime;
+  diff: int64;
+  timestamp: timestamp;
+};

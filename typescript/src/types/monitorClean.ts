@@ -11,10 +11,10 @@
 import { address, int64 } from '.';
 
 export type MonitorClean = {
-  address: address
-  dups: int64
-  removed: boolean
-  sizeNow: int64
-  sizeThen: int64
-  staged: boolean
-}
+  address: address;
+  dups: int64;
+  removed: boolean;
+  sizeNow: int64;
+  sizeThen: int64;
+  staged: boolean;
+};

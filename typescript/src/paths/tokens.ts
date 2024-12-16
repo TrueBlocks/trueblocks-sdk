@@ -13,21 +13,19 @@ import { address, blknum, Token } from '../types';
 
 export function getTokens(
   parameters?: {
-    addrs: address[],
-    blocks?: blknum[],
-    parts?: string[],
-    byAcct?: boolean,
-    changes?: boolean,
-    noZero?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
+    addrs: address[];
+    blocks?: blknum[];
+    parts?: string[];
+    byAcct?: boolean;
+    changes?: boolean;
+    noZero?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Token[]>(
-    { endpoint: '/tokens', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Token[]>({ endpoint: '/tokens', method: 'get', parameters, options });
 }

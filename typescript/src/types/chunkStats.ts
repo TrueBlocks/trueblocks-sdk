@@ -11,17 +11,17 @@
 import { blkrange, float64, RangeDates, uint64 } from '.';
 
 export type ChunkStats = {
-  addrsPerBlock: float64
-  appsPerAddr: float64
-  appsPerBlock: float64
-  bloomSz: uint64
-  chunkSz: uint64
-  nAddrs: uint64
-  nApps: uint64
-  nBlocks: uint64
-  nBlooms: uint64
-  range: blkrange
-  rangeDates?: RangeDates
-  ratio: float64
-  recWid: uint64
-}
+  addrsPerBlock: float64;
+  appsPerAddr: float64;
+  appsPerBlock: float64;
+  bloomSz: uint64;
+  chunkSz: uint64;
+  nAddrs: uint64;
+  nApps: uint64;
+  nBlocks: uint64;
+  nBlooms: uint64;
+  range: blkrange;
+  rangeDates?: RangeDates;
+  ratio: float64;
+  recWid: uint64;
+};

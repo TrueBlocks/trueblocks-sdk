@@ -11,12 +11,12 @@
 import { address, blknum, datetime, float64, timestamp, uint64, wei } from '.';
 
 export type Withdrawal = {
-  address: address
-  amount: wei
-  blockNumber: blknum
-  date?: datetime
-  ether?: float64
-  index: uint64
-  timestamp: timestamp
-  validatorIndex: uint64
-}
+  address: address;
+  amount: wei;
+  blockNumber: blknum;
+  date?: datetime;
+  ether?: float64;
+  index: uint64;
+  timestamp: timestamp;
+  validatorIndex: uint64;
+};

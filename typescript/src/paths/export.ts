@@ -9,49 +9,74 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, blknum, fourbyte, Log, Message, Monitor, Receipt, State, Statement, topic, Trace, Transaction, uint64, Withdrawal } from '../types';
+import {
+  address,
+  Appearance,
+  blknum,
+  fourbyte,
+  Log,
+  Message,
+  Monitor,
+  Receipt,
+  State,
+  Statement,
+  topic,
+  Trace,
+  Transaction,
+  uint64,
+  Withdrawal,
+} from '../types';
 
 export function getExport(
   parameters?: {
-    addrs: address[],
-    topics?: topic[],
-    fourbytes?: fourbyte[],
-    appearances?: boolean,
-    receipts?: boolean,
-    logs?: boolean,
-    traces?: boolean,
-    neighbors?: boolean,
-    accounting?: boolean,
-    statements?: boolean,
-    balances?: boolean,
-    withdrawals?: boolean,
-    articulate?: boolean,
-    cacheTraces?: boolean,
-    count?: boolean,
-    firstRecord?: uint64,
-    maxRecords?: uint64,
-    relevant?: boolean,
-    emitter?: address[],
-    topic?: topic[],
-    reverted?: boolean,
-    asset?: address[],
-    flow?: 'in' | 'out' | 'zero',
-    factory?: boolean,
-    unripe?: boolean,
-    reversed?: boolean,
-    noZero?: boolean,
-    firstBlock?: blknum,
-    lastBlock?: blknum,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
-    ether?: boolean,
+    addrs: address[];
+    topics?: topic[];
+    fourbytes?: fourbyte[];
+    appearances?: boolean;
+    receipts?: boolean;
+    logs?: boolean;
+    traces?: boolean;
+    neighbors?: boolean;
+    accounting?: boolean;
+    statements?: boolean;
+    balances?: boolean;
+    withdrawals?: boolean;
+    articulate?: boolean;
+    cacheTraces?: boolean;
+    count?: boolean;
+    firstRecord?: uint64;
+    maxRecords?: uint64;
+    relevant?: boolean;
+    emitter?: address[];
+    topic?: topic[];
+    reverted?: boolean;
+    asset?: address[];
+    flow?: 'in' | 'out' | 'zero';
+    factory?: boolean;
+    unripe?: boolean;
+    reversed?: boolean;
+    noZero?: boolean;
+    firstBlock?: blknum;
+    lastBlock?: blknum;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
+    ether?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Log[] | Message[] | Monitor[] | Receipt[] | State[] | Statement[] | Trace[] | Transaction[] | Withdrawal[]>(
-    { endpoint: '/export', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<
+    | Appearance[]
+    | Log[]
+    | Message[]
+    | Monitor[]
+    | Receipt[]
+    | State[]
+    | Statement[]
+    | Trace[]
+    | Transaction[]
+    | Withdrawal[]
+  >({ endpoint: '/export', method: 'get', parameters, options });
 }

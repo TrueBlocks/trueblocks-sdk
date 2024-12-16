@@ -11,10 +11,10 @@
 import { blknum, datetime, hash, timestamp, txnum, uint64 } from '.';
 
 export type TraceCount = {
-  blockNumber: blknum
-  date?: datetime
-  timestamp: timestamp
-  tracesCnt: uint64
-  transactionHash: hash
-  transactionIndex: txnum
-}
+  blockNumber: blknum;
+  date?: datetime;
+  timestamp: timestamp;
+  tracesCnt: uint64;
+  transactionHash: hash;
+  transactionIndex: txnum;
+};

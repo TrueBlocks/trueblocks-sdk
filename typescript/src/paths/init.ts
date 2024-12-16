@@ -13,16 +13,14 @@ import { blknum, float64, Message } from '../types';
 
 export function getInit(
   parameters?: {
-    all?: boolean,
-    example?: string,
-    dryRun?: boolean,
-    firstBlock?: blknum,
-    sleep?: float64,
-    chain: string,
+    all?: boolean;
+    example?: string;
+    dryRun?: boolean;
+    firstBlock?: blknum;
+    sleep?: float64;
+    chain: string;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Message[]>(
-    { endpoint: '/init', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Message[]>({ endpoint: '/init', method: 'get', parameters, options });
 }

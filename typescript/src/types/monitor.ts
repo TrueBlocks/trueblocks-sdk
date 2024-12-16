@@ -11,12 +11,12 @@
 import { address, int64, uint64 } from '.';
 
 export type Monitor = {
-  address: address
-  deleted: boolean
-  fileSize: int64
-  isEmpty: boolean
-  isStaged: boolean
-  lastScanned: uint64
-  nRecords: int64
-  name: string
-}
+  address: address;
+  deleted: boolean;
+  fileSize: int64;
+  isEmpty: boolean;
+  isStaged: boolean;
+  lastScanned: uint64;
+  nRecords: int64;
+  name: string;
+};

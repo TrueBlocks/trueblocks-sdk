@@ -11,9 +11,9 @@
 import { int64, ipfshash } from '.';
 
 export type IpfsPin = {
-  cid: ipfshash
-  datePinned: string
-  fileName: string
-  size: int64
-  status: string
-}
+  cid: ipfshash;
+  datePinned: string;
+  fileName: string;
+  size: int64;
+  status: string;
+};

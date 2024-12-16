@@ -11,8 +11,8 @@
 import { DestType } from '.';
 
 export type Destination = {
-  source: string
-  term: string
-  termType: DestType
-  url: string
-}
+  source: string;
+  term: string;
+  termType: DestType;
+  url: string;
+};

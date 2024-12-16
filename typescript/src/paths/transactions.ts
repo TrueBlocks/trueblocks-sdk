@@ -13,25 +13,28 @@ import { address, Appearance, Log, topic, Trace, Transaction, txId } from '../ty
 
 export function getTransactions(
   parameters?: {
-    transactions: txId[],
-    articulate?: boolean,
-    traces?: boolean,
-    uniq?: boolean,
-    flow?: 'from' | 'to',
-    logs?: boolean,
-    emitter?: address[],
-    topic?: topic[],
-    cacheTraces?: boolean,
-    fmt?: string,
-    chain: string,
-    noHeader?: boolean,
-    cache?: boolean,
-    decache?: boolean,
-    ether?: boolean,
+    transactions: txId[];
+    articulate?: boolean;
+    traces?: boolean;
+    uniq?: boolean;
+    flow?: 'from' | 'to';
+    logs?: boolean;
+    emitter?: address[];
+    topic?: topic[];
+    cacheTraces?: boolean;
+    fmt?: string;
+    chain: string;
+    noHeader?: boolean;
+    cache?: boolean;
+    decache?: boolean;
+    ether?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Log[] | Trace[] | Transaction[]>(
-    { endpoint: '/transactions', method: 'get', parameters, options },
-  );
+  return ApiCallers.fetch<Appearance[] | Log[] | Trace[] | Transaction[]>({
+    endpoint: '/transactions',
+    method: 'get',
+    parameters,
+    options,
+  });
 }

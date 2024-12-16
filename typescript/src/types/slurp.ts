@@ -11,32 +11,32 @@
 import { address, blknum, bytes, datetime, float64, Function, gas, hash, timestamp, txnum, uint64, wei } from '.';
 
 export type Slurp = {
-  address: address
-  amount: wei
-  articulatedTx: Function
-  blockHash: hash
-  blockNumber: blknum
-  compressedTx?: string
-  contractAddress: address
-  cumulativeGasUsed: string
-  date?: datetime
-  ether?: float64
-  from: address
-  functionName: string
-  gas: gas
-  gasPrice: gas
-  gasUsed: gas
-  hasToken: boolean
-  hash: hash
-  input: bytes
-  isError: boolean
-  methodId: string
-  nonce: uint64
-  timestamp: timestamp
-  to: address
-  transactionIndex: txnum
-  txReceiptStatus: string
-  validatorIndex: uint64
-  value: wei
-  withdrawalIndex: uint64
-}
+  address: address;
+  amount: wei;
+  articulatedTx: Function;
+  blockHash: hash;
+  blockNumber: blknum;
+  compressedTx?: string;
+  contractAddress: address;
+  cumulativeGasUsed: string;
+  date?: datetime;
+  ether?: float64;
+  from: address;
+  functionName: string;
+  gas: gas;
+  gasPrice: gas;
+  gasUsed: gas;
+  hasToken: boolean;
+  hash: hash;
+  input: bytes;
+  isError: boolean;
+  methodId: string;
+  nonce: uint64;
+  timestamp: timestamp;
+  to: address;
+  transactionIndex: txnum;
+  txReceiptStatus: string;
+  validatorIndex: uint64;
+  value: wei;
+  withdrawalIndex: uint64;
+};

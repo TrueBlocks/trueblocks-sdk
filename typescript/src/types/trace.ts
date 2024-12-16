@@ -11,18 +11,18 @@
 import { blknum, datetime, Function, hash, timestamp, TraceAction, TraceResult, txnum, uint64 } from '.';
 
 export type Trace = {
-  action: TraceAction
-  articulatedTrace?: Function
-  blockHash: hash
-  blockNumber: blknum
-  compressedTrace?: string
-  date?: datetime
-  error?: string
-  result: TraceResult
-  subtraces: uint64
-  timestamp: timestamp
-  traceAddress: uint64[]
-  transactionHash: hash
-  transactionIndex: txnum
-  type?: string
-}
+  action: TraceAction;
+  articulatedTrace?: Function;
+  blockHash: hash;
+  blockNumber: blknum;
+  compressedTrace?: string;
+  date?: datetime;
+  error?: string;
+  result: TraceResult;
+  subtraces: uint64;
+  timestamp: timestamp;
+  traceAddress: uint64[];
+  transactionHash: hash;
+  transactionIndex: txnum;
+  type?: string;
+};
