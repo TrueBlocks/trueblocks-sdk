@@ -9,19 +9,20 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { CacheItem, Session } from '../types';
+import { CacheItem, Config } from '../types';
 
 export function getConfig(
   parameters?: {
     mode?: 'show' | 'edit';
     paths?: boolean;
+    dump?: boolean;
     fmt?: string;
     chain: string;
     noHeader?: boolean;
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<CacheItem[] | Session[]>(
+  return ApiCallers.fetch<CacheItem[] | Config[]>(
     { endpoint: '/config', method: 'get', parameters, options },
   );
 }
