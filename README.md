@@ -1,6 +1,6 @@
 # TrueBlocks SDKs
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/TrueBlocks/trueblocks-sdk/v3.svg)](https://pkg.go.dev/github.com/TrueBlocks/trueblocks-sdk/v3)
+[![Go Reference](https://pkg.go.dev/badge/github.com/TrueBlocks/trueblocks-sdk/v4.svg)](https://pkg.go.dev/github.com/TrueBlocks/trueblocks-sdk/v4)
 
 ## Table of Contents
 
@@ -21,7 +21,7 @@ You are welcome to use the SDK, but it is currently pre-alpha.
 
 ## Documentation
 
-The SDK's [documentation is here](https://pkg.go.dev/github.com/TrueBlocks/trueblocks-sdk/v3). Also, see our website for the [more information](https://trueblocks.io/).
+The SDK's [documentation is here](https://pkg.go.dev/github.com/TrueBlocks/trueblocks-sdk/v4). Also, see our website for the [more information](https://trueblocks.io/).
 
 ## Contributing
 
