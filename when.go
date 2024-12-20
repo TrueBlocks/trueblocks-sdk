@@ -11,6 +11,7 @@ package sdk
 import (
 	// EXISTING_CODE
 	"encoding/json"
+	"fmt"
 
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/base"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
@@ -64,4 +65,21 @@ func (opts *WhenOptions) WhenCount() ([]types.Count, *types.MetaData, error) {
 
 // No enums
 // EXISTING_CODE
+func TsFromBlock(chain string, blockNum base.Blknum) (base.Timestamp, error) {
+	whenOpts := WhenOptions{
+		BlockIds: []string{fmt.Sprintf("%d", blockNum)},
+		Globals: Globals{
+			Chain: chain,
+		},
+	}
+
+	var err error
+	var when []types.NamedBlock
+	if when, _, err = whenOpts.When(); err != nil {
+		return 0, fmt.Errorf("error getting timestamp on chain %s: %w", chain, err)
+	}
+
+	return when[0].Timestamp, nil
+}
+
 // EXISTING_CODE
