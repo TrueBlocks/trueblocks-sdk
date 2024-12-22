@@ -13,7 +13,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"net"
 	"os"
+	"os/signal"
 	"strings"
 	"time"
 
@@ -140,24 +142,90 @@ func enumFromDaemonScrape(values []string) (DaemonScrape, error) {
 }
 
 // EXISTING_CODE
-func (opts *DaemonOptions) Start(ready chan<- bool) {
+func StartApiServer(urlOut *string) {
 	go func() {
-		in := opts.toInternal()
-		buffer := bytes.Buffer{}
-		if err := in.DaemonBytes(&buffer); err != nil {
-			fmt.Fprintf(os.Stderr, "Error starting daemon: %s\n", err)
+		*urlOut = getApiUrl()
+		ready := make(chan bool)
+
+		opts := DaemonOptions{
+			Silent: true,
+			Url:    *urlOut,
+		}
+
+		// Start the daemon process
+		go func() {
+			in := opts.toInternal()
+			buffer := bytes.Buffer{}
+			if err := in.DaemonBytes(&buffer); err != nil {
+				fmt.Fprintf(os.Stderr, "Error starting daemon: %s\n", err)
+				return
+			}
+			ready <- true
+		}()
+
+		<-ready
+		fmt.Printf("API server started at %s\n", *urlOut)
+
+		// Handle signals for graceful shutdown
+		sigChan := make(chan os.Signal, 1)
+		signal.Notify(sigChan, os.Interrupt) // Portable `os.Interrupt` for Ctrl+C
+
+		cleanupDone := make(chan bool, 1) // Tracks cleanup completion
+		firstSignal := true               // Tracks whether it's the first signal
+
+		for {
+			sig := <-sigChan
+			if firstSignal {
+				fmt.Printf("\nReceived signal: %s. Initiating cleanup...\n", sig)
+				firstSignal = false
+
+				// Start cleanup in a separate goroutine
+				go func() {
+					// Perform cleanup tasks here
+					time.Sleep(3 * time.Second) // Simulate cleanup work
+					fmt.Println("Cleanup completed.")
+					cleanupDone <- true
+				}()
+
+				// Wait for cleanup to complete or proceed with shutdown
+				<-cleanupDone
+				fmt.Println("Exiting gracefully after cleanup.")
+				os.Exit(0)
+			} else {
+				fmt.Printf("\nReceived signal: %s. Forcing shutdown...\n", sig)
+				os.Exit(1) // Force quit
+			}
 		}
 	}()
-
-	time.Sleep(1 * time.Second)
-	ready <- true
 }
 
-func NewDaemon(url string) *DaemonOptions {
-	return &DaemonOptions{
-		Silent: true,
-		Url:    url,
+// getApiUrl returns the URL (including port) where the API server is running (or will run).
+func getApiUrl() string {
+	apiPort := strings.ReplaceAll(os.Getenv("TB_API_PORT"), ":", "")
+	if apiPort == "" {
+		preferred := []string{"8080", "8088", "9090", "9099"}
+		apiPort = findAvailablePort(preferred)
 	}
+
+	return "localhost:" + apiPort
+}
+
+// findAvailablePort returns a port number that is available for listening.
+func findAvailablePort(preferred []string) string {
+	for _, port := range preferred {
+		if listener, err := net.Listen("tcp", port); err == nil {
+			defer listener.Close()
+			return port
+		}
+	}
+
+	if listener, err := net.Listen("tcp", ":0"); err == nil {
+		defer listener.Close()
+		addr := listener.Addr().(*net.TCPAddr)
+		return fmt.Sprintf("%d", addr.Port)
+	}
+
+	return "0"
 }
 
 // EXISTING_CODE
