@@ -28,33 +28,33 @@ func NewIpfsService(logger *slog.Logger) *IpfsService {
 	}
 }
 
-func (i *IpfsService) Name() string {
-	return "IPFS Daemon"
+func (s *IpfsService) Name() string {
+	return "ipfs"
 }
 
-func (i *IpfsService) Initialize() error {
+func (s *IpfsService) Initialize() error {
 	apiMultiaddr, err := readIPFSConfig()
 	if err != nil {
-		i.logger.Error("failed to read IPFS config", "error", err)
+		s.logger.Error("failed to read IPFS config", "error", err)
 		return err
 	}
 
 	apiPort, err := extractPortFromMultiaddr(apiMultiaddr)
 	if err != nil {
-		i.logger.Error("failed to extract port from IPFS config", "error", err)
+		s.logger.Error("failed to extract port from IPFS config", "error", err)
 		return err
 	}
 
-	i.apiMultiaddr = apiMultiaddr
-	i.apiPort = apiPort
+	s.apiMultiaddr = apiMultiaddr
+	s.apiPort = apiPort
 
 	if !isPortAvailable(apiPort) {
-		i.wasRunning = true
-		i.logger.Info("IPFS daemon is already running", "port", apiPort)
+		s.wasRunning = true
+		s.logger.Info("IPFS daemon is already running", "port", apiPort)
 		return nil
 	}
 
-	i.wasRunning = false
+	s.wasRunning = false
 	return nil
 }
 
@@ -93,15 +93,15 @@ func extractPortFromMultiaddr(multiaddr string) (string, error) {
 	return "", fmt.Errorf("no TCP port found in multiaddress: %s", multiaddr)
 }
 
-func (i *IpfsService) Process(ready chan bool) error {
-	if i.wasRunning {
-		i.logger.Info("IPFS daemon is already running, skipping start", "multiaddr", i.apiMultiaddr)
+func (s *IpfsService) Process(ready chan bool) error {
+	if s.wasRunning {
+		s.logger.Info("IPFS daemon is already running, skipping start", "multiaddr", s.apiMultiaddr)
 		ready <- true
 		return nil
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
-	i.cancel = cancel
+	s.cancel = cancel
 
 	cmd := exec.CommandContext(ctx, "ipfs", "daemon")
 	cmd.Stdout = io.Discard
@@ -109,72 +109,72 @@ func (i *IpfsService) Process(ready chan bool) error {
 	cmd.Env = os.Environ()
 
 	if err := cmd.Start(); err != nil {
-		i.logger.Error("failed to start IPFS daemon", "error", err)
+		s.logger.Error("failed to start IPFS daemon", "error", err)
 		cancel()
 		return err
 	}
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
-	i.cmd = cmd
-	i.logger.Info("IPFS daemon process started successfully")
+	s.cmd = cmd
+	s.logger.Info("IPFS daemon process started successfully")
 
 	go func() {
 		pollInterval := 200 * time.Millisecond
 		maxRetries := 50
 
 		for attempt := 0; attempt < maxRetries; attempt++ {
-			if !isPortAvailable(i.apiPort) {
-				i.logger.Info("IPFS daemon is now running", "port", i.apiPort)
+			if !isPortAvailable(s.apiPort) {
+				s.logger.Info("IPFS daemon is now running", "port", s.apiPort)
 				ready <- true
 				return
 			}
 			time.Sleep(pollInterval)
 		}
 
-		i.logger.Error("timeout waiting for IPFS daemon to start", "multiaddr", i.apiMultiaddr)
+		s.logger.Error("timeout waiting for IPFS daemon to start", "multiaddr", s.apiMultiaddr)
 		cancel()
 		ready <- false
 	}()
 
 	go func() {
 		if err := cmd.Wait(); err != nil {
-			i.logger.Error("IPFS daemon process exited", "error", err)
+			s.logger.Error("IPFS daemon process exited", "error", err)
 		} else {
-			i.logger.Info("IPFS daemon process exited cleanly")
+			s.logger.Info("IPFS daemon process exited cleanly")
 		}
 	}()
 
 	return nil
 }
 
-func (i *IpfsService) Cleanup() {
-	if i.cancel != nil {
-		i.logger.Info("shutting down IPFS daemon")
-		i.cancel()
+func (s *IpfsService) Cleanup() {
+	if s.cancel != nil {
+		s.logger.Info("shutting down IPFS daemon")
+		s.cancel()
 	}
 
-	if i.cmd != nil {
-		if err := i.cmd.Wait(); err != nil {
-			i.logger.Error("error waiting for IPFS daemon to shut down", "error", err)
+	if s.cmd != nil {
+		if err := s.cmd.Wait(); err != nil {
+			s.logger.Error("error waiting for IPFS daemon to shut down", "error", err)
 		} else {
-			i.logger.Info("IPFS daemon shut down cleanly")
+			s.logger.Info("IPFS daemon shut down cleanly")
 		}
 	}
 }
 
-func (i *IpfsService) Logger() *slog.Logger {
-	return i.logger
+func (s *IpfsService) Logger() *slog.Logger {
+	return s.logger
 }
 
-func (i *IpfsService) ApiPort() string {
-	return i.apiPort
+func (s *IpfsService) ApiPort() string {
+	return s.apiPort
 }
 
-func (i *IpfsService) ApiMultiaddr() string {
-	return i.apiMultiaddr
+func (s *IpfsService) ApiMultiaddr() string {
+	return s.apiMultiaddr
 }
 
-func (i *IpfsService) WasRunning() bool {
-	return i.wasRunning
+func (s *IpfsService) WasRunning() bool {
+	return s.wasRunning
 }

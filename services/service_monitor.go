@@ -21,23 +21,23 @@ func NewMonitorService(logger *slog.Logger) *MonitorService {
 }
 
 // Name returns the name of the service.
-func (m *MonitorService) Name() string {
-	return "Monitor Service"
+func (s *MonitorService) Name() string {
+	return "monitor"
 }
 
 // Initialize performs any setup required for the MonitorService.
-func (m *MonitorService) Initialize() error {
-	m.logger.Info("Monitor service initialized.")
+func (s *MonitorService) Initialize() error {
+	s.logger.Info("Monitor service initialized.")
 	return nil
 }
 
 // Process starts the monitor logic in a goroutine and signals readiness.
-func (m *MonitorService) Process(ready chan bool) error {
+func (s *MonitorService) Process(ready chan bool) error {
 	ready <- true // Signal that the service is ready.
-	m.logger.Info("Monitor service started.")
+	s.logger.Info("Monitor service started.")
 	go func() {
 		for {
-			m.logger.Info("Monitor is running...")
+			s.logger.Info("Monitor is running...")
 			time.Sleep(3 * time.Second)
 		}
 	}()
@@ -45,11 +45,11 @@ func (m *MonitorService) Process(ready chan bool) error {
 }
 
 // Cleanup stops the MonitorService.
-func (m *MonitorService) Cleanup() {
-	m.logger.Info("Monitor service cleanup complete.")
+func (s *MonitorService) Cleanup() {
+	s.logger.Info("Monitor service cleanup complete.")
 }
 
 // Logger returns the logger for this service.
-func (m *MonitorService) Logger() *slog.Logger {
-	return m.logger
+func (s *MonitorService) Logger() *slog.Logger {
+	return s.logger
 }

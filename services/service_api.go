@@ -18,25 +18,25 @@ func NewApiService(logger *slog.Logger) *ApiService {
 	}
 }
 
-func (a *ApiService) Name() string {
-	return "API Server"
+func (s *ApiService) Name() string {
+	return "api"
 }
 
-func (a *ApiService) Initialize() error {
-	a.apiUrl = getApiUrl()
+func (s *ApiService) Initialize() error {
+	s.apiUrl = getApiUrl()
 	return nil
 }
 
-func (a *ApiService) Process(ready chan bool) error {
-	a.logger.Info("starting API process")
+func (s *ApiService) Process(ready chan bool) error {
+	s.logger.Info("starting API process")
 	opts := sdk.DaemonOptions{
 		Silent: true,
-		Url:    a.apiUrl,
+		Url:    s.apiUrl,
 	}
 	in := opts.ToInternal()
 	buffer := bytes.Buffer{}
 	if err := in.DaemonBytes(&buffer); err != nil {
-		a.logger.Error("error starting daemon", "error", err)
+		s.logger.Error("error starting daemon", "error", err)
 		return err
 	}
 
@@ -44,14 +44,14 @@ func (a *ApiService) Process(ready chan bool) error {
 	return nil
 }
 
-func (a *ApiService) Cleanup() {
-	a.logger.Info("cleaning up API Server")
+func (s *ApiService) Cleanup() {
+	s.logger.Info("cleaning up API Server")
 }
 
-func (a *ApiService) Logger() *slog.Logger {
-	return a.logger
+func (s *ApiService) Logger() *slog.Logger {
+	return s.logger
 }
 
-func (a *ApiService) ApiUrl() string {
-	return a.apiUrl
+func (s *ApiService) ApiUrl() string {
+	return s.apiUrl
 }
