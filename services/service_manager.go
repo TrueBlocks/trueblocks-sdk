@@ -90,6 +90,8 @@ func (sm *ServiceManager) IsPaused(name string) ([]map[string]string, error) {
 					return results, nil
 				}
 			}
+		} else {
+			results = append(results, map[string]string{"name": svc.Name(), "status": "not pausable"})
 		}
 	}
 
@@ -106,18 +108,22 @@ func (sm *ServiceManager) Pause(name string) ([]map[string]string, error) {
 	for _, svc := range sm.services {
 		if pauser, ok := svc.(Pauser); ok {
 			if name == "" || svc.Name() == name {
-				if childManager, ok := svc.(ChildManager); ok && childManager.HasChild() {
-					childManager.Cleanup()
-					results = append(results, map[string]string{"name": svc.Name(), "status": "child process cleaned up"})
-				}
-				status := "not paused"
-				_ = pauser.Pause()
-				if pauser.IsPaused() {
-					status = "paused"
-				}
-				results = append(results, map[string]string{"name": svc.Name(), "status": status})
-				if name != "" {
-					return results, nil
+				if !pauser.IsPaused() {
+					if childManager, ok := svc.(ChildManager); ok && childManager.HasChild() {
+						childManager.Cleanup()
+						results = append(results, map[string]string{"name": svc.Name(), "status": "child process cleaned up"})
+					}
+					status := "not paused"
+					_ = pauser.Pause()
+					if pauser.IsPaused() {
+						status = "paused"
+					}
+					results = append(results, map[string]string{"name": svc.Name(), "status": status})
+					if name != "" {
+						return results, nil
+					}
+				} else {
+					results = append(results, map[string]string{"name": svc.Name(), "status": "already paused"})
 				}
 			}
 		}

@@ -40,6 +40,7 @@ func (s *ControlService) AttachServiceManager(manager *ServiceManager) {
 
 func (s *ControlService) Initialize() error {
 	mux := http.NewServeMux()
+	mux.HandleFunc("/status", s.handleIsPaused)
 	mux.HandleFunc("/isPaused", s.handleIsPaused)
 	mux.HandleFunc("/pause", s.handlePause)
 	mux.HandleFunc("/unpause", s.handleUnpause)
