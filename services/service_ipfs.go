@@ -58,41 +58,6 @@ func (s *IpfsService) Initialize() error {
 	return nil
 }
 
-func readIPFSConfig() (string, error) {
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		return "", fmt.Errorf("failed to get user home directory: %w", err)
-	}
-
-	configPath := filepath.Join(homeDir, ".ipfs", "config")
-	configData, err := os.ReadFile(configPath)
-	if err != nil {
-		return "", fmt.Errorf("failed to read IPFS config file: %w", err)
-	}
-
-	var config struct {
-		Addresses struct {
-			API string `json:"API"`
-		} `json:"Addresses"`
-	}
-
-	if err := json.Unmarshal(configData, &config); err != nil {
-		return "", fmt.Errorf("failed to parse IPFS config file: %w", err)
-	}
-
-	return config.Addresses.API, nil
-}
-
-func extractPortFromMultiaddr(multiaddr string) (string, error) {
-	parts := strings.Split(multiaddr, "/")
-	for i, part := range parts {
-		if part == "tcp" && i+1 < len(parts) {
-			return parts[i+1], nil
-		}
-	}
-	return "", fmt.Errorf("no TCP port found in multiaddress: %s", multiaddr)
-}
-
 func (s *IpfsService) Process(ready chan bool) error {
 	if s.wasRunning {
 		s.logger.Info("IPFS daemon is already running, skipping start", "multiaddr", s.apiMultiaddr)
@@ -177,4 +142,39 @@ func (s *IpfsService) ApiMultiaddr() string {
 
 func (s *IpfsService) WasRunning() bool {
 	return s.wasRunning
+}
+
+func readIPFSConfig() (string, error) {
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		return "", fmt.Errorf("failed to get user home directory: %w", err)
+	}
+
+	configPath := filepath.Join(homeDir, ".ipfs", "config")
+	configData, err := os.ReadFile(configPath)
+	if err != nil {
+		return "", fmt.Errorf("failed to read IPFS config file: %w", err)
+	}
+
+	var config struct {
+		Addresses struct {
+			API string `json:"API"`
+		} `json:"Addresses"`
+	}
+
+	if err := json.Unmarshal(configData, &config); err != nil {
+		return "", fmt.Errorf("failed to parse IPFS config file: %w", err)
+	}
+
+	return config.Addresses.API, nil
+}
+
+func extractPortFromMultiaddr(multiaddr string) (string, error) {
+	parts := strings.Split(multiaddr, "/")
+	for i, part := range parts {
+		if part == "tcp" && i+1 < len(parts) {
+			return parts[i+1], nil
+		}
+	}
+	return "", fmt.Errorf("no TCP port found in multiaddress: %s", multiaddr)
 }
