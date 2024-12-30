@@ -19,7 +19,7 @@ type Service interface {
 	Logger() *slog.Logger
 }
 
-func StartService(svc Service) {
+func StartService(svc Service, stopChan chan os.Signal) {
 	go func() {
 		logger := svc.Logger()
 		if logger == nil {
