@@ -1,17 +1,15 @@
 package services
 
 import (
-	"fmt"
 	"io"
 	"log/slog"
 	"net"
 	"os"
-	"os/signal"
 	"strings"
 	"time"
 )
 
-type Service interface {
+type Servicer interface {
 	Name() string
 	Initialize() error
 	Process(chan bool) error
@@ -19,63 +17,70 @@ type Service interface {
 	Logger() *slog.Logger
 }
 
-func StartService(svc Service, stopChan chan os.Signal) {
-	go func() {
-		logger := svc.Logger()
-		if logger == nil {
-			logger = slog.New(slog.NewTextHandler(io.Discard, nil))
-		}
+type Pauser interface {
+	Servicer
+	IsPaused() bool
+	Pause() bool
+	Unpause() bool
+}
 
-		err := svc.Initialize()
-		if err != nil {
-			logger.Error("service initialization failed", "name", svc.Name(), "error", err)
+type ChildManager interface {
+	Pauser
+	HasChild() bool
+	KillChild() bool
+	RestartChild() bool
+}
+
+func StartService(svc Servicer, stopChan chan os.Signal) {
+	go func() {
+		logger := initializeLogger(svc.Logger())
+		logger.Info("Starting service", "name", svc.Name())
+
+		if err := svc.Initialize(); err != nil {
+			logger.Error("Service initialization failed", "name", svc.Name(), "error", err)
 			return
 		}
 
 		ready := make(chan bool)
-		err = svc.Process(ready)
-		if err != nil {
-			logger.Error("service process failed", "name", svc.Name(), "error", err)
+
+		go func() {
+			if err := svc.Process(ready); err != nil {
+				logger.Error("Service process failed", "name", svc.Name(), "error", err)
+			}
+		}()
+
+		readySignal := <-ready
+		if !readySignal {
+			logger.Error("Service did not start properly", "name", svc.Name())
 			return
 		}
 
-		if !<-ready {
-			logger.Error("service did not start properly", "name", svc.Name())
-			return
-		}
-
-		logger.Info("service started", "name", svc.Name())
+		logger.Info("Service started successfully", "name", svc.Name())
 
 		cleanupDone := make(chan bool, 1)
-		handleSignals(svc, cleanupDone)
+		handleSignals(svc, stopChan, cleanupDone)
 	}()
 }
 
-func handleSignals(svc Service, cleanupDone chan bool) {
-	sigChan := make(chan os.Signal, 1)
-	signal.Notify(sigChan, os.Interrupt)
-
+func handleSignals(svc Servicer, stopChan chan os.Signal, cleanupDone chan bool) {
 	logger := svc.Logger()
 	firstSignal := true
-
 	for {
-		sig := <-sigChan
+		sig := <-stopChan
+		logger.Info("Signal received", "signal", sig, "name", svc.Name())
 		if firstSignal {
-			logger.Info("received signal, initiating cleanup", "signal", sig, "name", svc.Name())
+			logger.Info("First signal received, initiating cleanup", "signal", sig, "name", svc.Name())
 			firstSignal = false
-
 			go func() {
 				svc.Cleanup()
-				logger.Info("cleanup completed", "name", svc.Name())
+				logger.Info("Cleanup completed", "name", svc.Name())
 				cleanupDone <- true
 			}()
-
 			<-cleanupDone
-			logger.Info("exiting gracefully after cleanup", "name", svc.Name())
+			logger.Info("Exiting gracefully after cleanup", "name", svc.Name())
 			os.Exit(0)
 		} else {
-			logger.Warn("forcing shutdown", "signal", sig, "name", svc.Name())
-			os.Exit(1)
+			logger.Warn("Additional signal received during cleanup. Ignoring.", "signal", sig, "name", svc.Name())
 		}
 	}
 }
@@ -87,32 +92,21 @@ func initializeLogger(logger *slog.Logger) *slog.Logger {
 	return logger
 }
 
-// getApiUrl returns the URL (including port) where the API server is running (or will run).
 func getApiUrl() string {
 	apiPort := strings.ReplaceAll(os.Getenv("TB_API_PORT"), ":", "")
 	if apiPort == "" {
-		preferred := []string{"8080", "8088", "9090", "9099"}
-		apiPort = findAvailablePort(preferred)
+		apiPort = findAvailablePort([]string{"8080", "8088", "9090", "9099"})
 	}
-
 	return "localhost:" + apiPort
 }
 
-// findAvailablePort returns a port number that is available for listening.
 func findAvailablePort(preferred []string) string {
 	for _, port := range preferred {
-		if listener, err := net.Listen("tcp", port); err == nil {
+		if listener, err := net.Listen("tcp", ":"+port); err == nil {
 			defer listener.Close()
 			return port
 		}
 	}
-
-	if listener, err := net.Listen("tcp", ":0"); err == nil {
-		defer listener.Close()
-		addr := listener.Addr().(*net.TCPAddr)
-		return fmt.Sprintf("%d", addr.Port)
-	}
-
 	return "0"
 }
 
