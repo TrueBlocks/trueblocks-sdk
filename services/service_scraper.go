@@ -140,10 +140,10 @@ func (s *ScrapeService) Logger() *slog.Logger {
 func (s *ScrapeService) initOneChain(chain string) (*scraperReport, error) {
 	defer func() {
 		logger.SetLoggerWriter(io.Discard)
-		os.Setenv("TB_NODE_HEADLESS", "")
+		os.Setenv("TB_SCRAPE_HEADLESS", "")
 	}()
 	logger.SetLoggerWriter(os.Stderr)
-	os.Setenv("TB_NODE_HEADLESS", "true")
+	os.Setenv("TB_SCRAPE_HEADLESS", "true")
 
 	opts := sdk.InitOptions{
 		Globals: sdk.Globals{
@@ -175,10 +175,10 @@ func (s *ScrapeService) initOneChain(chain string) (*scraperReport, error) {
 func (s *ScrapeService) scrapeOneChain(chain string) (*scraperReport, error) {
 	defer func() {
 		logger.SetLoggerWriter(io.Discard)
-		os.Setenv("TB_NODE_HEADLESS", "")
+		os.Setenv("TB_SCRAPE_HEADLESS", "")
 	}()
 	logger.SetLoggerWriter(os.Stderr)
-	os.Setenv("TB_NODE_HEADLESS", "true")
+	os.Setenv("TB_SCRAPE_HEADLESS", "true")
 
 	if s.IsPaused() {
 		s.logger.Debug("Scraper is paused, skipping scraping step")

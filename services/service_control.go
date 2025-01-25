@@ -44,6 +44,7 @@ func (s *ControlService) Initialize() error {
 	mux.HandleFunc("/isPaused", s.handleIsPaused)
 	mux.HandleFunc("/pause", s.handlePause)
 	mux.HandleFunc("/unpause", s.handleUnpause)
+	mux.HandleFunc("/", s.handleDefault)
 
 	s.server = &http.Server{
 		Addr:    s.listenAddr,
@@ -73,6 +74,16 @@ func (s *ControlService) Cleanup() {
 
 func (s *ControlService) Logger() *slog.Logger {
 	return s.logger
+}
+
+func (s *ControlService) handleDefault(w http.ResponseWriter, r *http.Request) {
+	results := map[string]string{
+		"/status":   "[name]",
+		"/isPaused": "name",
+		"/pause":    "name",
+		"/unpause":  "name",
+	}
+	writeJSONResponse(w, results)
 }
 
 func (s *ControlService) handleIsPaused(w http.ResponseWriter, r *http.Request) {
