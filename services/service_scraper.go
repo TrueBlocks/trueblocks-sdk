@@ -42,7 +42,7 @@ func (s *ScrapeService) Name() string {
 }
 
 func (s *ScrapeService) Initialize() error {
-	s.logger.Info("Test log: Scraper initialization started")
+	s.logger.Info("Scraper initialization started")
 	s.logger.Info("Initializing unchained index")
 
 	if s.initMode != "none" {
