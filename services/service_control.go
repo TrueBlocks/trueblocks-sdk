@@ -99,7 +99,6 @@ func (s *ControlService) handleIsPaused(w http.ResponseWriter, r *http.Request) 
 func (s *ControlService) handlePause(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
 	results, err := s.manager.Pause(name)
-	s.logger.Info("Pausing service", "name", name, "results", results, "err", err)
 	if err != nil {
 		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
