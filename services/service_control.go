@@ -90,7 +90,7 @@ func (s *ControlService) handleIsPaused(w http.ResponseWriter, r *http.Request) 
 	name := r.URL.Query().Get("name")
 	results, err := s.manager.IsPaused(name)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	writeJSONResponse(w, results)
@@ -99,8 +99,9 @@ func (s *ControlService) handleIsPaused(w http.ResponseWriter, r *http.Request) 
 func (s *ControlService) handlePause(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
 	results, err := s.manager.Pause(name)
+	s.logger.Info("Pausing service", "name", name, "results", results, "err", err)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	writeJSONResponse(w, results)
@@ -110,7 +111,7 @@ func (s *ControlService) handleUnpause(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
 	results, err := s.manager.Unpause(name)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	writeJSONResponse(w, results)
@@ -119,4 +120,10 @@ func (s *ControlService) handleUnpause(w http.ResponseWriter, r *http.Request) {
 func writeJSONResponse(w http.ResponseWriter, data interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(data)
+}
+
+func writeJSONErrorResponse(w http.ResponseWriter, message string, status int) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	json.NewEncoder(w).Encode(map[string]string{"error": message})
 }
