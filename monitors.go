@@ -23,12 +23,6 @@ type MonitorsOptions struct {
 	Undelete  bool              `json:"undelete,omitempty"`
 	Remove    bool              `json:"remove,omitempty"`
 	Staged    bool              `json:"staged,omitempty"`
-	Watch     bool              `json:"watch,omitempty"`
-	Watchlist string            `json:"watchlist,omitempty"`
-	Commands  string            `json:"commands,omitempty"`
-	BatchSize uint64            `json:"batchSize,omitempty"`
-	RunCount  uint64            `json:"runCount,omitempty"`
-	Sleep     float64           `json:"sleep,omitempty"`
 	RenderCtx *output.RenderCtx `json:"-"`
 	Globals
 }
