@@ -30,12 +30,6 @@ type monitorsOptionsInternal struct {
 	List      bool              `json:"list,omitempty"`
 	Count     bool              `json:"count,omitempty"`
 	Staged    bool              `json:"staged,omitempty"`
-	Watch     bool              `json:"watch,omitempty"`
-	Watchlist string            `json:"watchlist,omitempty"`
-	Commands  string            `json:"commands,omitempty"`
-	BatchSize uint64            `json:"batchSize,omitempty"`
-	RunCount  uint64            `json:"runCount,omitempty"`
-	Sleep     float64           `json:"sleep,omitempty"`
 	RenderCtx *output.RenderCtx `json:"-"`
 	Globals
 }
@@ -121,12 +115,6 @@ func (opts *MonitorsOptions) toInternal() *monitorsOptionsInternal {
 		Undelete:  opts.Undelete,
 		Remove:    opts.Remove,
 		Staged:    opts.Staged,
-		Watch:     opts.Watch,
-		Watchlist: opts.Watchlist,
-		Commands:  opts.Commands,
-		BatchSize: opts.BatchSize,
-		RunCount:  opts.RunCount,
-		Sleep:     opts.Sleep,
 		RenderCtx: opts.RenderCtx,
 		Globals:   opts.Globals,
 	}

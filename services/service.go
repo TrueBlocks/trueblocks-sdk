@@ -102,10 +102,10 @@ func getApiUrl() string {
 
 func findAvailablePort(preferred []string) string {
 	for _, port := range preferred {
-		if listener, err := net.Listen("tcp", ":"+port); err == nil {
-			defer listener.Close()
-			return port
+		if !isPortAvailable(port) {
+			continue
 		}
+		return port
 	}
 	return "0"
 }
