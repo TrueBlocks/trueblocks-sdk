@@ -44,6 +44,7 @@ export type Statement = {
   reconType?: ReconType;
   reconciled?: boolean;
   reconciliationType?: string;
+  rollingBalance?: int256;
   selfDestructIn?: int256;
   selfDestructOut?: int256;
   sender: address;
