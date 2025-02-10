@@ -18,7 +18,7 @@ export function getSlurp(
     parts?: string[];
     appearances?: boolean;
     articulate?: boolean;
-    source?: 'etherscan' | 'key' | 'covalent' | 'alchemy';
+    source?: 'etherscan' | 'covalent' | 'alchemy';
     count?: boolean;
     page?: uint64;
     pageId?: string;
