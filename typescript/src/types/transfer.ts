@@ -19,7 +19,7 @@ export type Transfer = {
   date: datetime
   sender: address
   recipient: address
-  assetAddr: address
+  assetAddress: address
   assetSymbol: string
   decimals: uint64
   amount: int256

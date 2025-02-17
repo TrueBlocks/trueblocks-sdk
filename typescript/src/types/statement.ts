@@ -8,14 +8,14 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, datetime, float, hash, int256, lognum, ReconType, timestamp, TrialBalType, txnum, uint64 } from '.';
+import { address, blknum, datetime, float, hash, int256, lognum, PostType, timestamp, TrialBalType, txnum, uint64 } from '.';
 
 export type Statement = {
   accountedFor: address;
   amountIn?: int256;
   amountNet?: int256;
   amountOut?: int256;
-  assetAddr: address;
+  assetAddress: address;
   assetSymbol: string;
   assetType?: TrialBalType;
   begBal: int256;
@@ -41,9 +41,8 @@ export type Statement = {
   prevBal?: int256;
   priceSource: string;
   recipient: address;
-  reconType?: ReconType;
   reconciled?: boolean;
-  reconciliationType?: string;
+  postType?: string;
   rollingBalance?: int256;
   selfDestructIn?: int256;
   selfDestructOut?: int256;
