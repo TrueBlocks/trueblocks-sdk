@@ -29,6 +29,7 @@ exportOpts = {
     "relevant": {"hotkey": "-N", "type": "switch"},
     "emitter": {"hotkey": "-m", "type": "flag"},
     "topic": {"hotkey": "-B", "type": "flag"},
+    "nfts": {"hotkey": "-T", "type": "switch"},
     "reverted": {"hotkey": "-V", "type": "switch"},
     "asset": {"hotkey": "-P", "type": "flag"},
     "flow": {"hotkey": "-f", "type": "flag"},

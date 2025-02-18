@@ -39,8 +39,8 @@ export type Statement = {
   minerNephewRewardIn?: int256;
   minerTxFeeIn?: int256;
   minerUncleRewardIn?: int256;
-  postFirst: boolean;
-  postLast: boolean;
+  postFirst?: boolean;
+  postLast?: boolean;
   postType?: string;
   prefundIn?: int256;
   prevBal?: int256;

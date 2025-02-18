@@ -44,6 +44,7 @@ type exportOptionsInternal struct {
 	Relevant    bool              `json:"relevant,omitempty"`
 	Emitter     []string          `json:"emitter,omitempty"`
 	Topic       []string          `json:"topic,omitempty"`
+	Nfts        bool              `json:"nfts,omitempty"`
 	Reverted    bool              `json:"reverted,omitempty"`
 	Asset       []string          `json:"asset,omitempty"`
 	Flow        ExportFlow        `json:"flow,omitempty"`
@@ -164,6 +165,7 @@ func (opts *ExportOptions) toInternal() *exportOptionsInternal {
 		Relevant:    opts.Relevant,
 		Emitter:     opts.Emitter,
 		Topic:       opts.Topic,
+		Nfts:        opts.Nfts,
 		Reverted:    opts.Reverted,
 		Asset:       opts.Asset,
 		Flow:        opts.Flow,
