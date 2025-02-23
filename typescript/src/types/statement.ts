@@ -17,7 +17,6 @@ export type Statement = {
   amountOut?: int256;
   assetAddress: address;
   assetSymbol: string;
-  assetType?: TrialBalType;
   begBal: int256;
   begBalDiff?: int256;
   blockNumber: blknum;
@@ -39,6 +38,7 @@ export type Statement = {
   minerNephewRewardIn?: int256;
   minerTxFeeIn?: int256;
   minerUncleRewardIn?: int256;
+  postAssetType?: TrialBalType;
   postFirst?: boolean;
   postLast?: boolean;
   postType?: string;
