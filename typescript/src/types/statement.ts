@@ -8,18 +8,20 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, datetime, float, hash, int256, lognum, timestamp, txnum, uint64 } from '.';
+import { address, blknum, datetime, float, hash, int256, lognum, timestamp, TrialBalType, txnum, uint64 } from '.';
 
 export type Statement = {
   accountedFor: address;
   amountIn?: int256;
   amountNet?: int256;
   amountOut?: int256;
-  assetAddr: address;
+  assetAddress: address;
   assetSymbol: string;
   begBal: int256;
   begBalDiff?: int256;
   blockNumber: blknum;
+  blockNumberNext: blknum;
+  blockNumberPrev: blknum;
   correctingIn?: int256;
   correctingOut?: int256;
   correctingReason?: string;
@@ -36,12 +38,16 @@ export type Statement = {
   minerNephewRewardIn?: int256;
   minerTxFeeIn?: int256;
   minerUncleRewardIn?: int256;
+  postAssetType?: TrialBalType;
+  postFirst?: boolean;
+  postLast?: boolean;
+  postType?: string;
   prefundIn?: int256;
   prevBal?: int256;
   priceSource: string;
   recipient: address;
   reconciled?: boolean;
-  reconciliationType?: string;
+  rollingBalance?: int256;
   selfDestructIn?: int256;
   selfDestructOut?: int256;
   sender: address;

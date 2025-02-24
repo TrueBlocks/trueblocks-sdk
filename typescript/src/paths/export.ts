@@ -33,6 +33,7 @@ export function getExport(
     relevant?: boolean;
     emitter?: address[];
     topic?: topic[];
+    nfts?: boolean;
     reverted?: boolean;
     asset?: address[];
     flow?: 'in' | 'out' | 'zero';

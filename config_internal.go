@@ -51,6 +51,8 @@ func (opts *configOptionsInternal) ConfigBytes(w io.Writer) error {
 
 // configParseFunc handles special cases such as structs and enums (if any).
 func configParseFunc(target any, key, value string) (bool, error) {
+	_ = key
+	_ = value
 	var found bool
 	opts, ok := target.(*configOptionsInternal)
 	if !ok {

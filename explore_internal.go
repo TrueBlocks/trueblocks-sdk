@@ -52,6 +52,8 @@ func (opts *exploreOptionsInternal) ExploreBytes(w io.Writer) error {
 
 // exploreParseFunc handles special cases such as structs and enums (if any).
 func exploreParseFunc(target any, key, value string) (bool, error) {
+	_ = key
+	_ = value
 	var found bool
 	_, ok := target.(*exploreOptionsInternal)
 	if !ok {

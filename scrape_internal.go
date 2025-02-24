@@ -55,6 +55,8 @@ func (opts *scrapeOptionsInternal) ScrapeBytes(w io.Writer) error {
 
 // scrapeParseFunc handles special cases such as structs and enums (if any).
 func scrapeParseFunc(target any, key, value string) (bool, error) {
+	_ = key
+	_ = value
 	var found bool
 	_, ok := target.(*scrapeOptionsInternal)
 	if !ok {

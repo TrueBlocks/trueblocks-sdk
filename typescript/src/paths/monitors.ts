@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { address, Count, float64, Message, Monitor, MonitorClean, uint64 } from '../types';
+import { address, Count, Message, Monitor, MonitorClean } from '../types';
 
 export function getMonitors(
   parameters?: {
@@ -21,12 +21,6 @@ export function getMonitors(
     list?: boolean;
     count?: boolean;
     staged?: boolean;
-    watch?: boolean;
-    watchlist?: string;
-    commands?: string;
-    batchSize?: uint64;
-    runCount?: uint64;
-    sleep?: float64;
     fmt?: string;
     chain: string;
     noHeader?: boolean;
