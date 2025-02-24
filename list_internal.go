@@ -60,6 +60,8 @@ func (opts *listOptionsInternal) ListBytes(w io.Writer) error {
 
 // listParseFunc handles special cases such as structs and enums (if any).
 func listParseFunc(target any, key, value string) (bool, error) {
+	_ = key
+	_ = value
 	var found bool
 	_, ok := target.(*listOptionsInternal)
 	if !ok {

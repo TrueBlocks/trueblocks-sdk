@@ -56,6 +56,8 @@ func (opts *abisOptionsInternal) AbisBytes(w io.Writer) error {
 
 // abisParseFunc handles special cases such as structs and enums (if any).
 func abisParseFunc(target any, key, value string) (bool, error) {
+	_ = key
+	_ = value
 	var found bool
 	_, ok := target.(*abisOptionsInternal)
 	if !ok {

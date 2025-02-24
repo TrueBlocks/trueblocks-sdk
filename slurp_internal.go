@@ -59,6 +59,8 @@ func (opts *slurpOptionsInternal) SlurpBytes(w io.Writer) error {
 
 // slurpParseFunc handles special cases such as structs and enums (if any).
 func slurpParseFunc(target any, key, value string) (bool, error) {
+	_ = key
+	_ = value
 	var found bool
 	opts, ok := target.(*slurpOptionsInternal)
 	if !ok {

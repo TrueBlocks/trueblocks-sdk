@@ -130,7 +130,6 @@ func convertObjectToArray(field, strIn string) string {
 		// 6. If unmatched braces, copy the rest as-is and stop.
 		if !matchFound {
 			out = append(out, in[braceStart:]...)
-			i = len(in)
 			break
 		}
 	}
