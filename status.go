@@ -82,6 +82,13 @@ func (opts *StatusOptions) StatusStatements() ([]types.Status, *types.MetaData, 
 	return queryStatus[types.Status](in)
 }
 
+// StatusTransfers implements the chifra status transfers command.
+func (opts *StatusOptions) StatusTransfers() ([]types.Status, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Modes = SMTransfers
+	return queryStatus[types.Status](in)
+}
+
 // StatusResults implements the chifra status results command.
 func (opts *StatusOptions) StatusResults() ([]types.Status, *types.MetaData, error) {
 	in := opts.toInternal()
@@ -191,6 +198,7 @@ const (
 	SMTraces
 	SMLogs
 	SMStatements
+	SMTransfers
 	SMResults
 	SMState
 	SMTokens
@@ -202,7 +210,7 @@ const (
 	SMUnripe
 	SMMaps
 	SMSome = SMIndex | SMBlooms | SMBlocks | SMTransactions
-	SMAll  = SMIndex | SMBlooms | SMBlocks | SMTransactions | SMTraces | SMLogs | SMStatements | SMResults | SMState | SMTokens | SMMonitors | SMNames | SMAbis | SMSlurps | SMStaging | SMUnripe | SMMaps
+	SMAll  = SMIndex | SMBlooms | SMBlocks | SMTransactions | SMTraces | SMLogs | SMStatements | SMTransfers | SMResults | SMState | SMTokens | SMMonitors | SMNames | SMAbis | SMSlurps | SMStaging | SMUnripe | SMMaps
 )
 
 func (v StatusModes) String() string {
@@ -223,6 +231,7 @@ func (v StatusModes) String() string {
 		SMTraces:       "traces",
 		SMLogs:         "logs",
 		SMStatements:   "statements",
+		SMTransfers:    "transfers",
 		SMResults:      "results",
 		SMState:        "state",
 		SMTokens:       "tokens",
@@ -236,7 +245,7 @@ func (v StatusModes) String() string {
 	}
 
 	var ret []string
-	for _, val := range []StatusModes{SMIndex, SMBlooms, SMBlocks, SMTransactions, SMTraces, SMLogs, SMStatements, SMResults, SMState, SMTokens, SMMonitors, SMNames, SMAbis, SMSlurps, SMStaging, SMUnripe, SMMaps} {
+	for _, val := range []StatusModes{SMIndex, SMBlooms, SMBlocks, SMTransactions, SMTraces, SMLogs, SMStatements, SMTransfers, SMResults, SMState, SMTokens, SMMonitors, SMNames, SMAbis, SMSlurps, SMStaging, SMUnripe, SMMaps} {
 		if v&val != 0 {
 			ret = append(ret, m[val])
 		}
@@ -273,6 +282,8 @@ func enumFromStatusModes(values []string) (StatusModes, error) {
 			result |= SMLogs
 		case "statements":
 			result |= SMStatements
+		case "transfers":
+			result |= SMTransfers
 		case "results":
 			result |= SMResults
 		case "state":

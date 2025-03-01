@@ -34,6 +34,7 @@ type exportOptionsInternal struct {
 	Neighbors   bool              `json:"neighbors,omitempty"`
 	Accounting  bool              `json:"accounting,omitempty"`
 	Statements  bool              `json:"statements,omitempty"`
+	Transfers   bool              `json:"transfers,omitempty"`
 	Balances    bool              `json:"balances,omitempty"`
 	Withdrawals bool              `json:"withdrawals,omitempty"`
 	Articulate  bool              `json:"articulate,omitempty"`
@@ -121,6 +122,7 @@ type exportGeneric interface {
 		types.Trace |
 		types.Message |
 		types.Statement |
+		types.Transfer |
 		types.State |
 		types.Withdrawal |
 		types.Monitor

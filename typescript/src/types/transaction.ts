@@ -8,7 +8,7 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, bytes, datetime, float64, Function, gas, hash, Receipt, Statement, StorageSlot, timestamp, Trace, txnum, uint64, wei } from '.';
+import { address, blknum, bytes, datetime, float64, Function, gas, hash, Receipt, Statement, StorageSlot, timestamp, Trace, Transfer, txnum, uint64, wei } from '.';
 
 export type Transaction = {
   accessList: StorageSlot[];
@@ -36,6 +36,7 @@ export type Transaction = {
   to: address;
   traces: Trace[];
   transactionIndex: txnum;
+  transfers?: Transfer[];
   type: string;
   value: wei;
 };

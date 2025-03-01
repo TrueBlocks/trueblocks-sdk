@@ -100,6 +100,13 @@ func (opts *ExportOptions) ExportStatements() ([]types.Statement, *types.MetaDat
 	return queryExport[types.Statement](in)
 }
 
+// ExportTransfers implements the chifra export --transfers command.
+func (opts *ExportOptions) ExportTransfers() ([]types.Transfer, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Transfers = true
+	return queryExport[types.Transfer](in)
+}
+
 // ExportBalances implements the chifra export --balances command.
 func (opts *ExportOptions) ExportBalances() ([]types.State, *types.MetaData, error) {
 	in := opts.toInternal()

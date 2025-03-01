@@ -8,22 +8,13 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, datetime, float64, hash, int256, timestamp, uint64 } from '.';
+import { address, blknum, int256, lognum, txnum } from '.';
 
 export type Transfer = {
-  blockNumber: blknum
-  transactionIndex: blknum
-  logIndex: blknum
-  transactionHash: hash
-  timestamp: timestamp
-  date: datetime
-  sender: address
-  recipient: address
-  assetAddress: address
-  assetSymbol: string
-  decimals: uint64
-  amount: int256
-  spotPrice: float64
-  priceSource: string
-  encoding: string
-}
+  amount: int256;
+  asset: address;
+  blockNumber: blknum;
+  holder: address;
+  logIndex: lognum;
+  transactionIndex: txnum;
+};

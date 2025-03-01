@@ -19,6 +19,7 @@ exportOpts = {
     "neighbors": {"hotkey": "-n", "type": "switch"},
     "accounting": {"hotkey": "-C", "type": "switch"},
     "statements": {"hotkey": "-A", "type": "switch"},
+    "transfers": {"hotkey": "-X", "type": "switch"},
     "balances": {"hotkey": "-b", "type": "switch"},
     "withdrawals": {"hotkey": "-i", "type": "switch"},
     "articulate": {"hotkey": "-a", "type": "switch"},
