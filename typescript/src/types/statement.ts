@@ -20,8 +20,6 @@ export type Statement = {
   begBal: int256;
   begBalDiff?: int256;
   blockNumber: blknum;
-  blockNumberNext: blknum;
-  blockNumberPrev: blknum;
   correctingIn?: int256;
   correctingOut?: int256;
   correctingReason?: string;
@@ -41,7 +39,6 @@ export type Statement = {
   postAssetType?: TrialBalType;
   postFirst?: boolean;
   postLast?: boolean;
-  postType?: string;
   prefundIn?: int256;
   prevBal?: int256;
   priceSource: string;
