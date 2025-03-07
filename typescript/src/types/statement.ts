@@ -8,15 +8,15 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, datetime, float, hash, int256, lognum, timestamp, TrialBalType, txnum, uint64 } from '.';
+import { address, blknum, datetime, float, hash, int256, lognum, timestamp, txnum, uint64 } from '.';
 
 export type Statement = {
   accountedFor: address;
   amountIn?: int256;
   amountNet?: int256;
   amountOut?: int256;
-  assetAddress: address;
-  assetSymbol: string;
+  asset: address;
+  symbol: string;
   begBal: int256;
   begBalDiff?: int256;
   blockNumber: blknum;
@@ -36,9 +36,6 @@ export type Statement = {
   minerNephewRewardIn?: int256;
   minerTxFeeIn?: int256;
   minerUncleRewardIn?: int256;
-  postAssetType?: TrialBalType;
-  postFirst?: boolean;
-  postLast?: boolean;
   prefundIn?: int256;
   prevBal?: int256;
   priceSource: string;

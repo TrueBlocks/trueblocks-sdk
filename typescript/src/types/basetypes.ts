@@ -30,5 +30,4 @@ export type uint64 = number;
 export type uint8 = number;
 export type wei = string;
 export type DestType = string;
-export type TrialBalType = number;
 export type PostType = number;
