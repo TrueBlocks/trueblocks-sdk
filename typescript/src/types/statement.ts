@@ -16,7 +16,6 @@ export type Statement = {
   amountNet?: int256;
   amountOut?: int256;
   asset: address;
-  symbol: string;
   begBal: int256;
   begBalDiff?: int256;
   blockNumber: blknum;
@@ -46,6 +45,7 @@ export type Statement = {
   selfDestructOut?: int256;
   sender: address;
   spotPrice: float;
+  symbol: string;
   timestamp: timestamp;
   totalIn?: int256;
   totalOut?: int256;
