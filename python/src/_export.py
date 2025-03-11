@@ -20,6 +20,7 @@ exportOpts = {
     "accounting": {"hotkey": "-C", "type": "switch"},
     "statements": {"hotkey": "-A", "type": "switch"},
     "transfers": {"hotkey": "-X", "type": "switch"},
+    "assets": {"hotkey": "-s", "type": "switch"},
     "balances": {"hotkey": "-b", "type": "switch"},
     "withdrawals": {"hotkey": "-i", "type": "switch"},
     "articulate": {"hotkey": "-a", "type": "switch"},

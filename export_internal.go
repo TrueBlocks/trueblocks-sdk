@@ -35,6 +35,7 @@ type exportOptionsInternal struct {
 	Accounting  bool              `json:"accounting,omitempty"`
 	Statements  bool              `json:"statements,omitempty"`
 	Transfers   bool              `json:"transfers,omitempty"`
+	Assets      bool              `json:"assets,omitempty"`
 	Balances    bool              `json:"balances,omitempty"`
 	Withdrawals bool              `json:"withdrawals,omitempty"`
 	Articulate  bool              `json:"articulate,omitempty"`
@@ -123,6 +124,7 @@ type exportGeneric interface {
 		types.Message |
 		types.Statement |
 		types.Transfer |
+		types.Name |
 		types.State |
 		types.Withdrawal |
 		types.Monitor

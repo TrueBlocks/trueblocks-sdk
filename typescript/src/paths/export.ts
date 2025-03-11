@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, blknum, fourbyte, Log, Message, Monitor, Receipt, State, Statement, topic, Trace, Transaction, Transfer, uint64, Withdrawal } from '../types';
+import { address, Appearance, blknum, fourbyte, Log, Message, Monitor, Name, Receipt, State, Statement, topic, Trace, Transaction, Transfer, uint64, Withdrawal } from '../types';
 
 export function getExport(
   parameters?: {
@@ -24,6 +24,7 @@ export function getExport(
     accounting?: boolean;
     statements?: boolean;
     transfers?: boolean;
+    assets?: boolean;
     balances?: boolean;
     withdrawals?: boolean;
     articulate?: boolean;
@@ -53,7 +54,7 @@ export function getExport(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Log[] | Message[] | Monitor[] | Receipt[] | State[] | Statement[] | Trace[] | Transaction[] | Transfer[] | Withdrawal[]>(
+  return ApiCallers.fetch<Appearance[] | Log[] | Message[] | Monitor[] | Name[] | Receipt[] | State[] | Statement[] | Trace[] | Transaction[] | Transfer[] | Withdrawal[]>(
     { endpoint: '/export', method: 'get', parameters, options },
   );
 }
