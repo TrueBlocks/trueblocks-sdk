@@ -19,9 +19,13 @@ export type Statement = {
   begBal: int256;
   begBalDiff?: int256;
   blockNumber: blknum;
-  correctingIn?: int256;
-  correctingOut?: int256;
-  correctingReason?: string;
+  correctAmountIn?: int256;
+  correctAmountOut?: int256;
+  correctBegBalIn?: int256;
+  correctBegBalOut?: int256;
+  correctEndBalIn?: int256;
+  correctEndBalOut?: int256;
+  correctingReasons?: string;
   date?: datetime;
   decimals: uint64;
   endBal: int256;
@@ -40,7 +44,6 @@ export type Statement = {
   priceSource: string;
   recipient: address;
   reconciled?: boolean;
-  rollingBalance?: int256;
   selfDestructIn?: int256;
   selfDestructOut?: int256;
   sender: address;
@@ -49,7 +52,6 @@ export type Statement = {
   timestamp: timestamp;
   totalIn?: int256;
   totalOut?: int256;
-  totalOutLessGas?: int256;
   transactionHash: hash;
   transactionIndex: txnum;
 };
