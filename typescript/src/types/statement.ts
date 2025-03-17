@@ -25,7 +25,7 @@ export type Statement = {
   correctBegBalOut?: int256;
   correctEndBalIn?: int256;
   correctEndBalOut?: int256;
-  correctingReasons?: string;
+  correctingReasons?: string[];
   date?: datetime;
   decimals: uint64;
   endBal: int256;
