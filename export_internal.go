@@ -32,7 +32,6 @@ type exportOptionsInternal struct {
 	Logs        bool              `json:"logs,omitempty"`
 	Traces      bool              `json:"traces,omitempty"`
 	Neighbors   bool              `json:"neighbors,omitempty"`
-	Accounting  bool              `json:"accounting,omitempty"`
 	Statements  bool              `json:"statements,omitempty"`
 	Transfers   bool              `json:"transfers,omitempty"`
 	Assets      bool              `json:"assets,omitempty"`
@@ -56,6 +55,7 @@ type exportOptionsInternal struct {
 	NoZero      bool              `json:"noZero,omitempty"`
 	FirstBlock  base.Blknum       `json:"firstBlock,omitempty"`
 	LastBlock   base.Blknum       `json:"lastBlock,omitempty"`
+	Accounting  bool              `json:"accounting,omitempty"`
 	RenderCtx   *output.RenderCtx `json:"-"`
 	Globals
 }
@@ -132,9 +132,6 @@ type exportGeneric interface {
 
 func queryExport[T exportGeneric](opts *exportOptionsInternal) ([]T, *types.MetaData, error) {
 	// EXISTING_CODE
-	if opts.Statements {
-		opts.Accounting = true
-	}
 	// EXISTING_CODE
 
 	buffer := bytes.Buffer{}
@@ -163,7 +160,6 @@ func (opts *ExportOptions) toInternal() *exportOptionsInternal {
 		Addrs:       opts.Addrs,
 		Topics:      opts.Topics,
 		Fourbytes:   opts.Fourbytes,
-		Accounting:  opts.Accounting,
 		Articulate:  opts.Articulate,
 		CacheTraces: opts.CacheTraces,
 		FirstRecord: opts.FirstRecord,
@@ -181,6 +177,7 @@ func (opts *ExportOptions) toInternal() *exportOptionsInternal {
 		NoZero:      opts.NoZero,
 		FirstBlock:  opts.FirstBlock,
 		LastBlock:   opts.LastBlock,
+		Accounting:  opts.Accounting,
 		RenderCtx:   opts.RenderCtx,
 		Globals:     opts.Globals,
 	}

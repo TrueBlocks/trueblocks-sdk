@@ -21,7 +21,6 @@ export function getExport(
     logs?: boolean;
     traces?: boolean;
     neighbors?: boolean;
-    accounting?: boolean;
     statements?: boolean;
     transfers?: boolean;
     assets?: boolean;
@@ -45,6 +44,7 @@ export function getExport(
     noZero?: boolean;
     firstBlock?: blknum;
     lastBlock?: blknum;
+    accounting?: boolean;
     fmt?: string;
     chain: string;
     noHeader?: boolean;

@@ -24,7 +24,6 @@ type ExportOptions struct {
 	Addrs       []string          `json:"addrs,omitempty"`
 	Topics      []string          `json:"topics,omitempty"`
 	Fourbytes   []string          `json:"fourbytes,omitempty"`
-	Accounting  bool              `json:"accounting,omitempty"`
 	Articulate  bool              `json:"articulate,omitempty"`
 	CacheTraces bool              `json:"cacheTraces,omitempty"`
 	FirstRecord uint64            `json:"firstRecord,omitempty"`
@@ -42,6 +41,7 @@ type ExportOptions struct {
 	NoZero      bool              `json:"noZero,omitempty"`
 	FirstBlock  base.Blknum       `json:"firstBlock,omitempty"`
 	LastBlock   base.Blknum       `json:"lastBlock,omitempty"`
+	Accounting  bool              `json:"accounting,omitempty"`
 	RenderCtx   *output.RenderCtx `json:"-"`
 	Globals
 }
