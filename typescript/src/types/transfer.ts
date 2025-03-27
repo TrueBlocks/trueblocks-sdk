@@ -8,22 +8,29 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, datetime, float64, hash, int256, timestamp, uint64 } from '.';
+import { address, blknum, int256, Log, lognum, Transaction, txnum, uint64 } from '.';
 
 export type Transfer = {
-  blockNumber: blknum
-  transactionIndex: blknum
-  logIndex: blknum
-  transactionHash: hash
-  timestamp: timestamp
-  date: datetime
-  sender: address
-  recipient: address
-  assetAddr: address
-  assetSymbol: string
-  decimals: uint64
-  amount: int256
-  spotPrice: float64
-  priceSource: string
-  encoding: string
-}
+  amountIn?: int256;
+  amountOut?: int256;
+  asset: address;
+  blockNumber: blknum;
+  decimals: uint64;
+  gasOut?: int256;
+  holder: address;
+  internalIn?: int256;
+  internalOut?: int256;
+  log?: Log;
+  logIndex: lognum;
+  minerBaseRewardIn?: int256;
+  minerNephewRewardIn?: int256;
+  minerTxFeeIn?: int256;
+  minerUncleRewardIn?: int256;
+  prefundIn?: int256;
+  recipient: address;
+  selfDestructIn?: int256;
+  selfDestructOut?: int256;
+  sender: address;
+  transaction?: Transaction;
+  transactionIndex: txnum;
+};

@@ -8,12 +8,12 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, datetime, float64, int256, timestamp, TokenType, txnum, uint64 } from '.';
+import { address, blknum, datetime, float, int256, timestamp, TokenType, txnum, uint64 } from '.';
 
 export type Token = {
   address: address;
   balance: int256;
-  balanceDec?: float64;
+  balanceDec?: float;
   blockNumber: blknum;
   date?: datetime;
   decimals: uint64;

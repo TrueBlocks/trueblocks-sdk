@@ -18,6 +18,7 @@ export type Log = {
   compressedLog?: string;
   data?: bytes;
   date?: datetime;
+  isNFT?: boolean;
   logIndex: lognum;
   timestamp?: timestamp;
   topics?: topic[];
