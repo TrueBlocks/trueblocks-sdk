@@ -172,6 +172,6 @@ func (sm *ServiceManager) Unpause(name string) ([]map[string]string, error) {
 	return results, nil
 }
 
-func (sm *ServiceManager) recreateService(svc Servicer) Servicer {
-	return svc
-}
+// func (sm *ServiceManager) recreateService(svc Servicer) Servicer {
+// 	return svc
+// }

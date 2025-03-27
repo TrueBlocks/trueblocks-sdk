@@ -86,7 +86,7 @@ func (s *IpfsService) Process(ready chan bool) error {
 
 	go func() {
 		defer close(s.processDone)
-		cmd.Wait()
+		_ = cmd.Wait()
 	}()
 
 	go func() {
@@ -112,7 +112,7 @@ func (s *IpfsService) Cleanup() {
 		select {
 		case <-s.processDone:
 		case <-time.After(5 * time.Second):
-			s.cmd.Process.Kill()
+			_ = s.cmd.Process.Kill()
 		}
 		s.cmd = nil
 	}
