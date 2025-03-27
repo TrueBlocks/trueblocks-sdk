@@ -4,8 +4,6 @@ import (
 	"os"
 	"testing"
 	"time"
-
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/walk"
 )
 
 func TestNeedsUpdateWithFile(t *testing.T) {
@@ -113,6 +111,8 @@ func fileModTime(path string) int64 {
 	return info.ModTime().Unix()
 }
 
+/*
+
 func folderSize(path string) int64 {
 	var totalSize int64
 	err := walk.ForEveryFileInFolder(path, func(filePath string, _ any) (bool, error) {
@@ -128,8 +128,6 @@ func folderSize(path string) int64 {
 	}
 	return totalSize
 }
-
-/*
 
 // TODO: THIS CAN ALMOST CERTAINLY BE DELETED
 func TestNewUpdaterWithPaths(t *testing.T) {
