@@ -32,8 +32,9 @@ type exportOptionsInternal struct {
 	Logs        bool              `json:"logs,omitempty"`
 	Traces      bool              `json:"traces,omitempty"`
 	Neighbors   bool              `json:"neighbors,omitempty"`
-	Accounting  bool              `json:"accounting,omitempty"`
 	Statements  bool              `json:"statements,omitempty"`
+	Transfers   bool              `json:"transfers,omitempty"`
+	Assets      bool              `json:"assets,omitempty"`
 	Balances    bool              `json:"balances,omitempty"`
 	Withdrawals bool              `json:"withdrawals,omitempty"`
 	Articulate  bool              `json:"articulate,omitempty"`
@@ -44,6 +45,7 @@ type exportOptionsInternal struct {
 	Relevant    bool              `json:"relevant,omitempty"`
 	Emitter     []string          `json:"emitter,omitempty"`
 	Topic       []string          `json:"topic,omitempty"`
+	Nfts        bool              `json:"nfts,omitempty"`
 	Reverted    bool              `json:"reverted,omitempty"`
 	Asset       []string          `json:"asset,omitempty"`
 	Flow        ExportFlow        `json:"flow,omitempty"`
@@ -53,6 +55,7 @@ type exportOptionsInternal struct {
 	NoZero      bool              `json:"noZero,omitempty"`
 	FirstBlock  base.Blknum       `json:"firstBlock,omitempty"`
 	LastBlock   base.Blknum       `json:"lastBlock,omitempty"`
+	Accounting  bool              `json:"accounting,omitempty"`
 	RenderCtx   *output.RenderCtx `json:"-"`
 	Globals
 }
@@ -120,6 +123,8 @@ type exportGeneric interface {
 		types.Trace |
 		types.Message |
 		types.Statement |
+		types.Transfer |
+		types.Name |
 		types.State |
 		types.Withdrawal |
 		types.Monitor
@@ -127,9 +132,6 @@ type exportGeneric interface {
 
 func queryExport[T exportGeneric](opts *exportOptionsInternal) ([]T, *types.MetaData, error) {
 	// EXISTING_CODE
-	if opts.Statements {
-		opts.Accounting = true
-	}
 	// EXISTING_CODE
 
 	buffer := bytes.Buffer{}
@@ -158,7 +160,6 @@ func (opts *ExportOptions) toInternal() *exportOptionsInternal {
 		Addrs:       opts.Addrs,
 		Topics:      opts.Topics,
 		Fourbytes:   opts.Fourbytes,
-		Accounting:  opts.Accounting,
 		Articulate:  opts.Articulate,
 		CacheTraces: opts.CacheTraces,
 		FirstRecord: opts.FirstRecord,
@@ -166,6 +167,7 @@ func (opts *ExportOptions) toInternal() *exportOptionsInternal {
 		Relevant:    opts.Relevant,
 		Emitter:     opts.Emitter,
 		Topic:       opts.Topic,
+		Nfts:        opts.Nfts,
 		Reverted:    opts.Reverted,
 		Asset:       opts.Asset,
 		Flow:        opts.Flow,
@@ -175,6 +177,7 @@ func (opts *ExportOptions) toInternal() *exportOptionsInternal {
 		NoZero:      opts.NoZero,
 		FirstBlock:  opts.FirstBlock,
 		LastBlock:   opts.LastBlock,
+		Accounting:  opts.Accounting,
 		RenderCtx:   opts.RenderCtx,
 		Globals:     opts.Globals,
 	}

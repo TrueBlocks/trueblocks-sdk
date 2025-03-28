@@ -24,7 +24,6 @@ type ExportOptions struct {
 	Addrs       []string          `json:"addrs,omitempty"`
 	Topics      []string          `json:"topics,omitempty"`
 	Fourbytes   []string          `json:"fourbytes,omitempty"`
-	Accounting  bool              `json:"accounting,omitempty"`
 	Articulate  bool              `json:"articulate,omitempty"`
 	CacheTraces bool              `json:"cacheTraces,omitempty"`
 	FirstRecord uint64            `json:"firstRecord,omitempty"`
@@ -32,6 +31,7 @@ type ExportOptions struct {
 	Relevant    bool              `json:"relevant,omitempty"`
 	Emitter     []string          `json:"emitter,omitempty"`
 	Topic       []string          `json:"topic,omitempty"`
+	Nfts        bool              `json:"nfts,omitempty"`
 	Reverted    bool              `json:"reverted,omitempty"`
 	Asset       []string          `json:"asset,omitempty"`
 	Flow        ExportFlow        `json:"flow,omitempty"`
@@ -41,6 +41,7 @@ type ExportOptions struct {
 	NoZero      bool              `json:"noZero,omitempty"`
 	FirstBlock  base.Blknum       `json:"firstBlock,omitempty"`
 	LastBlock   base.Blknum       `json:"lastBlock,omitempty"`
+	Accounting  bool              `json:"accounting,omitempty"`
 	RenderCtx   *output.RenderCtx `json:"-"`
 	Globals
 }
@@ -97,6 +98,20 @@ func (opts *ExportOptions) ExportStatements() ([]types.Statement, *types.MetaDat
 	in := opts.toInternal()
 	in.Statements = true
 	return queryExport[types.Statement](in)
+}
+
+// ExportTransfers implements the chifra export --transfers command.
+func (opts *ExportOptions) ExportTransfers() ([]types.Transfer, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Transfers = true
+	return queryExport[types.Transfer](in)
+}
+
+// ExportAssets implements the chifra export --assets command.
+func (opts *ExportOptions) ExportAssets() ([]types.Name, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Assets = true
+	return queryExport[types.Name](in)
 }
 
 // ExportBalances implements the chifra export --balances command.
