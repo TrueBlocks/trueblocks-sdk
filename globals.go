@@ -6,7 +6,6 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/base"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/logger"
 )
 
@@ -178,7 +177,7 @@ func debugPrint(str string, t any, err error) {
 	logger.Error("======================================")
 	logger.Error(err)
 	logger.Error(reflect.TypeOf(t))
-	max := base.Min(2000, len(str))
+	max := min(2000, len(str))
 	logger.Error(str[:max])
 	logger.Error("======================================")
 	// os.Exit(1)
