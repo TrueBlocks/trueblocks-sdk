@@ -5,7 +5,7 @@ import (
 	"context"
 	"log/slog"
 
-	sdk "github.com/TrueBlocks/trueblocks-sdk/v4"
+	sdk "github.com/TrueBlocks/trueblocks-sdk/v5"
 )
 
 type ApiService struct {
