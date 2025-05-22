@@ -115,11 +115,12 @@ func (opts *NamesOptions) ModifyName(op crud.Operation, cd *crud.NameCrud) ([]ty
 		cd.Unsetenv()
 	}()
 
-	opts.Terms = []string{cd.Address.Value.Hex()}
+	opts.Terms = []string{cd.Address.Value}
 	cd.SetEnv()
 
 	switch op {
 	case crud.Create:
+		return opts.NamesCreate()
 	case crud.Update:
 		return opts.NamesUpdate()
 	case crud.Delete:
@@ -128,6 +129,11 @@ func (opts *NamesOptions) ModifyName(op crud.Operation, cd *crud.NameCrud) ([]ty
 		return opts.NamesUndelete()
 	case crud.Remove:
 		return opts.NamesRemove()
+	case crud.Autoname:
+		addr := base.HexToAddress(cd.Address.Value)
+		// TODO: NamesAutoname should return the names array like everything else
+		_, meta, err := opts.NamesAutoname(addr)
+		return nil, meta, err
 	}
 
 	return nil, nil, errors.New("invalid operation " + string(op))
