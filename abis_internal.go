@@ -27,6 +27,7 @@ type abisOptionsInternal struct {
 	Known     bool              `json:"known,omitempty"`
 	ProxyFor  base.Address      `json:"proxyFor,omitempty"`
 	List      bool              `json:"list,omitempty"`
+	ListItems bool              `json:"listItems,omitempty"`
 	Count     bool              `json:"count,omitempty"`
 	Find      []string          `json:"find,omitempty"`
 	Hint      []string          `json:"hint,omitempty"`
