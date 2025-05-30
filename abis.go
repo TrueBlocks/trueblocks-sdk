@@ -47,17 +47,10 @@ func (opts *AbisOptions) AbisList() ([]types.Abi, *types.MetaData, error) {
 	return queryAbis[types.Abi](in)
 }
 
-// AbisListFuncs implements the chifra abis --listfuncs command.
-func (opts *AbisOptions) AbisListFuncs() ([]types.Function, *types.MetaData, error) {
+// AbisDetails implements the chifra abis --details command.
+func (opts *AbisOptions) AbisDetails() ([]types.Function, *types.MetaData, error) {
 	in := opts.toInternal()
-	in.ListFuncs = true
-	return queryAbis[types.Function](in)
-}
-
-// AbisListEvents implements the chifra abis --listevents command.
-func (opts *AbisOptions) AbisListEvents() ([]types.Function, *types.MetaData, error) {
-	in := opts.toInternal()
-	in.ListEvents = true
+	in.Details = true
 	return queryAbis[types.Function](in)
 }
 

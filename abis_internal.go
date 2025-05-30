@@ -23,17 +23,16 @@ import (
 )
 
 type abisOptionsInternal struct {
-	Addrs      []string          `json:"addrs,omitempty"`
-	Known      bool              `json:"known,omitempty"`
-	ProxyFor   base.Address      `json:"proxyFor,omitempty"`
-	List       bool              `json:"list,omitempty"`
-	ListFuncs  bool              `json:"listFuncs,omitempty"`
-	ListEvents bool              `json:"listEvents,omitempty"`
-	Count      bool              `json:"count,omitempty"`
-	Find       []string          `json:"find,omitempty"`
-	Hint       []string          `json:"hint,omitempty"`
-	Encode     string            `json:"encode,omitempty"`
-	RenderCtx  *output.RenderCtx `json:"-"`
+	Addrs     []string          `json:"addrs,omitempty"`
+	Known     bool              `json:"known,omitempty"`
+	ProxyFor  base.Address      `json:"proxyFor,omitempty"`
+	List      bool              `json:"list,omitempty"`
+	Details   bool              `json:"details,omitempty"`
+	Count     bool              `json:"count,omitempty"`
+	Find      []string          `json:"find,omitempty"`
+	Hint      []string          `json:"hint,omitempty"`
+	Encode    string            `json:"encode,omitempty"`
+	RenderCtx *output.RenderCtx `json:"-"`
 	Globals
 }
 

@@ -17,8 +17,7 @@ export function getAbis(
     known?: boolean;
     proxyFor?: address;
     list?: boolean;
-    listFuncs?: boolean;
-    listEvents?: boolean;
+    details?: boolean;
     count?: boolean;
     find?: string[];
     hint?: string[];
