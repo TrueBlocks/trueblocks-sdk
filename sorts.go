@@ -29,6 +29,9 @@ func SortMonitors(monitors []types.Monitor, sortSpec SortSpec) error {
 
 	sorts := make([]func(p1, p2 types.Monitor) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidMonitorField(field) {
 			return fmt.Errorf("%s is not an Monitor sort field", field)
 		}
@@ -46,6 +49,9 @@ func SortNames(names []types.Name, sortSpec SortSpec) error {
 
 	sorts := make([]func(p1, p2 types.Name) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidNameField(field) {
 			return fmt.Errorf("%s is not an Name sort field", field)
 		}
@@ -63,6 +69,9 @@ func SortChunkRecords(chunkrecords []types.ChunkRecord, sortSpec SortSpec) error
 
 	sorts := make([]func(p1, p2 types.ChunkRecord) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidChunkRecordField(field) {
 			return fmt.Errorf("%s is not an ChunkRecord sort field", field)
 		}
@@ -80,6 +89,9 @@ func SortChunkStats(chunkstats []types.ChunkStats, sortSpec SortSpec) error {
 
 	sorts := make([]func(p1, p2 types.ChunkStats) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidChunkStatsField(field) {
 			return fmt.Errorf("%s is not an ChunkStats sort field", field)
 		}
@@ -97,6 +109,9 @@ func SortCacheItems(cacheitems []types.CacheItem, sortSpec SortSpec) error {
 
 	sorts := make([]func(p1, p2 types.CacheItem) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidCacheItemField(field) {
 			return fmt.Errorf("%s is not an CacheItem sort field", field)
 		}
@@ -114,6 +129,9 @@ func SortChains(chains []types.Chain, sortSpec SortSpec) error {
 
 	sorts := make([]func(p1, p2 types.Chain) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidChainField(field) {
 			return fmt.Errorf("%s is not an Chain sort field", field)
 		}
@@ -131,6 +149,9 @@ func SortAbis(abis []types.Abi, sortSpec SortSpec) error {
 
 	sorts := make([]func(p1, p2 types.Abi) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidAbiField(field) {
 			return fmt.Errorf("%s is not an Abi sort field", field)
 		}
@@ -148,6 +169,9 @@ func SortFunctions(functions []types.Function, sortSpec SortSpec) error {
 
 	sorts := make([]func(p1, p2 types.Function) bool, len(sortSpec.Fields))
 	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
 		if !types.IsValidFunctionField(field) {
 			return fmt.Errorf("%s is not an Function sort field", field)
 		}
