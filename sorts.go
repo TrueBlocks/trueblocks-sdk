@@ -23,6 +23,22 @@ type SortSpec struct {
 	Order  []SortOrder `json:"orders"`
 }
 
+// String returns a string representation of the SortSpec.
+func (s SortSpec) String() string {
+	if len(s.Fields) == 0 {
+		return "empty sort specification"
+	}
+
+	result := "sort by "
+	for i, field := range s.Fields {
+		if i > 0 {
+			result += ", "
+		}
+		result += field + " (" + s.Order[i].String() + ")"
+	}
+	return result
+}
+
 func SortMonitors(monitors []types.Monitor, sortSpec SortSpec) error {
 	if len(sortSpec.Fields) != len(sortSpec.Order) {
 		return fmt.Errorf("fields and order must have the same length")
