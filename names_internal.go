@@ -33,6 +33,7 @@ type namesOptionsInternal struct {
 	Tags      bool              `json:"tags,omitempty"`
 	Clean     bool              `json:"clean,omitempty"`
 	Regular   bool              `json:"regular,omitempty"`
+	Count     bool              `json:"count,omitempty"`
 	DryRun    bool              `json:"dryRun,omitempty"`
 	Autoname  base.Address      `json:"autoname,omitempty"`
 	Create    bool              `json:"create,omitempty"`
@@ -92,7 +93,8 @@ func GetNamesOptions(args []string) (*namesOptionsInternal, error) {
 
 type namesGeneric interface {
 	types.Name |
-		types.Message
+		types.Message |
+		types.Count
 }
 
 func queryNames[T namesGeneric](opts *namesOptionsInternal) ([]T, *types.MetaData, error) {

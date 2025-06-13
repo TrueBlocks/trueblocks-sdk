@@ -17,7 +17,7 @@ monitorsOpts = {
     "remove": {"hotkey": "", "type": "switch"},
     "clean": {"hotkey": "-C", "type": "switch"},
     "list": {"hotkey": "-l", "type": "switch"},
-    "count": {"hotkey": "-c", "type": "switch"},
+    "count": {"hotkey": "-U", "type": "switch"},
     "staged": {"hotkey": "-S", "type": "switch"},
     "chain": {"hotkey": "", "type": "flag"},
     "noHeader": {"hotkey": "", "type": "switch"},

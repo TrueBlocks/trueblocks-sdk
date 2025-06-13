@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { address, Message, Name } from '../types';
+import { address, Count, Message, Name } from '../types';
 
 export function getNames(
   parameters?: {
@@ -23,6 +23,7 @@ export function getNames(
     tags?: boolean;
     clean?: boolean;
     regular?: boolean;
+    count?: boolean;
     dryRun?: boolean;
     autoname?: address;
     create?: boolean;
@@ -36,7 +37,7 @@ export function getNames(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Message[] | Name[]>(
+  return ApiCallers.fetch<Count[] | Message[] | Name[]>(
     { endpoint: '/names', method: 'get', parameters, options },
   );
 }

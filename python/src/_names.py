@@ -21,6 +21,7 @@ namesOpts = {
     "tags": {"hotkey": "-g", "type": "switch"},
     "clean": {"hotkey": "-C", "type": "switch"},
     "regular": {"hotkey": "-r", "type": "switch"},
+    "count": {"hotkey": "-U", "type": "switch"},
     "dryRun": {"hotkey": "-d", "type": "switch"},
     "autoname": {"hotkey": "-A", "type": "flag"},
     "create": {"hotkey": "", "type": "switch"},

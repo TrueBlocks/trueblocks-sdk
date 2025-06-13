@@ -66,6 +66,13 @@ func (opts *NamesOptions) NamesClean() ([]types.Message, *types.MetaData, error)
 	return queryNames[types.Message](in)
 }
 
+// NamesCount implements the chifra names --count command.
+func (opts *NamesOptions) NamesCount() ([]types.Count, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Count = true
+	return queryNames[types.Count](in)
+}
+
 // NamesAutoname implements the chifra names --autoname command.
 func (opts *NamesOptions) NamesAutoname(val base.Address) ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
