@@ -125,7 +125,7 @@ type exportGeneric interface {
 		types.Statement |
 		types.Transfer |
 		types.Name |
-		types.State |
+		types.Token |
 		types.Withdrawal |
 		types.Monitor
 }
