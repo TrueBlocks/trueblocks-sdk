@@ -309,8 +309,8 @@ func relativize(path string) string {
 	}
 
 	for _, partialPath := range partialPaths {
-		if strings.HasPrefix(path, partialPath) {
-			return "./" + strings.TrimPrefix(path, partialPath)
+		if after, ok := strings.CutPrefix(path, partialPath); ok {
+			return "./" + after
 		}
 	}
 
