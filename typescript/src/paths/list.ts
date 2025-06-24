@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, blknum, Bounds, Monitor, uint64 } from '../types';
+import { address, Appearance, blknum, Bounds, Count, uint64 } from '../types';
 
 export function getList(
   parameters?: {
@@ -30,7 +30,7 @@ export function getList(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Bounds[] | Monitor[]>(
+  return ApiCallers.fetch<Appearance[] | Bounds[] | Count[]>(
     { endpoint: '/list', method: 'get', parameters, options },
   );
 }

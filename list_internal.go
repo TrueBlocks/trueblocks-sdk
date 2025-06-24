@@ -87,7 +87,7 @@ func GetListOptions(args []string) (*listOptionsInternal, error) {
 
 type listGeneric interface {
 	types.Appearance |
-		types.Monitor |
+		types.Count |
 		types.Bounds
 }
 

@@ -53,10 +53,10 @@ func (opts *SlurpOptions) SlurpAppearances() ([]types.Appearance, *types.MetaDat
 }
 
 // SlurpCount implements the chifra slurp --count command.
-func (opts *SlurpOptions) SlurpCount() ([]types.Monitor, *types.MetaData, error) {
+func (opts *SlurpOptions) SlurpCount() ([]types.Count, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Count = true
-	return querySlurp[types.Monitor](in)
+	return querySlurp[types.Count](in)
 }
 
 type SlurpParts int

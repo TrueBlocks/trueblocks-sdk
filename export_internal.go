@@ -127,7 +127,7 @@ type exportGeneric interface {
 		types.Name |
 		types.Token |
 		types.Withdrawal |
-		types.Monitor
+		types.Count
 }
 
 func queryExport[T exportGeneric](opts *exportOptionsInternal) ([]T, *types.MetaData, error) {

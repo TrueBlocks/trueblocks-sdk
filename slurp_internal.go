@@ -105,7 +105,7 @@ func GetSlurpOptions(args []string) (*slurpOptionsInternal, error) {
 type slurpGeneric interface {
 	types.Slurp |
 		types.Appearance |
-		types.Monitor
+		types.Count
 }
 
 func querySlurp[T slurpGeneric](opts *slurpOptionsInternal) ([]T, *types.MetaData, error) {

@@ -58,7 +58,7 @@ func (opts *InitOptions) InitDryRun() ([]types.Message, *types.MetaData, error) 
 // Init implements the chifra init --all command.
 func (opts *InitOptions) Init() ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
-	return queryInit[types.Message](in)
+	return queryInit(in)
 }
 
 // EXISTING_CODE

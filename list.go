@@ -46,10 +46,10 @@ func (opts *ListOptions) List() ([]types.Appearance, *types.MetaData, error) {
 }
 
 // ListCount implements the chifra list --count command.
-func (opts *ListOptions) ListCount() ([]types.Monitor, *types.MetaData, error) {
+func (opts *ListOptions) ListCount() ([]types.Count, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Count = true
-	return queryList[types.Monitor](in)
+	return queryList[types.Count](in)
 }
 
 // ListBounds implements the chifra list --bounds command.

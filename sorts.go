@@ -216,4 +216,21 @@ func SortFunctions(functions []types.Function, sortSpec SortSpec) error {
 }
 
 // EXISTING_CODE
+// Sugar
+func SortStats(chunkstats []types.ChunkStats, sortSpec SortSpec) error {
+	return SortChunkStats(chunkstats, sortSpec)
+}
+
+func SortIndex(chunkrecords []types.ChunkIndex, sortSpec SortSpec) error {
+	return nil // TODO: SortChunkRecords(chunkrecords, sortSpec)
+}
+
+func SortBlooms(chunkrecords []types.ChunkBloom, sortSpec SortSpec) error {
+	return nil // TODO: SortChunkRecords(chunkrecords, sortSpec)
+}
+
+func SortManifest(chunkrecords []types.ChunkManifest, sortSpec SortSpec) error {
+	return nil // TODO: SortChunkRecords(chunkrecords, sortSpec)
+}
+
 // EXISTING_CODE

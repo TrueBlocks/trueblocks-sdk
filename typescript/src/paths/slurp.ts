@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { address, Appearance, blknum, float64, Monitor, Slurp, uint64 } from '../types';
+import { address, Appearance, blknum, Count, float64, Slurp, uint64 } from '../types';
 
 export function getSlurp(
   parameters?: {
@@ -33,7 +33,7 @@ export function getSlurp(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Appearance[] | Monitor[] | Slurp[]>(
+  return ApiCallers.fetch<Appearance[] | Count[] | Slurp[]>(
     { endpoint: '/slurp', method: 'get', parameters, options },
   );
 }

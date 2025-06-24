@@ -129,10 +129,10 @@ func (opts *ExportOptions) ExportWithdrawals() ([]types.Withdrawal, *types.MetaD
 }
 
 // ExportCount implements the chifra export --count command.
-func (opts *ExportOptions) ExportCount() ([]types.Monitor, *types.MetaData, error) {
+func (opts *ExportOptions) ExportCount() ([]types.Count, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Count = true
-	return queryExport[types.Monitor](in)
+	return queryExport[types.Count](in)
 }
 
 type ExportFlow int
@@ -189,4 +189,17 @@ func enumFromExportFlow(values []string) (ExportFlow, error) {
 }
 
 // EXISTING_CODE
+// Sugar
+type ExportsOptions struct {
+	ExportOptions
+}
+
+func (opts *ExportsOptions) ExportsCount() (int, error) {
+	result, _, err := opts.ExportOptions.ExportCount()
+	if err != nil {
+		return 0, err
+	}
+	return len(result), nil
+}
+
 // EXISTING_CODE
