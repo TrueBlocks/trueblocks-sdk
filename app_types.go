@@ -15,3 +15,7 @@ type Transfer = types.Transfer
 type Withdrawal = types.Withdrawal
 type Monitor = types.Monitor
 type Name = types.Name
+type Asset = types.Name
+type Log = types.Log
+type Receipt = types.Receipt
+type Trace = types.Trace

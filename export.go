@@ -189,17 +189,4 @@ func enumFromExportFlow(values []string) (ExportFlow, error) {
 }
 
 // EXISTING_CODE
-// Sugar
-type ExportsOptions struct {
-	ExportOptions
-}
-
-func (opts *ExportsOptions) ExportsCount() (int, error) {
-	result, _, err := opts.ExportOptions.ExportCount()
-	if err != nil {
-		return 0, err
-	}
-	return len(result), nil
-}
-
 // EXISTING_CODE
