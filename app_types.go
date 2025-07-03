@@ -19,3 +19,6 @@ type Asset = types.Name
 type Log = types.Log
 type Receipt = types.Receipt
 type Trace = types.Trace
+type Cache = types.CacheItem
+type Status = types.Status
+type Chain = types.Chain
