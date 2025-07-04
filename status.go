@@ -315,4 +315,12 @@ func enumFromStatusModes(values []string) (StatusModes, error) {
 }
 
 // EXISTING_CODE
+func SortStatus(statuses []types.Status, sortSpec SortSpec) error {
+	return nil
+}
+
+func (opts *StatusOptions) StatusCount() ([]types.Count, *types.MetaData, error) {
+	return []types.Count{{Count: 0}}, nil, nil
+}
+
 // EXISTING_CODE

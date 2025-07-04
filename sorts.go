@@ -233,4 +233,8 @@ func SortManifest(chunkrecords []types.ChunkManifest, sortSpec SortSpec) error {
 	return nil // TODO: SortChunkRecords(chunkrecords, sortSpec)
 }
 
+func SortCaches(cacheitems []types.CacheItem, sortSpec SortSpec) error {
+	return SortCacheItems(cacheitems, sortSpec)
+}
+
 // EXISTING_CODE
