@@ -22,7 +22,6 @@ import (
 type StatusOptions struct {
 	FirstRecord uint64            `json:"firstRecord,omitempty"`
 	MaxRecords  uint64            `json:"maxRecords,omitempty"`
-	Chains      bool              `json:"chains,omitempty"`
 	RenderCtx   *output.RenderCtx `json:"-"`
 	Globals
 }
@@ -171,6 +170,20 @@ func (opts *StatusOptions) StatusDiagnose() ([]types.Status, *types.MetaData, er
 	in := opts.toInternal()
 	in.Diagnose = true
 	return queryStatus[types.Status](in)
+}
+
+// StatusChains implements the chifra status --chains command.
+func (opts *StatusOptions) StatusChains() ([]types.Chain, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Chains = true
+	return queryStatus[types.Chain](in)
+}
+
+// StatusCaches implements the chifra status --caches command.
+func (opts *StatusOptions) StatusCaches() ([]types.CacheItem, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Caches = true
+	return queryStatus[types.CacheItem](in)
 }
 
 // StatusHealthcheck implements the chifra status --healthcheck command.

@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { Status, uint64 } from '../types';
+import { CacheItem, Chain, Status, uint64 } from '../types';
 
 export function getStatus(
   parameters?: {
@@ -18,6 +18,7 @@ export function getStatus(
     firstRecord?: uint64;
     maxRecords?: uint64;
     chains?: boolean;
+    caches?: boolean;
     healthcheck?: boolean;
     fmt?: string;
     chain: string;
@@ -25,7 +26,7 @@ export function getStatus(
   },
   options?: RequestInit,
 ) {
-  return ApiCallers.fetch<Status[]>(
+  return ApiCallers.fetch<CacheItem[] | Chain[] | Status[]>(
     { endpoint: '/status', method: 'get', parameters, options },
   );
 }

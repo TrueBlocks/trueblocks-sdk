@@ -29,6 +29,7 @@ type statusOptionsInternal struct {
 	FirstRecord uint64            `json:"firstRecord,omitempty"`
 	MaxRecords  uint64            `json:"maxRecords,omitempty"`
 	Chains      bool              `json:"chains,omitempty"`
+	Caches      bool              `json:"caches,omitempty"`
 	Healthcheck bool              `json:"healthcheck,omitempty"`
 	RenderCtx   *output.RenderCtx `json:"-"`
 	Globals
@@ -90,7 +91,9 @@ func GetStatusOptions(args []string) (*statusOptionsInternal, error) {
 }
 
 type statusGeneric interface {
-	types.Status
+	types.Status |
+		types.Chain |
+		types.CacheItem
 }
 
 func queryStatus[T statusGeneric](opts *statusOptionsInternal) ([]T, *types.MetaData, error) {
@@ -120,7 +123,6 @@ func (opts *StatusOptions) toInternal() *statusOptionsInternal {
 	return &statusOptionsInternal{
 		FirstRecord: opts.FirstRecord,
 		MaxRecords:  opts.MaxRecords,
-		Chains:      opts.Chains,
 		RenderCtx:   opts.RenderCtx,
 		Globals:     opts.Globals,
 	}
