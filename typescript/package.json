@@ -17,6 +17,7 @@
     "vitest": "^0.29.2"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/jest": "^29.2.4",
     "@types/node": "^18.11.16",
     "@types/react": "^18.0.26",
@@ -24,11 +25,14 @@
     "@typescript-eslint/parser": "^5.46.1",
     "eslint": "^8.30.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^5.5.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0"
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^3.6.2"
   }
 }
