@@ -4,6 +4,7 @@ import "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
 
 type Abi = types.Abi
 type Function = types.Function
+type Parameter = types.Parameter
 type Bloom = types.ChunkBloom
 type Index = types.ChunkIndex
 type Manifest = types.ChunkManifest
@@ -22,3 +23,4 @@ type Trace = types.Trace
 type Cache = types.CacheItem
 type Status = types.Status
 type Chain = types.Chain
+type Contract = types.Contract
