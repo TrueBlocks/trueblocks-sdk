@@ -83,6 +83,28 @@ func SortNames(names []types.Name, sortSpec SortSpec) error {
 	return nil
 }
 
+func SortContracts(contracts []types.Contract, sortSpec SortSpec) error {
+	if len(sortSpec.Fields) != len(sortSpec.Order) {
+		return fmt.Errorf("fields and order must have the same length")
+	}
+
+	sorts := make([]func(p1, p2 types.Contract) bool, len(sortSpec.Fields))
+	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
+		if !slices.Contains(types.GetSortFieldsContract(), field) {
+			return fmt.Errorf("%s is not an Contract sort field", field)
+		}
+		sorts[i] = types.ContractBy(types.ContractField(field), types.SortOrder(sortSpec.Order[i]))
+	}
+
+	if len(sorts) > 0 {
+		sort.SliceStable(contracts, types.ContractCmp(contracts, sorts...))
+	}
+	return nil
+}
+
 func SortChunkRecords(chunkrecords []types.ChunkRecord, sortSpec SortSpec) error {
 	if len(sortSpec.Fields) != len(sortSpec.Order) {
 		return fmt.Errorf("fields and order must have the same length")
