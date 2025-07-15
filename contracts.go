@@ -11,46 +11,54 @@ import (
 
 // CreateContracts returns mock contract data for testing and development
 func CreateContracts() []*types.Contract {
-	mockERC20Abi := &types.Abi{
+	// Panvala PAN - ERC20 Token
+	panvalaAbi := &types.Abi{
 		Functions: []types.Function{
-			// Write functions (zero-parameter first)
 			{
-				Name:            "pause",
+				Name:            "name",
 				FunctionType:    "function",
 				StateMutability: "nonpayable",
 				Inputs:          []types.Parameter{},
-				Outputs:         []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "string", Value: "Panvala pan"},
+				},
 			},
 			{
-				Name:            "unpause",
+				Name:            "symbol",
 				FunctionType:    "function",
 				StateMutability: "nonpayable",
 				Inputs:          []types.Parameter{},
-				Outputs:         []types.Parameter{},
-			},
-			{
-				Name:            "transfer",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "to", ParameterType: "address"},
-					{Name: "amount", ParameterType: "uint256"},
-				},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "bool"},
+					{Name: "", ParameterType: "string", Value: "PAN"},
 				},
 			},
 			{
-				Name:            "transferFrom",
+				Name:            "decimals",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint8", Value: "18"},
+				},
+			},
+			{
+				Name:            "totalSupply",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+			{
+				Name:            "balanceOf",
 				FunctionType:    "function",
 				StateMutability: "nonpayable",
 				Inputs: []types.Parameter{
-					{Name: "from", ParameterType: "address"},
-					{Name: "to", ParameterType: "address"},
-					{Name: "amount", ParameterType: "uint256"},
+					{Name: "account", ParameterType: "address"},
 				},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "bool"},
+					{Name: "", ParameterType: "uint256", Value: nil},
 				},
 			},
 			{
@@ -59,48 +67,281 @@ func CreateContracts() []*types.Contract {
 				StateMutability: "nonpayable",
 				Inputs: []types.Parameter{
 					{Name: "spender", ParameterType: "address"},
+					{Name: "value", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+			{
+				Name:            "transfer",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "recipient", ParameterType: "address"},
 					{Name: "amount", ParameterType: "uint256"},
 				},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "bool"},
+					{Name: "", ParameterType: "bool", Value: nil},
 				},
 			},
 			{
-				Name:            "mint",
+				Name:            "transferFrom",
 				FunctionType:    "function",
 				StateMutability: "nonpayable",
 				Inputs: []types.Parameter{
-					{Name: "to", ParameterType: "address"},
+					{Name: "sender", ParameterType: "address"},
+					{Name: "recipient", ParameterType: "address"},
 					{Name: "amount", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+			{
+				Name:            "allowance",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "owner", ParameterType: "address"},
+					{Name: "spender", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+		},
+	}
+
+	// zkSync - Simple contract with AbiNotFound
+	zkSyncAbi := &types.Abi{
+		Functions: []types.Function{
+			{
+				Name:            "AbiNotFound",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs:         []types.Parameter{},
+			},
+		},
+	}
+
+	// USD Coin - Proxy contract
+	usdcAbi := &types.Abi{
+		Functions: []types.Function{
+			{
+				Name:            "implementation",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+			{
+				Name:            "admin",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+			{
+				Name:            "upgradeTo",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "newImplementation", ParameterType: "address"},
 				},
 				Outputs: []types.Parameter{},
 			},
 			{
-				Name:            "burn",
+				Name:            "upgradeToAndCall",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "payable",
 				Inputs: []types.Parameter{
-					{Name: "amount", ParameterType: "uint256"},
+					{Name: "newImplementation", ParameterType: "address"},
+					{Name: "data", ParameterType: "bytes"},
 				},
 				Outputs: []types.Parameter{},
 			},
-			// Read functions
+			{
+				Name:            "changeAdmin",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "newAdmin", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{},
+			},
+		},
+	}
+
+	// Tether USDT - Complex token with admin functions
+	usdtAbi := &types.Abi{
+		Functions: []types.Function{
 			{
 				Name:            "name",
 				FunctionType:    "function",
-				StateMutability: "view",
+				StateMutability: "nonpayable",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "string"},
+					{Name: "", ParameterType: "string", Value: "Tether USD"},
 				},
 			},
 			{
 				Name:            "symbol",
 				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "string", Value: "USDT"},
+				},
+			},
+			{
+				Name:            "decimals",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: "6"},
+				},
+			},
+			{
+				Name:            "totalSupply",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+			{
+				Name:            "balanceOf",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "who", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+			{
+				Name:            "owner",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+			{
+				Name:            "paused",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+			{
+				Name:            "approve",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "_spender", ParameterType: "address"},
+					{Name: "_value", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "transfer",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "_to", ParameterType: "address"},
+					{Name: "_value", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "transferFrom",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "_from", ParameterType: "address"},
+					{Name: "_to", ParameterType: "address"},
+					{Name: "_value", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{},
+			},
+		},
+	}
+
+	// Unchained Index
+	unchainedIndexAbi := &types.Abi{
+		Functions: []types.Function{
+			{
+				Name:            "publishHash",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "chain", ParameterType: "string"},
+					{Name: "hash", ParameterType: "string"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "changeOwner",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "newOwner", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "oldOwner", ParameterType: "address"},
+				},
+			},
+			{
+				Name:            "donate",
+				FunctionType:    "function",
+				StateMutability: "payable",
+				Inputs:          []types.Parameter{},
+				Outputs:         []types.Parameter{},
+			},
+			{
+				Name:            "owner",
+				FunctionType:    "function",
 				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "string"},
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+		},
+	}
+
+	// Gitcoin GTC - ERC20 Token
+	gitcoinAbi := &types.Abi{
+		Functions: []types.Function{
+			{
+				Name:            "name",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "string", Value: "Gitcoin"},
+				},
+			},
+			{
+				Name:            "symbol",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "string", Value: "GTC"},
 				},
 			},
 			{
@@ -109,7 +350,7 @@ func CreateContracts() []*types.Contract {
 				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint8"},
+					{Name: "", ParameterType: "uint8", Value: "18"},
 				},
 			},
 			{
@@ -118,7 +359,7 @@ func CreateContracts() []*types.Contract {
 				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
+					{Name: "", ParameterType: "uint256", Value: nil},
 				},
 			},
 			{
@@ -129,34 +370,22 @@ func CreateContracts() []*types.Contract {
 					{Name: "account", ParameterType: "address"},
 				},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
-				},
-			},
-			{
-				Name:            "allowance",
-				FunctionType:    "function",
-				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "owner", ParameterType: "address"},
-					{Name: "spender", ParameterType: "address"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
+					{Name: "", ParameterType: "uint256", Value: nil},
 				},
 			},
 		},
 	}
 
-	mockERC721Abi := &types.Abi{
+	// DAI Stablecoin - ERC20 Token
+	daiAbi := &types.Abi{
 		Functions: []types.Function{
-			// Read functions
 			{
 				Name:            "name",
 				FunctionType:    "function",
 				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "string"},
+					{Name: "", ParameterType: "string", Value: "Dai Stablecoin"},
 				},
 			},
 			{
@@ -165,29 +394,25 @@ func CreateContracts() []*types.Contract {
 				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "string"},
+					{Name: "", ParameterType: "string", Value: "DAI"},
 				},
 			},
 			{
-				Name:            "tokenURI",
+				Name:            "decimals",
 				FunctionType:    "function",
 				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
+				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "string"},
+					{Name: "", ParameterType: "uint256", Value: "18"},
 				},
 			},
 			{
-				Name:            "ownerOf",
+				Name:            "totalSupply",
 				FunctionType:    "function",
 				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
+				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "address"},
+					{Name: "", ParameterType: "uint256", Value: nil},
 				},
 			},
 			{
@@ -195,328 +420,124 @@ func CreateContracts() []*types.Contract {
 				FunctionType:    "function",
 				StateMutability: "view",
 				Inputs: []types.Parameter{
-					{Name: "owner", ParameterType: "address"},
+					{Name: "src", ParameterType: "address"},
 				},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
+					{Name: "", ParameterType: "uint256", Value: nil},
 				},
-			},
-			{
-				Name:            "getApproved",
-				FunctionType:    "function",
-				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "address"},
-				},
-			},
-			{
-				Name:            "isApprovedForAll",
-				FunctionType:    "function",
-				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "owner", ParameterType: "address"},
-					{Name: "operator", ParameterType: "address"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "bool"},
-				},
-			},
-			// Write functions
-			{
-				Name:            "approve",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "to", ParameterType: "address"},
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "setApprovalForAll",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "operator", ParameterType: "address"},
-					{Name: "approved", ParameterType: "bool"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "transferFrom",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "from", ParameterType: "address"},
-					{Name: "to", ParameterType: "address"},
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "safeTransferFrom",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "from", ParameterType: "address"},
-					{Name: "to", ParameterType: "address"},
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "safeTransferFrom",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "from", ParameterType: "address"},
-					{Name: "to", ParameterType: "address"},
-					{Name: "tokenId", ParameterType: "uint256"},
-					{Name: "data", ParameterType: "bytes"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "mint",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "to", ParameterType: "address"},
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "burn",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "tokenId", ParameterType: "uint256"},
-				},
-				Outputs: []types.Parameter{},
 			},
 		},
 	}
 
-	mockGovernanceAbi := &types.Abi{
+	// GitCoin Grant - Simple contract with AbiNotFound
+	gitcoinGrantAbi := &types.Abi{
 		Functions: []types.Function{
-			// Read functions
 			{
-				Name:            "proposalCount",
+				Name:            "AbiNotFound",
 				FunctionType:    "function",
-				StateMutability: "view",
+				StateMutability: "nonpayable",
 				Inputs:          []types.Parameter{},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
-				},
-			},
-			{
-				Name:            "getProposal",
-				FunctionType:    "function",
-				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "proposalId", ParameterType: "uint256"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "id", ParameterType: "uint256"},
-					{Name: "proposer", ParameterType: "address"},
-					{Name: "description", ParameterType: "string"},
-					{Name: "startTime", ParameterType: "uint256"},
-					{Name: "endTime", ParameterType: "uint256"},
-					{Name: "executed", ParameterType: "bool"},
-				},
-			},
-			{
-				Name:            "hasVoted",
-				FunctionType:    "function",
-				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "proposalId", ParameterType: "uint256"},
-					{Name: "voter", ParameterType: "address"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "bool"},
-				},
-			},
-			{
-				Name:            "getVotingPower",
-				FunctionType:    "function",
-				StateMutability: "view",
-				Inputs: []types.Parameter{
-					{Name: "account", ParameterType: "address"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
-				},
-			},
-			// Write functions
-			{
-				Name:            "propose",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "targets", ParameterType: "address[]"},
-					{Name: "values", ParameterType: "uint256[]"},
-					{Name: "calldatas", ParameterType: "bytes[]"},
-					{Name: "description", ParameterType: "string"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
-				},
-			},
-			{
-				Name:            "castVote",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "proposalId", ParameterType: "uint256"},
-					{Name: "support", ParameterType: "uint8"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
-				},
-			},
-			{
-				Name:            "castVoteWithReason",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "proposalId", ParameterType: "uint256"},
-					{Name: "support", ParameterType: "uint8"},
-					{Name: "reason", ParameterType: "string"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
-				},
-			},
-			{
-				Name:            "execute",
-				FunctionType:    "function",
-				StateMutability: "payable",
-				Inputs: []types.Parameter{
-					{Name: "targets", ParameterType: "address[]"},
-					{Name: "values", ParameterType: "uint256[]"},
-					{Name: "calldatas", ParameterType: "bytes[]"},
-					{Name: "descriptionHash", ParameterType: "bytes32"},
-				},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "uint256"},
-				},
-			},
-			{
-				Name:            "delegate",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "delegatee", ParameterType: "address"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "delegateBySig",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "delegatee", ParameterType: "address"},
-					{Name: "nonce", ParameterType: "uint256"},
-					{Name: "expiry", ParameterType: "uint256"},
-					{Name: "v", ParameterType: "uint8"},
-					{Name: "r", ParameterType: "bytes32"},
-					{Name: "s", ParameterType: "bytes32"},
-				},
-				Outputs: []types.Parameter{},
+				Outputs:         []types.Parameter{},
 			},
 		},
 	}
 
 	return []*types.Contract{
 		{
-			Address:     base.HexToAddress("0x52df6e4d9989e7cf4739d687c765e75323a1b14c"),
-			Name:        "MockToken (MTK)",
-			Abi:         mockERC20Abi,
+			Address:     base.HexToAddress("0xd56dac73a4d6766464b38ec6d91eb45ce7457c44"),
+			Name:        "Panvala pan PAN",
+			Abi:         panvalaAbi,
 			Date:        "2024-01-15",
-			LastUpdated: 1705401600, // 2024-01-15 timestamp
+			LastUpdated: 1705401600,
 			ErrorCount:  0,
 			LastError:   "",
 			ReadResults: map[string]interface{}{
-				"name":        "MockToken",
-				"symbol":      "MTK",
-				"decimals":    18,
-				"totalSupply": "1000000000000000000000000", // 1M tokens with 18 decimals
+				"name":     "Panvala pan",
+				"symbol":   "PAN",
+				"decimals": "18",
 			},
 		},
 		{
-			Address:     base.HexToAddress("0x1234567890abcdef1234567890abcdef12345678"),
-			Name:        "MockNFT Collection",
-			Abi:         mockERC721Abi,
-			Date:        "2024-02-20",
-			LastUpdated: 1708473600, // 2024-02-20 timestamp
+			Address:     base.HexToAddress("0xabea9132b05a70803a4e85094fd0e1800777fbef"),
+			Name:        "zkSync",
+			Abi:         zkSyncAbi,
+			Date:        "2024-01-16",
+			LastUpdated: 1705488000,
+			ErrorCount:  0,
+			LastError:   "",
+			ReadResults: map[string]interface{}{},
+		},
+		{
+			Address:     base.HexToAddress("0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"),
+			Name:        "USD Coin (L1) USDC",
+			Abi:         usdcAbi,
+			Date:        "2024-01-17",
+			LastUpdated: 1705574400,
+			ErrorCount:  0,
+			LastError:   "",
+			ReadResults: map[string]interface{}{},
+		},
+		{
+			Address:     base.HexToAddress("0xdac17f958d2ee523a2206206994597c13d831ec7"),
+			Name:        "Tether USD (L1) USDT",
+			Abi:         usdtAbi,
+			Date:        "2024-01-18",
+			LastUpdated: 1705660800,
 			ErrorCount:  0,
 			LastError:   "",
 			ReadResults: map[string]interface{}{
-				"name":   "MockNFT Collection",
-				"symbol": "MNFT",
+				"name":     "Tether USD",
+				"symbol":   "USDT",
+				"decimals": "6",
 			},
 		},
 		{
-			Address:     base.HexToAddress("0x9876543210fedcba9876543210fedcba98765432"),
-			Name:        "MockDAO Governance",
-			Abi:         mockGovernanceAbi,
-			Date:        "2024-03-10",
-			LastUpdated: 1710115200, // 2024-03-10 timestamp
+			Address:     base.HexToAddress("0x0c316b7042b419d07d343f2f4f5bd54ff731183d"),
+			Name:        "Unchained Index (v1.0)",
+			Abi:         unchainedIndexAbi,
+			Date:        "2024-01-19",
+			LastUpdated: 1705747200,
+			ErrorCount:  0,
+			LastError:   "",
+			ReadResults: map[string]interface{}{},
+		},
+		{
+			Address:     base.HexToAddress("0xde30da39c46104798bb5aa3fe8b9e0e1f348163f"),
+			Name:        "Gitcoin (L1) GTC",
+			Abi:         gitcoinAbi,
+			Date:        "2024-01-20",
+			LastUpdated: 1705833600,
 			ErrorCount:  0,
 			LastError:   "",
 			ReadResults: map[string]interface{}{
-				"proposalCount": "5",
-			},
-		},
-	}
-}
-
-// CreateLogs returns mock log data for testing and development
-func CreateLogs() []*types.Log {
-	return []*types.Log{
-		{
-			BlockNumber:      18700000,
-			TransactionIndex: 42,
-			LogIndex:         0,
-			TransactionHash:  base.HexToHash("0x789def456abcdef123456789abcdef123456789abcdef123456789abcdef1234"),
-			Address:          base.HexToAddress("0x52df6e4d9989e7cf4739d687c765e75323a1b14c"),
-			Data:             "0x000000000000000000000000000000000000000000000000000000000000007b",
-			Topics: []base.Hash{
-				base.HexToHash("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"), // Transfer event
-				base.HexToHash("0x000000000000000000000000f503017d7baf7fbc0fff7492b751025c6a78179b"), // from
-				base.HexToHash("0x00000000000000000000000052df6e4d9989e7cf4739d687c765e75323a1b14c"), // to
+				"name":     "Gitcoin",
+				"symbol":   "GTC",
+				"decimals": "18",
 			},
 		},
 		{
-			BlockNumber:      18700001,
-			TransactionIndex: 55,
-			LogIndex:         1,
-			TransactionHash:  base.HexToHash("0x789abc789def123456789abcdef123456789abcdef123456789abcdef123456"),
-			Address:          base.HexToAddress("0xf503017d7baf7fbc0fff7492b751025c6a78179b"),
-			Data:             "0x00000000000000000000000000000000000000000000000000000000000003e8",
-			Topics: []base.Hash{
-				base.HexToHash("0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"), // Approval event
-				base.HexToHash("0x000000000000000000000000f503017d7baf7fbc0fff7492b751025c6a78179b"), // owner
-				base.HexToHash("0x00000000000000000000000052df6e4d9989e7cf4739d687c765e75323a1b14c"), // spender
+			Address:     base.HexToAddress("0x6b175474e89094c44da98b954eedeac495271d0f"),
+			Name:        "Dai Stablecoin (L1) DAI",
+			Abi:         daiAbi,
+			Date:        "2024-01-21",
+			LastUpdated: 1705920000,
+			ErrorCount:  0,
+			LastError:   "",
+			ReadResults: map[string]interface{}{
+				"name":     "Dai Stablecoin",
+				"symbol":   "DAI",
+				"decimals": "18",
 			},
 		},
 		{
-			BlockNumber:      18700002,
-			TransactionIndex: 123,
-			LogIndex:         2,
-			TransactionHash:  base.HexToHash("0x789ghi012345678abcdef123456789abcdef123456789abcdef123456789abc"),
-			Address:          base.HexToAddress("0x52df6e4d9989e7cf4739d687c765e75323a1b14c"),
-			Data:             "0x0000000000000000000000000000000000000000000000000000000000000001",
-			Topics: []base.Hash{
-				base.HexToHash("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"), // Transfer event
-				base.HexToHash("0x0000000000000000000000000000000000000000000000000000000000000000"), // from (mint)
-				base.HexToHash("0x000000000000000000000000f503017d7baf7fbc0fff7492b751025c6a78179b"), // to
-			},
+			Address:     base.HexToAddress("0x7d655c57f71464b6f83811c55d84009cd9f5221c"),
+			Name:        "GitCoin Grant 6,7,8",
+			Abi:         gitcoinGrantAbi,
+			Date:        "2024-01-22",
+			LastUpdated: 1706006400,
+			ErrorCount:  0,
+			LastError:   "",
+			ReadResults: map[string]interface{}{},
 		},
 	}
 }
