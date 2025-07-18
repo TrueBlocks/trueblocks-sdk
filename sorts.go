@@ -244,14 +244,20 @@ func SortStats(chunkstats []types.ChunkStats, sortSpec SortSpec) error {
 }
 
 func SortIndex(chunkrecords []types.ChunkIndex, sortSpec SortSpec) error {
+	_ = chunkrecords
+	_ = sortSpec
 	return nil // TODO: SortChunkRecords(chunkrecords, sortSpec)
 }
 
 func SortBlooms(chunkrecords []types.ChunkBloom, sortSpec SortSpec) error {
+	_ = chunkrecords
+	_ = sortSpec
 	return nil // TODO: SortChunkRecords(chunkrecords, sortSpec)
 }
 
 func SortManifest(chunkrecords []types.ChunkManifest, sortSpec SortSpec) error {
+	_ = chunkrecords
+	_ = sortSpec
 	return nil // TODO: SortChunkRecords(chunkrecords, sortSpec)
 }
 

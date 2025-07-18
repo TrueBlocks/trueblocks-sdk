@@ -316,6 +316,8 @@ func enumFromStatusModes(values []string) (StatusModes, error) {
 
 // EXISTING_CODE
 func SortStatus(statuses []types.Status, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 

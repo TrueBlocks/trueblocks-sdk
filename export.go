@@ -190,36 +190,54 @@ func enumFromExportFlow(values []string) (ExportFlow, error) {
 
 // EXISTING_CODE
 func SortStatements(statuses []types.Statement, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 
 func SortBalances(statuses []types.Token, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 
 func SortTransfers(statuses []types.Transfer, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 
 func SortTransactions(statuses []types.Transaction, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 
 func SortWithdrawals(statuses []types.Withdrawal, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 
 func SortAssets(statuses []types.Name, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 
 func SortLogs(statuses []types.Log, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 func SortTraces(statuses []types.Trace, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 func SortReceipts(statuses []types.Receipt, sortSpec SortSpec) error {
+	_ = statuses
+	_ = sortSpec
 	return nil
 }
 
