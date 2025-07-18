@@ -17,7 +17,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "name",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "string", Value: "Panvala pan"},
@@ -26,7 +26,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "symbol",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "string", Value: "PAN"},
@@ -35,7 +35,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "decimals",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "uint8", Value: "18"},
@@ -44,7 +44,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "totalSupply",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "uint256", Value: nil},
@@ -53,7 +53,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "balanceOf",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs: []types.Parameter{
 					{Name: "account", ParameterType: "address"},
 				},
@@ -101,7 +101,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "allowance",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs: []types.Parameter{
 					{Name: "owner", ParameterType: "address"},
 					{Name: "spender", ParameterType: "address"},
@@ -110,11 +110,112 @@ func CreateContracts() []*types.Contract {
 					{Name: "", ParameterType: "uint256", Value: nil},
 				},
 			},
+			{
+				Name:            "increaseAllowance",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "spender", ParameterType: "address"},
+					{Name: "addedValue", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+			{
+				Name:            "decreaseAllowance",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "spender", ParameterType: "address"},
+					{Name: "subtractedValue", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
 		},
 	}
 
-	// zkSync - Simple contract with AbiNotFound
+	// zkSync - Upgradeable contract
 	zkSyncAbi := &types.Abi{
+		Functions: []types.Function{
+			{
+				Name:            "upgrade",
+				FunctionType:    "function",
+				StateMutability: "pure",
+				Inputs: []types.Parameter{
+					{Name: "", ParameterType: "bytes"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "getNoticePeriod",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+			{
+				Name:            "upgradeNoticePeriodStarted",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs:         []types.Parameter{},
+			},
+			{
+				Name:            "initialize",
+				FunctionType:    "function",
+				StateMutability: "pure",
+				Inputs: []types.Parameter{
+					{Name: "", ParameterType: "bytes"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "getMaster",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+			{
+				Name:            "upgradeTarget",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "target", ParameterType: "address"},
+					{Name: "data", ParameterType: "bytes"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "transferMastership",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "newMaster", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "getTarget",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+		},
+	}
+
+	// USD Coin - Contract with AbiNotFound
+	usdcAbi := &types.Abi{
 		Functions: []types.Function{
 			{
 				Name:            "AbiNotFound",
@@ -126,74 +227,22 @@ func CreateContracts() []*types.Contract {
 		},
 	}
 
-	// USD Coin - Proxy contract
-	usdcAbi := &types.Abi{
-		Functions: []types.Function{
-			{
-				Name:            "implementation",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs:          []types.Parameter{},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "address", Value: nil},
-				},
-			},
-			{
-				Name:            "admin",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs:          []types.Parameter{},
-				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "address", Value: nil},
-				},
-			},
-			{
-				Name:            "upgradeTo",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "newImplementation", ParameterType: "address"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "upgradeToAndCall",
-				FunctionType:    "function",
-				StateMutability: "payable",
-				Inputs: []types.Parameter{
-					{Name: "newImplementation", ParameterType: "address"},
-					{Name: "data", ParameterType: "bytes"},
-				},
-				Outputs: []types.Parameter{},
-			},
-			{
-				Name:            "changeAdmin",
-				FunctionType:    "function",
-				StateMutability: "nonpayable",
-				Inputs: []types.Parameter{
-					{Name: "newAdmin", ParameterType: "address"},
-				},
-				Outputs: []types.Parameter{},
-			},
-		},
-	}
-
 	// Tether USDT - Complex token with admin functions
 	usdtAbi := &types.Abi{
 		Functions: []types.Function{
 			{
 				Name:            "name",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
-					{Name: "", ParameterType: "string", Value: "Tether USD"},
+					{Name: "", ParameterType: "string", Value: "Tether USD (L1)"},
 				},
 			},
 			{
 				Name:            "symbol",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "string", Value: "USDT"},
@@ -202,7 +251,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "decimals",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "uint256", Value: "6"},
@@ -211,7 +260,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "totalSupply",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "uint256", Value: nil},
@@ -220,7 +269,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "balanceOf",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs: []types.Parameter{
 					{Name: "who", ParameterType: "address"},
 				},
@@ -231,7 +280,7 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "owner",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "address", Value: nil},
@@ -240,7 +289,16 @@ func CreateContracts() []*types.Contract {
 			{
 				Name:            "paused",
 				FunctionType:    "function",
-				StateMutability: "nonpayable",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+			{
+				Name:            "deprecated",
+				FunctionType:    "function",
+				StateMutability: "view",
 				Inputs:          []types.Parameter{},
 				Outputs: []types.Parameter{
 					{Name: "", ParameterType: "bool", Value: nil},
@@ -276,6 +334,26 @@ func CreateContracts() []*types.Contract {
 					{Name: "_value", ParameterType: "uint256"},
 				},
 				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "addBlackList",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "_evilUser", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "getBlackListStatus",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "_maker", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
 			},
 		},
 	}
@@ -445,7 +523,7 @@ func CreateContracts() []*types.Contract {
 	return []*types.Contract{
 		{
 			Address:     base.HexToAddress("0xd56dac73a4d6766464b38ec6d91eb45ce7457c44"),
-			Name:        "Panvala pan PAN",
+			Name:        "Panvala pan",
 			Abi:         panvalaAbi,
 			Date:        "2024-01-15",
 			LastUpdated: 1705401600,
@@ -469,24 +547,27 @@ func CreateContracts() []*types.Contract {
 		},
 		{
 			Address:     base.HexToAddress("0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"),
-			Name:        "USD Coin (L1) USDC",
+			Name:        "USD Coin (L1)",
 			Abi:         usdcAbi,
 			Date:        "2024-01-17",
 			LastUpdated: 1705574400,
 			ErrorCount:  0,
 			LastError:   "",
-			ReadResults: map[string]interface{}{},
+			ReadResults: map[string]interface{}{
+				"symbol":   "USDC",
+				"decimals": "6",
+			},
 		},
 		{
 			Address:     base.HexToAddress("0xdac17f958d2ee523a2206206994597c13d831ec7"),
-			Name:        "Tether USD (L1) USDT",
+			Name:        "Tether USD (L1)",
 			Abi:         usdtAbi,
 			Date:        "2024-01-18",
 			LastUpdated: 1705660800,
 			ErrorCount:  0,
 			LastError:   "",
 			ReadResults: map[string]interface{}{
-				"name":     "Tether USD",
+				"name":     "Tether USD (L1)",
 				"symbol":   "USDT",
 				"decimals": "6",
 			},
@@ -503,28 +584,28 @@ func CreateContracts() []*types.Contract {
 		},
 		{
 			Address:     base.HexToAddress("0xde30da39c46104798bb5aa3fe8b9e0e1f348163f"),
-			Name:        "Gitcoin (L1) GTC",
+			Name:        "Gitcoin (L1)",
 			Abi:         gitcoinAbi,
 			Date:        "2024-01-20",
 			LastUpdated: 1705833600,
 			ErrorCount:  0,
 			LastError:   "",
 			ReadResults: map[string]interface{}{
-				"name":     "Gitcoin",
+				"name":     "Gitcoin (L1)",
 				"symbol":   "GTC",
 				"decimals": "18",
 			},
 		},
 		{
 			Address:     base.HexToAddress("0x6b175474e89094c44da98b954eedeac495271d0f"),
-			Name:        "Dai Stablecoin (L1) DAI",
+			Name:        "Dai Stablecoin (L1)",
 			Abi:         daiAbi,
 			Date:        "2024-01-21",
 			LastUpdated: 1705920000,
 			ErrorCount:  0,
 			LastError:   "",
 			ReadResults: map[string]interface{}{
-				"name":     "Dai Stablecoin",
+				"name":     "Dai Stablecoin (L1)",
 				"symbol":   "DAI",
 				"decimals": "18",
 			},
