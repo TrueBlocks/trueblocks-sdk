@@ -23,7 +23,6 @@ type WhenOptions struct {
 	BlockIds  []string          `json:"blocks,omitempty"`
 	Truncate  base.Blknum       `json:"truncate,omitempty"`
 	Repair    bool              `json:"repair,omitempty"`
-	Check     bool              `json:"check,omitempty"`
 	Update    bool              `json:"update,omitempty"`
 	Deep      uint64            `json:"deep,omitempty"`
 	RenderCtx *output.RenderCtx `json:"-"`
@@ -61,6 +60,14 @@ func (opts *WhenOptions) WhenCount() ([]types.Count, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Count = true
 	return queryWhen[types.Count](in)
+}
+
+// WhenCheck implements the chifra when --check command.
+func (opts *WhenOptions) WhenCheck() ([]types.ReportCheck, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Timestamps = true
+	in.Check = true
+	return queryWhen[types.ReportCheck](in)
 }
 
 // No enums
