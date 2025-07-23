@@ -43,6 +43,8 @@ type chunksOptionsInternal struct {
 	Unpin      bool              `json:"unpin,omitempty"`
 	Count      bool              `json:"count,omitempty"`
 	Tag        string            `json:"tag,omitempty"`
+	DryRun     bool              `json:"dryRun,omitempty"`
+	Metadata   bool              `json:"metadata,omitempty"`
 	Sleep      float64           `json:"sleep,omitempty"`
 	RenderCtx  *output.RenderCtx `json:"-"`
 	Globals
@@ -112,6 +114,7 @@ type chunksGeneric interface {
 		types.ChunkAppearance |
 		types.ChunkStats |
 		types.Message |
+		types.ChunkRecord |
 		types.Count
 }
 
@@ -152,8 +155,9 @@ func (opts *ChunksOptions) toInternal() *chunksOptionsInternal {
 		MaxAddrs:   opts.MaxAddrs,
 		Deep:       opts.Deep,
 		Rewrite:    opts.Rewrite,
-		List:       opts.List,
 		Unpin:      opts.Unpin,
+		DryRun:     opts.DryRun,
+		Metadata:   opts.Metadata,
 		Sleep:      opts.Sleep,
 		RenderCtx:  opts.RenderCtx,
 		Globals:    opts.Globals,

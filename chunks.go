@@ -33,8 +33,9 @@ type ChunksOptions struct {
 	MaxAddrs   uint64            `json:"maxAddrs,omitempty"`
 	Deep       bool              `json:"deep,omitempty"`
 	Rewrite    bool              `json:"rewrite,omitempty"`
-	List       bool              `json:"list,omitempty"`
 	Unpin      bool              `json:"unpin,omitempty"`
+	DryRun     bool              `json:"dryRun,omitempty"`
+	Metadata   bool              `json:"metadata,omitempty"`
 	Sleep      float64           `json:"sleep,omitempty"`
 	RenderCtx  *output.RenderCtx `json:"-"`
 	Globals
@@ -107,6 +108,13 @@ func (opts *ChunksOptions) ChunksDiff() ([]types.Message, *types.MetaData, error
 	in := opts.toInternal()
 	in.Diff = true
 	return queryChunks[types.Message](in)
+}
+
+// ChunksList implements the chifra chunks --list command.
+func (opts *ChunksOptions) ChunksList() ([]types.ChunkRecord, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.List = true
+	return queryChunks[types.ChunkRecord](in)
 }
 
 // ChunksCount implements the chifra chunks --count command.
@@ -193,4 +201,11 @@ func enumFromChunksMode(values []string) (ChunksMode, error) {
 }
 
 // EXISTING_CODE
+func (opts *ChunksOptions) ChunksPinsList() ([]types.ChunkRecord, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Mode = CMPins
+	in.List = true
+	return queryChunks[types.ChunkRecord](in)
+}
+
 // EXISTING_CODE
