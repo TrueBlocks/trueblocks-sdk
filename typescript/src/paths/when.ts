@@ -9,7 +9,7 @@
  */
 
 import * as ApiCallers from '../lib/api_callers';
-import { Count, NamedBlock, Timestamp } from '../types';
+import { Count, NamedBlock, Timestamp, uint64 } from '../types';
 
 export function getWhen(
   parameters?: {
@@ -20,7 +20,7 @@ export function getWhen(
     repair?: boolean;
     check?: boolean;
     update?: boolean;
-    deep?: boolean;
+    deep?: uint64;
     fmt?: string;
     chain: string;
     noHeader?: boolean;

@@ -31,7 +31,7 @@ type whenOptionsInternal struct {
 	Repair     bool              `json:"repair,omitempty"`
 	Check      bool              `json:"check,omitempty"`
 	Update     bool              `json:"update,omitempty"`
-	Deep       bool              `json:"deep,omitempty"`
+	Deep       uint64            `json:"deep,omitempty"`
 	RenderCtx  *output.RenderCtx `json:"-"`
 	Globals
 }

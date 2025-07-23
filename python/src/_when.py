@@ -18,7 +18,7 @@ whenOpts = {
     "repair": {"hotkey": "-r", "type": "switch"},
     "check": {"hotkey": "-c", "type": "switch"},
     "update": {"hotkey": "-u", "type": "switch"},
-    "deep": {"hotkey": "-d", "type": "switch"},
+    "deep": {"hotkey": "-d", "type": "flag"},
     "chain": {"hotkey": "", "type": "flag"},
     "noHeader": {"hotkey": "", "type": "switch"},
     "cache": {"hotkey": "-o", "type": "switch"},
