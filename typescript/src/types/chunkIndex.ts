@@ -11,11 +11,11 @@
 import { blkrange, hash, RangeDates, uint64 } from '.';
 
 export type ChunkIndex = {
+  fileSize: uint64;
   hash: hash;
   magic: string;
   nAddresses: uint64;
   nAppearances: uint64;
   range: blkrange;
   rangeDates?: RangeDates;
-  size: uint64;
 };
