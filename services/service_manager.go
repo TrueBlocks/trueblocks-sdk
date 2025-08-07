@@ -78,6 +78,11 @@ func (sm *ServiceManager) cleanupAllServices() {
 func (sm *ServiceManager) IsPaused(name string) ([]map[string]string, error) {
 	var results []map[string]string
 
+	// Treat "all" as equivalent to empty string (check all services)
+	if name == "all" {
+		name = ""
+	}
+
 	for _, svc := range sm.services {
 		if pauser, ok := svc.(Pauser); ok {
 			if name == "" || svc.Name() == name {
@@ -104,6 +109,11 @@ func (sm *ServiceManager) IsPaused(name string) ([]map[string]string, error) {
 
 func (sm *ServiceManager) Pause(name string) ([]map[string]string, error) {
 	var results []map[string]string
+
+	// Treat "all" as equivalent to empty string (pause all services)
+	if name == "all" {
+		name = ""
+	}
 
 	for _, svc := range sm.services {
 		if pauser, ok := svc.(Pauser); ok {
@@ -138,6 +148,11 @@ func (sm *ServiceManager) Pause(name string) ([]map[string]string, error) {
 
 func (sm *ServiceManager) Unpause(name string) ([]map[string]string, error) {
 	var results []map[string]string
+
+	// Treat "all" as equivalent to empty string (unpause all services)
+	if name == "all" {
+		name = ""
+	}
 
 	for _, svc := range sm.services {
 		if pauser, ok := svc.(Pauser); ok {

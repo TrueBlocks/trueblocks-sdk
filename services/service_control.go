@@ -77,7 +77,8 @@ func (s *ControlService) Logger() *slog.Logger {
 }
 
 func (s *ControlService) handleDefault(w http.ResponseWriter, r *http.Request) {
-	_ = r
+	s.logger.Info("Received API documentation request", "remote_addr", r.RemoteAddr, "path", r.URL.Path)
+
 	results := map[string]string{
 		"/status":   "[name]",
 		"/isPaused": "name",
@@ -89,31 +90,76 @@ func (s *ControlService) handleDefault(w http.ResponseWriter, r *http.Request) {
 
 func (s *ControlService) handleIsPaused(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
+
+	if name == "" || name == "all" {
+		s.logger.Info("Received status request for all services", "remote_addr", r.RemoteAddr)
+	} else {
+		s.logger.Info("Received status request", "service", name, "remote_addr", r.RemoteAddr)
+	}
+
 	results, err := s.manager.IsPaused(name)
 	if err != nil {
+		s.logger.Error("Status request failed", "service", name, "error", err.Error())
 		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+
+	for _, result := range results {
+		serviceName := result["name"]
+		status := result["status"]
+		s.logger.Info("Service status result", "service", serviceName, "status", status)
+	}
+
 	writeJSONResponse(w, results)
 }
 
 func (s *ControlService) handlePause(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
+
+	if name == "" || name == "all" {
+		s.logger.Info("Received pause request for all services", "remote_addr", r.RemoteAddr)
+	} else {
+		s.logger.Info("Received pause request", "service", name, "remote_addr", r.RemoteAddr)
+	}
+
 	results, err := s.manager.Pause(name)
 	if err != nil {
+		s.logger.Error("Pause request failed", "service", name, "error", err.Error())
 		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+
+	for _, result := range results {
+		serviceName := result["name"]
+		status := result["status"]
+		s.logger.Info("Service pause result", "service", serviceName, "status", status)
+	}
+
 	writeJSONResponse(w, results)
 }
 
 func (s *ControlService) handleUnpause(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
+
+	if name == "" || name == "all" {
+		s.logger.Info("Received unpause request for all services", "remote_addr", r.RemoteAddr)
+	} else {
+		s.logger.Info("Received unpause request", "service", name, "remote_addr", r.RemoteAddr)
+	}
+
 	results, err := s.manager.Unpause(name)
 	if err != nil {
+		s.logger.Error("Unpause request failed", "service", name, "error", err.Error())
 		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+
+	for _, result := range results {
+		serviceName := result["name"]
+		status := result["status"]
+		s.logger.Info("Service unpause result", "service", serviceName, "status", status)
+	}
+
 	writeJSONResponse(w, results)
 }
 
