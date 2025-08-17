@@ -8,13 +8,15 @@ import (
 )
 
 type ControlService struct {
-	logger     *slog.Logger
-	manager    *ServiceManager
-	server     *http.Server
-	listenAddr string
-	port       string
-	ctx        context.Context
-	cancel     context.CancelFunc
+	logger      *slog.Logger
+	manager     *ServiceManager
+	server      *http.Server
+	listenAddr  string
+	port        string
+	ctx         context.Context
+	cancel      context.CancelFunc
+	extra       []func(*http.ServeMux)
+	rootHandler http.HandlerFunc
 }
 
 func NewControlService(logger *slog.Logger) *ControlService {
@@ -44,13 +46,14 @@ func (s *ControlService) Initialize() error {
 	mux.HandleFunc("/isPaused", s.handleIsPaused)
 	mux.HandleFunc("/pause", s.handlePause)
 	mux.HandleFunc("/unpause", s.handleUnpause)
-	mux.HandleFunc("/", s.handleDefault)
-
-	s.server = &http.Server{
-		Addr:    s.listenAddr,
-		Handler: mux,
+	if s.rootHandler == nil {
+		s.rootHandler = s.handleDefault
 	}
-
+	mux.HandleFunc("/", s.rootHandler)
+	for _, add := range s.extra {
+		add(mux)
+	}
+	s.server = &http.Server{Addr: s.listenAddr, Handler: mux}
 	return nil
 }
 
@@ -78,7 +81,6 @@ func (s *ControlService) Logger() *slog.Logger {
 
 func (s *ControlService) handleDefault(w http.ResponseWriter, r *http.Request) {
 	s.logger.Info("Received API documentation request", "remote_addr", r.RemoteAddr, "path", r.URL.Path)
-
 	results := map[string]string{
 		"/status":   "[name]",
 		"/isPaused": "name",
@@ -87,6 +89,15 @@ func (s *ControlService) handleDefault(w http.ResponseWriter, r *http.Request) {
 	}
 	writeJSONResponse(w, results)
 }
+
+// Extension points
+func (s *ControlService) AddHandler(pattern string, h http.HandlerFunc) {
+	s.extra = append(s.extra, func(mux *http.ServeMux) { mux.HandleFunc(pattern, h) })
+}
+
+func (s *ControlService) SetRootHandler(h http.HandlerFunc) { s.rootHandler = h }
+
+func (s *ControlService) DefaultRootHandler() http.HandlerFunc { return s.handleDefault }
 
 func (s *ControlService) handleIsPaused(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
