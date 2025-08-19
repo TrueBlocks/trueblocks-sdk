@@ -13,6 +13,7 @@ import (
 	sdk "github.com/TrueBlocks/trueblocks-sdk/v5"
 )
 
+// ScrapeService implements Servicer, Pauser, and Restarter interfaces
 type ScrapeService struct {
 	paused        bool
 	logger        *slog.Logger
@@ -130,6 +131,7 @@ func (s *ScrapeService) Unpause() bool {
 
 func (s *ScrapeService) Cleanup() {
 	s.cancel()
+	s.ctx, s.cancel = context.WithCancel(context.Background())
 	s.logger.Info("Scraper service cleanup completed")
 }
 

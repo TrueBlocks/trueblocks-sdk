@@ -52,6 +52,7 @@ func (s *ControlService) Initialize() error {
 	mux.HandleFunc("/isPaused", s.handleIsPaused)
 	mux.HandleFunc("/pause", s.handlePause)
 	mux.HandleFunc("/unpause", s.handleUnpause)
+	mux.HandleFunc("/restart", s.handleRestart)
 	if s.rootHandler == nil {
 		s.rootHandler = s.handleDefault
 	}
@@ -76,6 +77,7 @@ func (s *ControlService) Process(ready chan bool) error {
 
 func (s *ControlService) Cleanup() {
 	s.cancel()
+	s.ctx, s.cancel = context.WithCancel(context.Background())
 	if s.server != nil {
 		s.server.Close()
 	}
@@ -86,12 +88,12 @@ func (s *ControlService) Logger() *slog.Logger {
 }
 
 func (s *ControlService) handleDefault(w http.ResponseWriter, r *http.Request) {
-	s.logger.Info("Received API documentation request", "remote_addr", r.RemoteAddr, "path", r.URL.Path)
 	results := map[string]string{
 		"/status":   "[name]",
 		"/isPaused": "name",
 		"/pause":    "name",
 		"/unpause":  "name",
+		"/restart":  "name",
 	}
 	writeJSONResponse(w, results)
 }
@@ -175,6 +177,36 @@ func (s *ControlService) handleUnpause(w http.ResponseWriter, r *http.Request) {
 		serviceName := result["name"]
 		status := result["status"]
 		s.logger.Info("Service unpause result", "service", serviceName, "status", status)
+	}
+
+	writeJSONResponse(w, results)
+}
+
+func (s *ControlService) handleRestart(w http.ResponseWriter, r *http.Request) {
+	if s.manager == nil {
+		s.logger.Error("Service manager not attached")
+		writeJSONErrorResponse(w, "Service manager not attached", http.StatusInternalServerError)
+		return
+	}
+
+	serviceName := r.URL.Query().Get("name")
+	if serviceName == "" {
+		serviceName = "all"
+	}
+
+	s.logger.Info("Received restart request", "remote_addr", r.RemoteAddr, "service", serviceName)
+
+	results, err := s.manager.Restart(serviceName)
+	if err != nil {
+		s.logger.Error("Restart request failed", "service", serviceName, "error", err.Error())
+		writeJSONErrorResponse(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	for _, result := range results {
+		svcName := result["name"]
+		status := result["status"]
+		s.logger.Info("Service restart result", "service", svcName, "status", status)
 	}
 
 	writeJSONResponse(w, results)

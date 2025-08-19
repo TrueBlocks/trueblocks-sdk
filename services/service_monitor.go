@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// MonitorService implements Servicer, Pauser, and Restarter interfaces
 type MonitorService struct {
 	paused bool
 	logger *slog.Logger
@@ -77,6 +78,7 @@ func (s *MonitorService) Cleanup() {
 			time.Sleep(1 * time.Second)
 		}
 	}
+	s.ctx, s.cancel = context.WithCancel(context.Background())
 	s.logger.Info("Monitor service cleanup complete.")
 }
 

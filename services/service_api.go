@@ -72,6 +72,7 @@ func (s *ApiService) Process(ready chan bool) error {
 func (s *ApiService) Cleanup() {
 	s.logger.Info("API service cleanup started.")
 	s.cancel() // Cancel the context to signal shutdown
+	s.ctx, s.cancel = context.WithCancel(context.Background())
 	// for i := 0; i < 5; i++ {
 	// 	s.logger.Info("Api service cleanup in progress.", "i", i)
 	// 	time.Sleep(1 * time.Second)

@@ -116,6 +116,7 @@ func (s *IpfsService) Cleanup() {
 		}
 		s.cmd = nil
 	}
+	s.ctx, s.cancel = context.WithCancel(context.Background())
 }
 
 func (s *IpfsService) Logger() *slog.Logger {

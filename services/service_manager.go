@@ -186,3 +186,53 @@ func (sm *ServiceManager) Unpause(name string) ([]map[string]string, error) {
 
 	return results, nil
 }
+
+// -------------------------------------------------------------------------------------
+// Restart restarts services
+func (sm *ServiceManager) Restart(name string) ([]map[string]string, error) {
+	var results []map[string]string
+
+	// Treat "all" as equivalent to empty string (restart all services)
+	if name == "all" {
+		name = ""
+	}
+
+	for _, svc := range sm.services {
+		if _, ok := svc.(Restarter); ok {
+			if name == "" || svc.Name() == name {
+				sm.logger.Info("Restarting service", "name", svc.Name())
+
+				// Use existing cleanup and wait pattern from handleSignals()
+				cleanupDone := make(chan bool, 1)
+				go func() {
+					svc.Cleanup() // This will reset context
+					sm.logger.Info("Service cleanup completed for restart", "name", svc.Name())
+					cleanupDone <- true
+				}()
+				<-cleanupDone // Wait until cleanup is done
+
+				// Start service again using existing StartService
+				go func(s Servicer) {
+					StartService(s, sm.stopChan)
+				}(svc)
+
+				results = append(results, map[string]string{"name": svc.Name(), "status": "restarted"})
+
+				if name != "" {
+					return results, nil
+				}
+			}
+		} else if name != "" && svc.Name() == name {
+			// Service is not restartable and we specifically requested it - that's an error
+			results = append(results, map[string]string{"name": svc.Name(), "status": "not restartable"})
+			return results, nil
+		}
+		// If name == "" (all), skip non-restartable services silently
+	}
+
+	if name != "" && len(results) == 0 {
+		return nil, fmt.Errorf("service '%s' not found", name)
+	}
+
+	return results, nil
+}

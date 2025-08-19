@@ -31,6 +31,11 @@ type ChildManager interface {
 	RestartChild() bool
 }
 
+// Restarter is a marker interface for services that can be restarted
+type Restarter interface {
+	Servicer
+}
+
 func StartService(svc Servicer, stopChan chan os.Signal) {
 	go func() {
 		logger := initializeLogger(svc.Logger())
