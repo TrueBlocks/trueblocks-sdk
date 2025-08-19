@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"log/slog"
 	"net/http"
+
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/base"
 )
 
 type ControlService struct {
@@ -34,6 +36,10 @@ func NewControlService(logger *slog.Logger) *ControlService {
 
 func (s *ControlService) Name() string {
 	return "control"
+}
+
+func (s *ControlService) Port() int {
+	return int(base.MustParseInt64(s.port))
 }
 
 func (s *ControlService) AttachServiceManager(manager *ServiceManager) {
