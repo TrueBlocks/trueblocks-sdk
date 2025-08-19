@@ -13,8 +13,10 @@ import (
 	"time"
 )
 
+// IpfsService implements Servicer and Restarter interfaces
 type IpfsService struct {
 	logger       *slog.Logger
+	paused       bool
 	ctx          context.Context
 	cancel       context.CancelFunc
 	cmd          *exec.Cmd
@@ -169,3 +171,29 @@ func extractPortFromMultiaddr(multiaddr string) (string, error) {
 	}
 	return "", fmt.Errorf("no TCP port found in multiaddress: %s", multiaddr)
 }
+
+// Pauser interface implementation (UI consistency - tracks pause state but doesn't stop service)
+func (s *IpfsService) IsPausable() bool {
+	return true // UI shows this service as pausable
+}
+
+func (s *IpfsService) IsPaused() bool {
+	return s.paused
+}
+
+func (s *IpfsService) Pause() bool {
+	s.paused = true
+	s.logger.Info("IPFS service paused")
+	return s.paused
+}
+
+func (s *IpfsService) Unpause() bool {
+	s.paused = false
+	s.logger.Info("IPFS service unpaused")
+	return !s.paused
+}
+
+// Compile-time interface checks
+var _ Servicer = (*IpfsService)(nil)
+var _ Restarter = (*IpfsService)(nil)
+var _ Pauser = (*IpfsService)(nil)

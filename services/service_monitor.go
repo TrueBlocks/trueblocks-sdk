@@ -85,3 +85,8 @@ func (s *MonitorService) Cleanup() {
 func (s *MonitorService) Logger() *slog.Logger {
 	return s.logger
 }
+
+// Compile-time interface checks
+var _ Servicer = (*MonitorService)(nil)
+var _ Restarter = (*MonitorService)(nil)
+var _ Pauser = (*MonitorService)(nil)

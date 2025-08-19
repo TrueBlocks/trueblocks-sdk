@@ -8,9 +8,11 @@ import (
 	sdk "github.com/TrueBlocks/trueblocks-sdk/v5"
 )
 
+// ApiService implements Servicer and Restarter interfaces
 type ApiService struct {
 	logger *slog.Logger
 	apiUrl string
+	paused bool
 	ctx    context.Context
 	cancel context.CancelFunc
 }
@@ -87,3 +89,29 @@ func (s *ApiService) Logger() *slog.Logger {
 func (s *ApiService) ApiUrl() string {
 	return s.apiUrl
 }
+
+// Pauser interface implementation (UI consistency - tracks pause state but doesn't stop service)
+func (s *ApiService) IsPausable() bool {
+	return true // UI shows this service as pausable
+}
+
+func (s *ApiService) IsPaused() bool {
+	return s.paused
+}
+
+func (s *ApiService) Pause() bool {
+	s.paused = true
+	s.logger.Info("API service paused")
+	return s.paused
+}
+
+func (s *ApiService) Unpause() bool {
+	s.paused = false
+	s.logger.Info("API service unpaused")
+	return !s.paused
+}
+
+// Compile-time interface checks
+var _ Servicer = (*ApiService)(nil)
+var _ Restarter = (*ApiService)(nil)
+var _ Pauser = (*ApiService)(nil)

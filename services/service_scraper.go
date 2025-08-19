@@ -203,3 +203,8 @@ func (s *ScrapeService) scrapeOneChain(chain string) (*scraperReport, error) {
 		return reportScrapeRun(meta, chain, s.blockCnt), nil
 	}
 }
+
+// Compile-time interface checks
+var _ Servicer = (*ScrapeService)(nil)
+var _ Restarter = (*ScrapeService)(nil)
+var _ Pauser = (*ScrapeService)(nil)

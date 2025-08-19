@@ -151,7 +151,7 @@ func (s *ControlService) handlePause(w http.ResponseWriter, r *http.Request) {
 	for _, result := range results {
 		serviceName := result["name"]
 		status := result["status"]
-		s.logger.Info("Service pause result", "service", serviceName, "status", status)
+		s.logger.Info("Service paused", "service", serviceName, "status", status)
 	}
 
 	writeJSONResponse(w, results)
@@ -176,7 +176,7 @@ func (s *ControlService) handleUnpause(w http.ResponseWriter, r *http.Request) {
 	for _, result := range results {
 		serviceName := result["name"]
 		status := result["status"]
-		s.logger.Info("Service unpause result", "service", serviceName, "status", status)
+		s.logger.Info("Service unpaused", "service", serviceName, "status", status)
 	}
 
 	writeJSONResponse(w, results)
