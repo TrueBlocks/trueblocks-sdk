@@ -55,7 +55,7 @@ func (u *Updater) String() string {
 // NewUpdater creates a new Updater instance. It logs a fatal error if invalid parameters are provided.
 func NewUpdater(name string, items []UpdaterItem) (Updater, error) {
 	if len(items) == 0 {
-		logger.Fatal("must provide at least one UpdaterItem")
+		return Updater{}, fmt.Errorf("must provide at least one UpdaterItem")
 	}
 
 	now := time.Now()
@@ -131,8 +131,7 @@ func (u *Updater) NeedsUpdate() (Updater, bool, error) {
 			// Skip FolderSize type items in this loop
 			continue
 		default:
-			logger.Fatal("unknown path type" + fmt.Sprintf(" %s", item.Type))
-			return Updater{}, false, errors.New("unknown path type")
+			return Updater{}, false, fmt.Errorf("unknown path type %s", item.Type)
 		}
 	}
 

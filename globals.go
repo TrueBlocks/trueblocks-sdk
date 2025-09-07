@@ -180,5 +180,4 @@ func debugPrint(str string, t any, err error) {
 	max := min(2000, len(str))
 	logger.Error(str[:max])
 	logger.Error("======================================")
-	// os.Exit(1)
 }
