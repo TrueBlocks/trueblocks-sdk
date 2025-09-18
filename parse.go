@@ -80,8 +80,7 @@ func assignValuesFromArgs(args []string, parseFunc ParseFunc, target any, global
 		}
 
 		if !found {
-			//lint:ignore ST1005 sorry
-			return fmt.Errorf("Invalid key (%s) in route.", option)
+			return fmt.Errorf("invalid key (%s) in route", option)
 		}
 	}
 

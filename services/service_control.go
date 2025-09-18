@@ -79,7 +79,7 @@ func (s *ControlService) Cleanup() {
 	s.cancel()
 	s.ctx, s.cancel = context.WithCancel(context.Background())
 	if s.server != nil {
-		s.server.Close()
+		_ = s.server.Close()
 	}
 }
 

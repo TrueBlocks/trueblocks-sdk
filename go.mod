@@ -1,7 +1,7 @@
 module github.com/TrueBlocks/trueblocks-sdk/v5
 
 // Go Version
-go 1.23.1
+go 1.25.1
 
 require github.com/TrueBlocks/trueblocks-core/src/apps/chifra v0.0.0-20250907182653-03634a2d9cce
 

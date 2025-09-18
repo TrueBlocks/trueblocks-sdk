@@ -142,10 +142,10 @@ func (s *ScrapeService) Logger() *slog.Logger {
 func (s *ScrapeService) initOneChain(chain string) (*scraperReport, error) {
 	defer func() {
 		logger.SetLoggerWriter(io.Discard)
-		os.Setenv("TB_SCRAPE_HEADLESS", "")
+		_ = os.Setenv("TB_SCRAPE_HEADLESS", "")
 	}()
 	logger.SetLoggerWriter(os.Stderr)
-	os.Setenv("TB_SCRAPE_HEADLESS", "true")
+	_ = os.Setenv("TB_SCRAPE_HEADLESS", "true")
 
 	opts := sdk.InitOptions{
 		Globals: sdk.Globals{
@@ -177,10 +177,10 @@ func (s *ScrapeService) initOneChain(chain string) (*scraperReport, error) {
 func (s *ScrapeService) scrapeOneChain(chain string) (*scraperReport, error) {
 	defer func() {
 		logger.SetLoggerWriter(io.Discard)
-		os.Setenv("TB_SCRAPE_HEADLESS", "")
+		_ = os.Setenv("TB_SCRAPE_HEADLESS", "")
 	}()
 	logger.SetLoggerWriter(os.Stderr)
-	os.Setenv("TB_SCRAPE_HEADLESS", "true")
+	_ = os.Setenv("TB_SCRAPE_HEADLESS", "true")
 
 	if s.IsPaused() {
 		s.logger.Debug("Scraper is paused, skipping scraping step")
@@ -205,6 +205,8 @@ func (s *ScrapeService) scrapeOneChain(chain string) (*scraperReport, error) {
 }
 
 // Compile-time interface checks
-var _ Servicer = (*ScrapeService)(nil)
-var _ Restarter = (*ScrapeService)(nil)
-var _ Pauser = (*ScrapeService)(nil)
+var (
+	_ Servicer  = (*ScrapeService)(nil)
+	_ Restarter = (*ScrapeService)(nil)
+	_ Pauser    = (*ScrapeService)(nil)
+)

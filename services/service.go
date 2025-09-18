@@ -120,6 +120,6 @@ var isPortAvailable = func(port string) bool {
 	if err != nil {
 		return true
 	}
-	conn.Close()
+	_ = conn.Close()
 	return false
 }

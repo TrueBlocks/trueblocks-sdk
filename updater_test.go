@@ -11,7 +11,7 @@ func TestNeedsUpdateWithFile(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	defer os.Remove(tempFile.Name()) // Clean up
+	defer func() { _ = os.Remove(tempFile.Name()) }() // Clean up
 
 	// Write some data to the file to set its modification time
 	if _, err := tempFile.Write([]byte("initial data")); err != nil {
@@ -57,7 +57,7 @@ func TestNeedsUpdateWithFolder(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	defer os.RemoveAll(tempDir) // Clean up
+	defer func() { _ = os.RemoveAll(tempDir) }() // Clean up
 
 	tempFile, err := os.CreateTemp(tempDir, "testfile")
 	if err != nil {
