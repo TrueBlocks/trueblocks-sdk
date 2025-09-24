@@ -88,6 +88,7 @@ func (s *ControlService) Logger() *slog.Logger {
 }
 
 func (s *ControlService) handleDefault(w http.ResponseWriter, r *http.Request) {
+	_ = r
 	results := map[string]string{
 		"/status":   "[name]",
 		"/isPaused": "name",
