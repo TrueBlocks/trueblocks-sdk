@@ -42,6 +42,13 @@ func (opts *TokensOptions) Tokens() ([]types.Token, *types.MetaData, error) {
 	return queryTokens[types.Token](in)
 }
 
+// TokensApprovals implements the chifra tokens --approvals command.
+func (opts *TokensOptions) TokensApprovals() ([]types.Token, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Approvals = true
+	return queryTokens[types.Token](in)
+}
+
 type TokensParts int
 
 const (

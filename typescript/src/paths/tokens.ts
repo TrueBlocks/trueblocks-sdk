@@ -15,6 +15,7 @@ export function getTokens(
   parameters?: {
     addrs: address[];
     blocks?: blknum[];
+    approvals?: boolean;
     parts?: string[];
     byAcct?: boolean;
     changes?: boolean;

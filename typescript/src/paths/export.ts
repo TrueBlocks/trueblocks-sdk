@@ -19,6 +19,7 @@ export function getExport(
     appearances?: boolean;
     receipts?: boolean;
     logs?: boolean;
+    approvals?: boolean;
     traces?: boolean;
     neighbors?: boolean;
     statements?: boolean;

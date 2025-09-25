@@ -30,6 +30,7 @@ type exportOptionsInternal struct {
 	Appearances bool              `json:"appearances,omitempty"`
 	Receipts    bool              `json:"receipts,omitempty"`
 	Logs        bool              `json:"logs,omitempty"`
+	Approvals   bool              `json:"approvals,omitempty"`
 	Traces      bool              `json:"traces,omitempty"`
 	Neighbors   bool              `json:"neighbors,omitempty"`
 	Statements  bool              `json:"statements,omitempty"`

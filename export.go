@@ -79,6 +79,13 @@ func (opts *ExportOptions) ExportLogs() ([]types.Log, *types.MetaData, error) {
 	return queryExport[types.Log](in)
 }
 
+// ExportApprovals implements the chifra export --approvals command.
+func (opts *ExportOptions) ExportApprovals() ([]types.Transaction, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Approvals = true
+	return queryExport[types.Transaction](in)
+}
+
 // ExportTraces implements the chifra export --traces command.
 func (opts *ExportOptions) ExportTraces() ([]types.Trace, *types.MetaData, error) {
 	in := opts.toInternal()
