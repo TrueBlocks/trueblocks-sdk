@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"os/user"
 	"strings"
 	"time"
 
@@ -301,10 +302,16 @@ func (u *Updater) debugV(args ...interface{}) {
 
 // relativize modifies the given path by relativizing it with the specified partial paths.
 func relativize(path string) string {
+	// Get current user's home directory
+	currentUser, err := user.Current()
+	if err != nil {
+		return path // fallback to original path if we can't get user info
+	}
+
 	partialPaths := []string{
-		"/Users/jrush/Data/trueblocks/v1.0.0/cache/",
-		"/Users/jrush/Data/trueblocks/v1.0.0/unchained/",
-		"/Users/jrush/Library/Application Support/TrueBlocks/",
+		currentUser.HomeDir + "/Data/trueblocks/v1.0.0/cache/",
+		currentUser.HomeDir + "/Data/trueblocks/v1.0.0/unchained/",
+		currentUser.HomeDir + "/Library/Application Support/TrueBlocks/",
 	}
 
 	for _, partialPath := range partialPaths {
