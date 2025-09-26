@@ -12,10 +12,13 @@ import { address, blknum, datetime, timestamp, wei } from '.';
 
 export type Approval = {
   address: address;
+  addressName: string;
   amount: wei;
   blockNumber: blknum;
   date?: datetime;
   spender: address;
+  spenderName: string;
   timestamp: timestamp;
   token: address;
+  tokenName: string;
 };
