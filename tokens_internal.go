@@ -25,6 +25,7 @@ import (
 type tokensOptionsInternal struct {
 	Addrs     []string          `json:"addrs,omitempty"`
 	BlockIds  []string          `json:"blocks,omitempty"`
+	Approvals bool              `json:"approvals,omitempty"`
 	Parts     TokensParts       `json:"parts,omitempty"`
 	ByAcct    bool              `json:"byAcct,omitempty"`
 	Changes   bool              `json:"changes,omitempty"`

@@ -15,6 +15,7 @@ exportOpts = {
     "appearances": {"hotkey": "-p", "type": "switch"},
     "receipts": {"hotkey": "-r", "type": "switch"},
     "logs": {"hotkey": "-l", "type": "switch"},
+    "approvals": {"hotkey": "-O", "type": "switch"},
     "traces": {"hotkey": "-t", "type": "switch"},
     "neighbors": {"hotkey": "-n", "type": "switch"},
     "statements": {"hotkey": "-A", "type": "switch"},

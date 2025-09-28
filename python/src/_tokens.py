@@ -12,6 +12,7 @@ tokensCmd = "tokens"
 tokensPos = "addrs"
 tokensFmt = "json"
 tokensOpts = {
+    "approvals": {"hotkey": "-O", "type": "switch"},
     "parts": {"hotkey": "-p", "type": "flag"},
     "byAcct": {"hotkey": "-b", "type": "switch"},
     "changes": {"hotkey": "-c", "type": "switch"},
