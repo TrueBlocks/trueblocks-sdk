@@ -8,17 +8,18 @@
  * This file was auto generated. DO NOT EDIT.
  */
 
-import { address, blknum, datetime, timestamp, wei } from '.';
+import { address, blknum, datetime, lognum, timestamp, txnum, wei } from '.';
 
 export type Approval = {
-  address: address;
-  addressName: string;
-  amount: wei;
+  allowance: wei;
   blockNumber: blknum;
   date?: datetime;
+  lastAppBlock: blknum;
+  lastAppLogID: lognum;
+  lastAppTs: timestamp;
+  lastAppTxID: txnum;
+  owner: address;
   spender: address;
-  spenderName: string;
   timestamp: timestamp;
   token: address;
-  tokenName: string;
 };
