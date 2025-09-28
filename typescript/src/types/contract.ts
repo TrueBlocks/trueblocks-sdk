@@ -13,7 +13,7 @@ import { Abi, address, datetime, int64, timestamp } from '.';
 export type Contract = {
   abi: Abi;
   address: address;
-  date: datetime;
+  date?: datetime;
   errorCount: int64;
   lastError: string;
   lastUpdated: timestamp;

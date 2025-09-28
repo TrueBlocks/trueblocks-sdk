@@ -94,7 +94,7 @@ func queryReceipts[T receiptsGeneric](opts *receiptsOptionsInternal) ([]T, *type
 	str = convertEmptyStrToZero("status", str)
 	// EXISTING_CODE
 
-	var result Result[T]
+	var result CoreResult[T]
 	if err := json.Unmarshal([]byte(str), &result); err != nil {
 		debugPrint(str, result, err)
 		return nil, nil, err

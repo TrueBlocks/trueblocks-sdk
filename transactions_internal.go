@@ -113,7 +113,7 @@ func queryTransactions[T transactionsGeneric](opts *transactionsOptionsInternal)
 	str = convertObjectToArray("outputs", str)
 	// EXISTING_CODE
 
-	var result Result[T]
+	var result CoreResult[T]
 	if err := json.Unmarshal([]byte(str), &result); err != nil {
 		debugPrint(str, result, err)
 		return nil, nil, err
