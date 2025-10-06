@@ -9,6 +9,7 @@ type Modeler interface {
 
 // Model type alias for the return type of Model()
 type Model = types.Model
+type ModelProps = types.ModelProps
 
 type Abi = types.Abi
 type Appearance = types.Appearance
