@@ -80,10 +80,10 @@ func (opts *ExportOptions) ExportLogs() ([]types.Log, *types.MetaData, error) {
 }
 
 // ExportApprovals implements the chifra export --approvals command.
-func (opts *ExportOptions) ExportApprovals() ([]types.Transaction, *types.MetaData, error) {
+func (opts *ExportOptions) ExportApprovals() ([]types.Log, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Approvals = true
-	return queryExport[types.Transaction](in)
+	return queryExport[types.Log](in)
 }
 
 // ExportTraces implements the chifra export --traces command.
