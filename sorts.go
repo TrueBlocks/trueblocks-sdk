@@ -287,4 +287,8 @@ func SortCaches(cacheitems []types.CacheItem, sortSpec SortSpec) error {
 	return SortCacheItems(cacheitems, sortSpec)
 }
 
+func SortApproves(approves []types.Log, sortSpec SortSpec) error {
+	return SortLogs(approves, sortSpec)
+}
+
 // EXISTING_CODE
