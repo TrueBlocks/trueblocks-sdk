@@ -287,8 +287,22 @@ func SortCaches(cacheitems []types.CacheItem, sortSpec SortSpec) error {
 	return SortCacheItems(cacheitems, sortSpec)
 }
 
-func SortApproves(approves []types.Log, sortSpec SortSpec) error {
-	return SortLogs(approves, sortSpec)
+func SortOpenApprovals(a []types.Approval, sortSpec SortSpec) error {
+	_ = a
+	_ = sortSpec
+	return nil // TODO: do something here
+}
+
+func SortApprovalTxs(a []types.Transaction, sortSpec SortSpec) error {
+	_ = a
+	_ = sortSpec
+	return nil // TODO: do something here
+}
+
+func SortApprovalLogs(a []types.Log, sortSpec SortSpec) error {
+	_ = a
+	_ = sortSpec
+	return nil // TODO: do something here
 }
 
 // EXISTING_CODE
