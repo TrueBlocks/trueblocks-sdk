@@ -105,6 +105,28 @@ func SortApprovals(approvals []types.Approval, sortSpec SortSpec) error {
 	return nil
 }
 
+func SortTransactions(transactions []types.Transaction, sortSpec SortSpec) error {
+	if len(sortSpec.Fields) != len(sortSpec.Order) {
+		return fmt.Errorf("fields and order must have the same length")
+	}
+
+	sorts := make([]func(p1, p2 types.Transaction) bool, len(sortSpec.Fields))
+	for i, field := range sortSpec.Fields {
+		if field == "" {
+			continue
+		}
+		if !slices.Contains(types.GetSortFieldsTransaction(), field) {
+			return fmt.Errorf("%s is not an Transaction sort field", field)
+		}
+		sorts[i] = types.TransactionBy(types.TransactionField(field), types.SortOrder(sortSpec.Order[i]))
+	}
+
+	if len(sorts) > 0 {
+		sort.SliceStable(transactions, types.TransactionCmp(transactions, sorts...))
+	}
+	return nil
+}
+
 func SortContracts(contracts []types.Contract, sortSpec SortSpec) error {
 	if len(sortSpec.Fields) != len(sortSpec.Order) {
 		return fmt.Errorf("fields and order must have the same length")

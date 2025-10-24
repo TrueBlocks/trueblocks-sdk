@@ -214,12 +214,6 @@ func SortTransfers(statuses []types.Transfer, sortSpec SortSpec) error {
 	return nil
 }
 
-func SortTransactions(statuses []types.Transaction, sortSpec SortSpec) error {
-	_ = statuses
-	_ = sortSpec
-	return nil
-}
-
 func SortWithdrawals(statuses []types.Withdrawal, sortSpec SortSpec) error {
 	_ = statuses
 	_ = sortSpec
