@@ -327,4 +327,8 @@ func SortApprovalLogs(a []types.Log, sortSpec SortSpec) error {
 	return nil // TODO: do something here
 }
 
+func SortTransaction(transactions []types.Transaction, sortSpec SortSpec) error {
+	return SortTransactions(transactions, sortSpec)
+}
+
 // EXISTING_CODE
