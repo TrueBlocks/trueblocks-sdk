@@ -220,7 +220,7 @@ func SortWithdrawals(statuses []types.Withdrawal, sortSpec SortSpec) error {
 	return nil
 }
 
-func SortAssets(statuses []types.Name, sortSpec SortSpec) error {
+func SortAssets(statuses []types.Statement, sortSpec SortSpec) error {
 	_ = statuses
 	_ = sortSpec
 	return nil
