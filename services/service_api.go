@@ -5,7 +5,7 @@ import (
 	"context"
 	"log/slog"
 
-	sdk "github.com/TrueBlocks/trueblocks-sdk/v5"
+	sdk "github.com/TrueBlocks/trueblocks-sdk/v6"
 )
 
 // ApiService implements Servicer and Restarter interfaces
