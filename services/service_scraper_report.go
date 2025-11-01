@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/types"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v6/pkg/types"
 )
 
 func reportScrape(logger *slog.Logger, report *scraperReport) {

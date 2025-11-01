@@ -11,8 +11,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/output"
-	daemon "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/sdk"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v6/pkg/output"
+	daemon "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v6/sdk"
 	// EXISTING_CODE
 )
 
