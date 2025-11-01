@@ -5,8 +5,8 @@
 package sdk
 
 import (
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/base"
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/base"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/types"
 )
 
 // CreateContracts returns mock contract data for testing and development

@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/output"
 	// EXISTING_CODE
 )
 

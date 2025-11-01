@@ -1,6 +1,6 @@
 package sdk
 
-import "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
+import "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/types"
 
 // Modeler interface exposes the Model method for SDK consumers
 type Modeler interface {

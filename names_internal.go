@@ -15,10 +15,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/base"
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
-	names "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/sdk"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/base"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/output"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/types"
+	names "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/sdk"
 	// EXISTING_CODE
 )
 

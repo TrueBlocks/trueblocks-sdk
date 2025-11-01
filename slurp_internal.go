@@ -16,9 +16,9 @@ import (
 	"io"
 	"strings"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/output"
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/types"
-	slurp "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/sdk"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/output"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/pkg/types"
+	slurp "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v5/sdk"
 	// EXISTING_CODE
 )
 
