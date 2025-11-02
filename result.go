@@ -1,6 +1,6 @@
 package sdk
 
-import "github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v6/pkg/types"
+import "github.com/TrueBlocks/trueblocks-chifra/v6/pkg/types"
 
 type CoreResult[T any] struct {
 	Data []T            `json:"data"`

@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/v6/pkg/base"
+	"github.com/TrueBlocks/trueblocks-chifra/v6/pkg/base"
 )
 
 // ParseFunc is a function that takes a key/value pair and returns `true,nil` if the key/value pair
