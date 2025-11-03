@@ -8,4 +8,4 @@ publish:
 	@cd python && make
 
 update:
-	@go get github.com/TrueBlocks/trueblocks-chifra@latest
+	@go get github.com/TrueBlocks/trueblocks-chifra/v6@latest
