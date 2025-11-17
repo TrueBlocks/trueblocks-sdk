@@ -10,6 +10,8 @@ publish:
 update:
 	@go get github.com/TrueBlocks/trueblocks-chifra/v6@latest
 
-generate:
+goMaker:
 	@cd ../dev-tools/goMaker && yarn deploy && cd -
+
+generate:
 	@goMaker
