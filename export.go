@@ -242,4 +242,12 @@ func SortReceipts(statuses []types.Receipt, sortSpec SortSpec) error {
 	return nil
 }
 
+// ExportApprovalsLogs implements the chifra export --approvals command.
+func (opts *ExportOptions) ExportApprovalsLogs() ([]types.Log, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Approvals = true
+	in.Logs = true
+	return queryExport[types.Log](in)
+}
+
 // EXISTING_CODE
