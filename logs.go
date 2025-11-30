@@ -35,7 +35,7 @@ func (opts LogsOptions) String() string {
 // Logs implements the chifra logs command.
 func (opts *LogsOptions) Logs() ([]types.Log, *types.MetaData, error) {
 	in := opts.toInternal()
-	return queryLogs[types.Log](in)
+	return queryLogs(in)
 }
 
 // No enums

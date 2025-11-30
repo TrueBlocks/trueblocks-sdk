@@ -33,7 +33,7 @@ func (opts ReceiptsOptions) String() string {
 // Receipts implements the chifra receipts command.
 func (opts *ReceiptsOptions) Receipts() ([]types.Receipt, *types.MetaData, error) {
 	in := opts.toInternal()
-	return queryReceipts[types.Receipt](in)
+	return queryReceipts(in)
 }
 
 // No enums

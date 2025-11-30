@@ -36,7 +36,7 @@ func (opts ExploreOptions) String() string {
 // Explore implements the chifra explore command.
 func (opts *ExploreOptions) Explore() ([]types.Destination, *types.MetaData, error) {
 	in := opts.toInternal()
-	return queryExplore[types.Destination](in)
+	return queryExplore(in)
 }
 
 // No enums

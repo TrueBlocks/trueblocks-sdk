@@ -11,7 +11,9 @@ update:
 	@go get github.com/TrueBlocks/trueblocks-chifra/v6@latest
 
 goMaker:
-	@cd ../dev-tools/goMaker && yarn deploy && cd -
+	@cd ../../dev-tools/goMaker && yarn deploy && cd -
 
 generate:
+	@make goMaker
 	@goMaker
+

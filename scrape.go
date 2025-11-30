@@ -37,21 +37,21 @@ func (opts ScrapeOptions) String() string {
 func (opts *ScrapeOptions) ScrapeTouch(val base.Blknum) ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Touch = val
-	return queryScrape[types.Message](in)
+	return queryScrape(in)
 }
 
 // ScrapeRunCount implements the chifra scrape --runcount command.
 func (opts *ScrapeOptions) ScrapeRunCount(val uint64) ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.RunCount = val
-	return queryScrape[types.Message](in)
+	return queryScrape(in)
 }
 
 // ScrapeDryRun implements the chifra scrape --dryrun command.
 func (opts *ScrapeOptions) ScrapeDryRun() ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.DryRun = true
-	return queryScrape[types.Message](in)
+	return queryScrape(in)
 }
 
 // No enums

@@ -362,6 +362,18 @@ func CreateContracts() []*types.Contract {
 	unchainedIndexAbi := &types.Abi{
 		Functions: []types.Function{
 			{
+				Name:            "manifestHashMap",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "publisher", ParameterType: "address"},
+					{Name: "dbname", ParameterType: "string"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "manifestHash", ParameterType: "string"},
+				},
+			},
+			{
 				Name:            "publishHash",
 				FunctionType:    "function",
 				StateMutability: "nonpayable",

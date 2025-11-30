@@ -3,7 +3,10 @@ module github.com/TrueBlocks/trueblocks-sdk/v6
 // Go Version
 go 1.25.1
 
-require github.com/TrueBlocks/trueblocks-chifra/v6 v6.6.6-0.20251128135334-578550555e18
+require (
+	github.com/TrueBlocks/trueblocks-chifra/v6 v6.6.6-0.20251128135334-578550555e18
+	github.com/ethereum/go-ethereum v1.16.6
+)
 
 require (
 	github.com/Microsoft/go-winio v0.6.2 // indirect
@@ -22,7 +25,6 @@ require (
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.0 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/ethereum/c-kzg-4844/v2 v2.1.3 // indirect
-	github.com/ethereum/go-ethereum v1.16.6 // indirect
 	github.com/ethereum/go-verkle v0.2.2 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect

@@ -36,21 +36,21 @@ func (opts InitOptions) String() string {
 func (opts *InitOptions) InitAll() ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.All = true
-	return queryInit[types.Message](in)
+	return queryInit(in)
 }
 
 // InitExample implements the chifra init --example command.
 func (opts *InitOptions) InitExample(val string) ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Example = val
-	return queryInit[types.Message](in)
+	return queryInit(in)
 }
 
 // InitDryRun implements the chifra init --dryrun command.
 func (opts *InitOptions) InitDryRun() ([]types.Message, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.DryRun = true
-	return queryInit[types.Message](in)
+	return queryInit(in)
 }
 
 // No enums

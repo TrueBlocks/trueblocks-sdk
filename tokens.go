@@ -39,14 +39,14 @@ func (opts TokensOptions) String() string {
 // Tokens implements the chifra tokens command.
 func (opts *TokensOptions) Tokens() ([]types.Token, *types.MetaData, error) {
 	in := opts.toInternal()
-	return queryTokens[types.Token](in)
+	return queryTokens(in)
 }
 
 // TokensApprovals implements the chifra tokens --approvals command.
 func (opts *TokensOptions) TokensApprovals() ([]types.Token, *types.MetaData, error) {
 	in := opts.toInternal()
 	in.Approvals = true
-	return queryTokens[types.Token](in)
+	return queryTokens(in)
 }
 
 type TokensParts int

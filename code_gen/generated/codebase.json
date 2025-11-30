@@ -5983,6 +5983,8 @@
                     "doc_route": "306-token",
                     "doc_descr": "on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block",
                     "produced_by": "tokens,export",
+                    "cache_by": "address,address,block",
+                    "cache_type": "cacheable",
                     "members": [
                         {
                             "name": "blockNumber",
@@ -11443,7 +11445,7 @@
                     "doc_route": "309-result",
                     "doc_descr": "the result (articulated if possible, as bytes otherwise) of a call to a smart contract",
                     "produced_by": "state",
-                    "cache_by": "address,block,fourbyte",
+                    "cache_by": "address,fourbyte,block",
                     "cache_type": "cacheable",
                     "members": [
                         {
@@ -12485,6 +12487,8 @@
                     "doc_route": "122-approval",
                     "doc_descr": "an ERC-20 token approval granting spending permission from owner to spender",
                     "produced_by": "tokens",
+                    "cache_by": "address,address,address,block",
+                    "cache_type": "cacheable",
                     "members": [
                         {
                             "name": "allowance",
@@ -12579,6 +12583,8 @@
                     "doc_route": "306-token",
                     "doc_descr": "on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block",
                     "produced_by": "tokens,export",
+                    "cache_by": "address,address,block",
+                    "cache_type": "cacheable",
                     "members": [
                         {
                             "name": "blockNumber",
@@ -15609,6 +15615,8 @@
             "doc_route": "122-approval",
             "doc_descr": "an ERC-20 token approval granting spending permission from owner to spender",
             "produced_by": "tokens",
+            "cache_by": "address,address,address,block",
+            "cache_type": "cacheable",
             "members": [
                 {
                     "name": "allowance",
@@ -17249,6 +17257,8 @@
             "doc_route": "306-token",
             "doc_descr": "on-chain token-related data such as totalSupply, symbol, decimals, and individual balances for a given address at a given block",
             "produced_by": "tokens,export",
+            "cache_by": "address,address,block",
+            "cache_type": "cacheable",
             "members": [
                 {
                     "name": "blockNumber",
@@ -17369,7 +17379,7 @@
             "doc_route": "309-result",
             "doc_descr": "the result (articulated if possible, as bytes otherwise) of a call to a smart contract",
             "produced_by": "state",
-            "cache_by": "address,block,fourbyte",
+            "cache_by": "address,fourbyte,block",
             "cache_type": "cacheable",
             "members": [
                 {
