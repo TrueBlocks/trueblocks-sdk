@@ -466,6 +466,217 @@ func CreateContracts() []*types.Contract {
 		},
 	}
 
+	// DalleDress V1 - ERC721 NFT Contract
+	dalleDressAbi := &types.Abi{
+		Functions: []types.Function{
+			{
+				Name:            "name",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "string", Value: "DalleDressV1"},
+				},
+			},
+			{
+				Name:            "symbol",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "string", Value: "DD"},
+				},
+			},
+			{
+				Name:            "mintCost",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+			{
+				Name:            "tokenId",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+			{
+				Name:            "MAX_SUPPLY",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: "10000"},
+				},
+			},
+			{
+				Name:            "pause",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs:         []types.Parameter{},
+			},
+			{
+				Name:            "unpause",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs:          []types.Parameter{},
+				Outputs:         []types.Parameter{},
+			},
+			{
+				Name:            "paused",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+			{
+				Name:            "setMintCost",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "newCost", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "safeMint",
+				FunctionType:    "function",
+				StateMutability: "payable",
+				Inputs: []types.Parameter{
+					{Name: "to", ParameterType: "address"},
+					{Name: "uri", ParameterType: "string"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "tokenURI",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "tkId", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "string", Value: nil},
+				},
+			},
+			{
+				Name:            "balanceOf",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "owner", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "uint256", Value: nil},
+				},
+			},
+			{
+				Name:            "ownerOf",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "tokenId", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+			{
+				Name:            "owner",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs:          []types.Parameter{},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+			{
+				Name:            "approve",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "to", ParameterType: "address"},
+					{Name: "tokenId", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "getApproved",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "tokenId", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "address", Value: nil},
+				},
+			},
+			{
+				Name:            "setApprovalForAll",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "operator", ParameterType: "address"},
+					{Name: "approved", ParameterType: "bool"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "isApprovedForAll",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "owner", ParameterType: "address"},
+					{Name: "operator", ParameterType: "address"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+			{
+				Name:            "transferFrom",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "from", ParameterType: "address"},
+					{Name: "to", ParameterType: "address"},
+					{Name: "tokenId", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "safeTransferFrom",
+				FunctionType:    "function",
+				StateMutability: "nonpayable",
+				Inputs: []types.Parameter{
+					{Name: "from", ParameterType: "address"},
+					{Name: "to", ParameterType: "address"},
+					{Name: "tokenId", ParameterType: "uint256"},
+				},
+				Outputs: []types.Parameter{},
+			},
+			{
+				Name:            "supportsInterface",
+				FunctionType:    "function",
+				StateMutability: "view",
+				Inputs: []types.Parameter{
+					{Name: "interfaceId", ParameterType: "bytes4"},
+				},
+				Outputs: []types.Parameter{
+					{Name: "", ParameterType: "bool", Value: nil},
+				},
+			},
+		},
+	}
+
 	// DAI Stablecoin - ERC20 Token
 	daiAbi := &types.Abi{
 		Functions: []types.Function{
@@ -623,6 +834,19 @@ func CreateContracts() []*types.Contract {
 			ErrorCount:  0,
 			LastError:   "",
 			ReadResults: map[string]interface{}{},
+		},
+		{
+			Address:     base.HexToAddress("0x52df6e4d9989e7cf4739d687c765e75323a1b14c"),
+			Name:        "DalleDress",
+			Abi:         dalleDressAbi,
+			LastUpdated: 1733011200,
+			ErrorCount:  0,
+			LastError:   "",
+			ReadResults: map[string]interface{}{
+				"name":       "DalleDressV1",
+				"symbol":     "DD",
+				"MAX_SUPPLY": "10000",
+			},
 		},
 	}
 }
