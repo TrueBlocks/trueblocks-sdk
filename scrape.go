@@ -22,7 +22,6 @@ type ScrapeOptions struct {
 	BlockCnt  uint64            `json:"blockCnt,omitempty"`
 	Sleep     float64           `json:"sleep,omitempty"`
 	Publisher base.Address      `json:"publisher,omitempty"`
-	Notify    bool              `json:"notify,omitempty"`
 	RenderCtx *output.RenderCtx `json:"-"`
 	Globals
 }

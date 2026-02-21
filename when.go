@@ -41,6 +41,13 @@ func (opts *WhenOptions) When() ([]types.NamedBlock, *types.MetaData, error) {
 	return queryWhen[types.NamedBlock](in)
 }
 
+// WhenDiff implements the chifra when --diff command.
+func (opts *WhenOptions) WhenDiff() ([]types.NamedBlock, *types.MetaData, error) {
+	in := opts.toInternal()
+	in.Diff = true
+	return queryWhen[types.NamedBlock](in)
+}
+
 // WhenList implements the chifra when --list command.
 func (opts *WhenOptions) WhenList() ([]types.NamedBlock, *types.MetaData, error) {
 	in := opts.toInternal()

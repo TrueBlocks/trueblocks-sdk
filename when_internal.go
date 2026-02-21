@@ -24,6 +24,7 @@ import (
 
 type whenOptionsInternal struct {
 	BlockIds   []string          `json:"blocks,omitempty"`
+	Diff       bool              `json:"diff,omitempty"`
 	List       bool              `json:"list,omitempty"`
 	Timestamps bool              `json:"timestamps,omitempty"`
 	Count      bool              `json:"count,omitempty"`

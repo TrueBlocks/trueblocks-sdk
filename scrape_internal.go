@@ -29,7 +29,6 @@ type scrapeOptionsInternal struct {
 	Touch     base.Blknum       `json:"touch,omitempty"`
 	RunCount  uint64            `json:"runCount,omitempty"`
 	DryRun    bool              `json:"dryRun,omitempty"`
-	Notify    bool              `json:"notify,omitempty"`
 	RenderCtx *output.RenderCtx `json:"-"`
 	Globals
 }
@@ -112,7 +111,6 @@ func (opts *ScrapeOptions) toInternal() *scrapeOptionsInternal {
 		BlockCnt:  opts.BlockCnt,
 		Sleep:     opts.Sleep,
 		Publisher: opts.Publisher,
-		Notify:    opts.Notify,
 		RenderCtx: opts.RenderCtx,
 		Globals:   opts.Globals,
 	}
