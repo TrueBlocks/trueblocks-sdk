@@ -18,21 +18,22 @@ type JobResult struct {
 }
 
 type WorkerPool struct {
-	concurrency int
-	jobs        chan MonitorJob
-	results     chan JobResult
-	wg          sync.WaitGroup
-	ctx         context.Context
-	cancel      context.CancelFunc
-	executor    CommandExecutor
+	concurrency      int
+	jobs             chan MonitorJob
+	results          chan JobResult
+	wg               sync.WaitGroup
+	ctx              context.Context
+	cancel           context.CancelFunc
+	executor         CommandExecutor
+	onProgressUpdate func(result JobResult) // Callback for real-time progress
 }
 
 func NewWorkerPool(concurrency int, executor CommandExecutor) *WorkerPool {
 	ctx, cancel := context.WithCancel(context.Background())
 	return &WorkerPool{
 		concurrency: concurrency,
-		jobs:        make(chan MonitorJob, concurrency*2),
-		results:     make(chan JobResult, concurrency*2),
+		jobs:        make(chan MonitorJob, 10000),
+		results:     make(chan JobResult, 10000),
 		ctx:         ctx,
 		cancel:      cancel,
 		executor:    executor,
@@ -74,6 +75,11 @@ func (wp *WorkerPool) processJob(job MonitorJob) {
 			result.Error = err
 			break
 		}
+	}
+
+	// Call progress callback if set (before sending to results channel)
+	if wp.onProgressUpdate != nil {
+		wp.onProgressUpdate(result)
 	}
 
 	select {

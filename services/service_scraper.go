@@ -9,20 +9,29 @@ import (
 	"time"
 
 	"github.com/TrueBlocks/trueblocks-chifra/v6/pkg/logger"
+	"github.com/TrueBlocks/trueblocks-chifra/v6/pkg/output"
 	"github.com/TrueBlocks/trueblocks-chifra/v6/pkg/types"
 	sdk "github.com/TrueBlocks/trueblocks-sdk/v6"
 )
 
+// ScrapeCompletedEvent is sent when scraper completes a batch
+// This is a "wake up" signal - monitors track their own block state
+type ScrapeCompletedEvent struct {
+	Chain string
+	Meta  interface{} // *types.MetaData from core
+}
+
 // ScrapeService implements Servicer, Pauser, and Restarter interfaces
 type ScrapeService struct {
-	paused        bool
-	logger        *slog.Logger
-	initMode      string
-	configTargets []string
-	sleep         int
-	blockCnt      int
-	ctx           context.Context
-	cancel        context.CancelFunc
+	paused           bool
+	logger           *slog.Logger
+	initMode         string
+	configTargets    []string
+	sleep            int
+	blockCnt         int
+	ctx              context.Context
+	cancel           context.CancelFunc
+	onScrapeComplete func(ScrapeCompletedEvent)
 }
 
 func NewScrapeService(logger *slog.Logger, initMode string, configTargets []string, sleep int, blockCnt int) *ScrapeService {
@@ -139,6 +148,11 @@ func (s *ScrapeService) Logger() *slog.Logger {
 	return s.logger
 }
 
+// SetScrapeCompleteCallback configures the scraper to call a function when scraping completes
+func (s *ScrapeService) SetScrapeCompleteCallback(fn func(ScrapeCompletedEvent)) {
+	s.onScrapeComplete = fn
+}
+
 func (s *ScrapeService) initOneChain(chain string) (*scraperReport, error) {
 	defer func() {
 		logger.SetLoggerWriter(io.Discard)
@@ -187,20 +201,77 @@ func (s *ScrapeService) scrapeOneChain(chain string) (*scraperReport, error) {
 		return nil, nil
 	}
 
+	// Create streaming context for event handling
+	rCtx := output.NewStreamingContext()
+	done := make(chan struct{})
+
+	// Start listener goroutine for streaming events
+	go func() {
+		defer close(done)
+		for {
+			select {
+			case event, ok := <-rCtx.ModelChan:
+				if !ok {
+					return
+				}
+				s.handleStreamEvent(event)
+			case err, ok := <-rCtx.ErrorChan:
+				if !ok {
+					return
+				}
+				s.logger.Error("Scrape error", "error", err)
+			case <-rCtx.Ctx.Done():
+				return
+			}
+		}
+	}()
+
 	opts := sdk.ScrapeOptions{
 		BlockCnt: uint64(s.blockCnt),
 		Globals: sdk.Globals{
 			Chain: chain,
 		},
+		RenderCtx: rCtx,
 	}
 
-	if msg, meta, err := opts.ScrapeRunOnce(); err != nil {
+	msg, meta, err := opts.ScrapeRunOnce()
+
+	// Cleanup: close channels and wait for goroutine
+	close(rCtx.ModelChan)
+	close(rCtx.ErrorChan)
+	<-done
+
+	if err != nil {
 		return nil, err
-	} else {
-		if len(msg) > 0 {
-			s.logger.Info(msg[0].String())
+	}
+
+	if len(msg) > 0 {
+		s.logger.Info(msg[0].String())
+	}
+	return reportScrapeRun(meta, chain, s.blockCnt), nil
+}
+
+// handleStreamEvent processes events from the streaming context
+func (s *ScrapeService) handleStreamEvent(event types.Modeler) {
+	switch e := event.(type) {
+	case *types.Message:
+		s.logger.Info(e.Msg)
+	default:
+		if s.onScrapeComplete != nil {
+			m := event.Model("", "", false, nil)
+			if chainVal, ok := m.Data["chain"]; ok {
+				if chainStr, ok := chainVal.(string); ok {
+					go func(chain string) {
+						defer func() {
+							if r := recover(); r != nil {
+								s.logger.Error("Callback panic", "error", r)
+							}
+						}()
+						s.onScrapeComplete(ScrapeCompletedEvent{Chain: chain})
+					}(chainStr)
+				}
+			}
 		}
-		return reportScrapeRun(meta, chain, s.blockCnt), nil
 	}
 }
 

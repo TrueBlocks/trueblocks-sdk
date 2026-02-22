@@ -5,7 +5,8 @@ import (
 )
 
 type TemplateVars struct {
-	Address    string
+	Address    string   // Single address (for backwards compatibility)
+	Addresses  []string // Multiple addresses for batching
 	Chain      string
 	FirstBlock uint64
 	LastBlock  uint64
@@ -14,7 +15,12 @@ type TemplateVars struct {
 
 func ExpandTemplate(input string, vars TemplateVars) string {
 	result := input
-	result = strings.ReplaceAll(result, "{address}", vars.Address)
+	// For multiple addresses, join them with spaces
+	if len(vars.Addresses) > 0 {
+		result = strings.ReplaceAll(result, "{address}", strings.Join(vars.Addresses, " "))
+	} else {
+		result = strings.ReplaceAll(result, "{address}", vars.Address)
+	}
 	result = strings.ReplaceAll(result, "{chain}", vars.Chain)
 	result = strings.ReplaceAll(result, "{first_block}", formatUint64(vars.FirstBlock))
 	result = strings.ReplaceAll(result, "{last_block}", formatUint64(vars.LastBlock))
