@@ -8,6 +8,10 @@ import (
 	"strings"
 
 	"gopkg.in/yaml.v3"
+
+	"github.com/TrueBlocks/trueblocks-chifra/v6/pkg/base"
+	chifraMonitor "github.com/TrueBlocks/trueblocks-chifra/v6/pkg/monitor"
+	"github.com/TrueBlocks/trueblocks-chifra/v6/pkg/rpc"
 )
 
 type MonitorEntry struct {
@@ -37,6 +41,13 @@ func ParseWatchlist(path string) ([]MonitorEntry, error) {
 	scanner := bufio.NewScanner(file)
 	lineNum := 0
 
+	chain := "mainnet"
+	filename := filepath.Base(path)
+	if strings.HasPrefix(filename, "watchlist-") && strings.HasSuffix(filename, ".txt") {
+		chain = strings.TrimSuffix(strings.TrimPrefix(filename, "watchlist-"), ".txt")
+	}
+	conn := rpc.TempConnection(chain)
+
 	for scanner.Scan() {
 		lineNum++
 		line := strings.TrimSpace(scanner.Text())
@@ -51,10 +62,23 @@ func ParseWatchlist(path string) ([]MonitorEntry, error) {
 		}
 
 		parts := strings.Split(line, ",")
-		address := strings.TrimSpace(parts[0])
+		addressOrEns := strings.TrimSpace(parts[0])
 
-		if !isValidAddress(address) {
-			return nil, NewWatchlistError(path, lineNum, fmt.Sprintf("invalid address: %s", address))
+		if !base.IsValidAddress(addressOrEns) {
+			return nil, NewWatchlistError(path, lineNum, fmt.Sprintf("invalid address: %s", addressOrEns))
+		}
+
+		address := addressOrEns
+		if strings.HasSuffix(addressOrEns, ".eth") {
+			if aa, ok := conn.GetEnsAddress(addressOrEns); !ok {
+				if bb, okok := conn.GetEnsAddress(addressOrEns); !okok {
+					return []MonitorEntry{}, fmt.Errorf("failed to resolve ENS name: %s", addressOrEns)
+				} else {
+					address = bb
+				}
+			} else {
+				address = aa
+			}
 		}
 
 		entry := MonitorEntry{
@@ -86,6 +110,27 @@ func ParseWatchlist(path string) ([]MonitorEntry, error) {
 	return entries, nil
 }
 
+// readMonitorState reads the LastScanned value from a monitor file using chifra's monitor package
+func readMonitorState(chain, address string) (uint64, error) {
+	// Create monitor instance
+	mon, err := chifraMonitor.NewMonitor(chain, base.HexToAddress(address), false)
+	if err != nil {
+		return 0, err
+	}
+	defer mon.Close()
+
+	// Read the monitor header to get LastScanned
+	if err := mon.ReadMonitorHeader(); err != nil {
+		// Monitor file doesn't exist yet, start from 0
+		if os.IsNotExist(err) {
+			return 0, nil
+		}
+		return 0, fmt.Errorf("failed to read monitor header: %v", err)
+	}
+
+	return uint64(mon.LastScanned), nil
+}
+
 func DiscoverMonitors(chain string) ([]MonitorEntry, error) {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
@@ -115,9 +160,16 @@ func DiscoverMonitors(chain string) ([]MonitorEntry, error) {
 			continue
 		}
 
+		// Read the actual LastScanned value from the monitor file
+		lastScanned, err := readMonitorState(chain, address)
+		if err != nil {
+			// fmt.Printf("[MONITOR] Warning: Could not read state for %s: %v, using 0\n", address, err)
+			lastScanned = 0
+		}
+
 		monitors = append(monitors, MonitorEntry{
 			Address:       address,
-			StartingBlock: 0,
+			StartingBlock: lastScanned,
 		})
 	}
 

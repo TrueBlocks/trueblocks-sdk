@@ -217,7 +217,7 @@ func TestShellExecutor_Execute_TemplateExpansion(t *testing.T) {
 
 	vars := TemplateVars{
 		Address:    "0xabc123",
-		Chain:      "sepolia",
+		Chain:      "gnosis",
 		FirstBlock: 100,
 		LastBlock:  200,
 		BlockCount: 101,
@@ -239,7 +239,7 @@ func TestShellExecutor_Execute_TemplateExpansion(t *testing.T) {
 		t.Fatalf("Execute() unexpected error = %v", err)
 	}
 
-	expectedPath := filepath.Join(tmpDir, "sepolia", "0xabc123.txt")
+	expectedPath := filepath.Join(tmpDir, "gnosis", "0xabc123.txt")
 	if _, err := os.Stat(expectedPath); os.IsNotExist(err) {
 		t.Fatalf("Output file not created at expected path: %s", expectedPath)
 	}
@@ -249,7 +249,7 @@ func TestShellExecutor_Execute_TemplateExpansion(t *testing.T) {
 		t.Fatalf("Failed to read output file: %v", err)
 	}
 
-	expectedContent := "Address: 0xabc123, Chain: sepolia, Blocks: 100-200"
+	expectedContent := "Address: 0xabc123, Chain: gnosis, Blocks: 100-200"
 	actualContent := strings.TrimSpace(string(content))
 	if actualContent != expectedContent {
 		t.Errorf("Expected output '%s', got '%s'", expectedContent, actualContent)

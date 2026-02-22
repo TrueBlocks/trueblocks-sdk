@@ -9,7 +9,7 @@ import (
 
 func TestNewMonitorService(t *testing.T) {
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
-	chains := []string{"mainnet", "sepolia"}
+	chains := []string{"mainnet", "gnosis"}
 	config := MonitorConfig{
 		WatchlistDir:    "/tmp/watchlists",
 		CommandsDir:     "/tmp/commands",
